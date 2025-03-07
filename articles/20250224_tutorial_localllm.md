@@ -11,6 +11,16 @@ published: false
 
 なお素人なので、誤っている部分などあればご教授いただけると助かります。
 
+# 成果物
+最初に成果物をまとめておきます。
+- GitHubリポジトリ
+    https://github.com/n-yokomachi/catbot
+- Hugging Faceモデルリポジトリ
+    https://huggingface.co/yokomachi/finetuned_catbot
+- Hugging Face Spaces（catbotのデモアプリ）
+    https://huggingface.co/spaces/yokomachi/catbot
+
+
 # 本記事の流れ
 
 以下の流れでやっていきます：  
@@ -26,6 +36,8 @@ published: false
 今回は軽量な日本語向けLLMであるrinna/japanese-gpt2-xsmallを使用し、
 モデルそのままの場合と、ファインチューニングする2パターンを試してみます。
 https://huggingface.co/rinna/japanese-gpt2-xsmall  
+
+ちなみにもう一つ上のモデルであるjapanese-gpt2-smallも試してみましたが、今回の用途ではあまり精度は変わりませんでした
 
 
 ## requirements.txt
