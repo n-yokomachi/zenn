@@ -3,7 +3,7 @@ title: "ローカルLLMに入門して”キ”ャットボット向けにファ
 emoji: "🐈"
 type: "tech"
 topics: [localllm, streamlit, huggingface]
-published: false
+published: true
 ---
 
 ローカルLLMを触ってみたかったので、公開されているLLMをベースにファインチューニングしてみます。  
