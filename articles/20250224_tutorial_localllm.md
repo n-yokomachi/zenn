@@ -16,7 +16,7 @@ published: true
 - GitHubリポジトリ
     https://github.com/n-yokomachi/catbot
 - Hugging Faceモデルリポジトリ
-    https://huggingface.co/yokomachi/finetuned_catbot
+    https://huggingface.co/yokomachi/rinnya
 - Hugging Face Spaces（catbotのデモアプリ）
     https://huggingface.co/spaces/yokomachi/catbot
 
@@ -391,7 +391,7 @@ Token is valid (permission: write).
 Hugging Face側でリポジトリを作成し、ローカルにCloneします。
 ```
 git lfs install
-git clone https://huggingface.co/yokomachi/finetuned_catbot
+git clone https://huggingface.co/yokomachi/rinnya
 ```
 
 git LFSを有効化してgit add, commit, pushします。
@@ -403,7 +403,7 @@ git push
 ```
 
 無事モデルのPushができました。
-https://huggingface.co/yokomachi/finetuned_catbot
+https://huggingface.co/yokomachi/rinnya
 
 
 次はこのモデルをお手軽に試せるように、Hugging FaceのSpacesでデモを公開します。
