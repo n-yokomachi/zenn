@@ -13,6 +13,9 @@ https://zenn.dev/yokomachi/articles/20250224_tutorial_localllm
 で、実際このチャットボットがどれくらい使われるのかを見てみたいので、  
 このStreamlit製のアプリケーションからLangSmithにトレースログを送れるように連携してみます。
 
+よければチャットボット触ってみてください。  
+猫と戯れることができます。  
+https://huggingface.co/spaces/yokomachi/catbot
 
 # LangSmith側の設定
 
