@@ -41,7 +41,7 @@ https://huggingface.co/rinna/japanese-gpt2-xsmall
 
 
 ## requirements.txt
-``` requirements.txt
+``` txt:requirements.txt
 huggingface-hub==0.19.4
 torch==2.0.1
 transformers==4.30.2
@@ -72,7 +72,7 @@ Transformersライブラリ使用時に自動でロードすることもでき�
 実際のモデルファイルを見たいので明示的にダウンロードしてみます。
 
 
-``` model_download.py
+``` py:model_download.py
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 # モデル名
@@ -96,7 +96,7 @@ print(f"モデルとトークナイザーを {save_directory} に保存しまし
 ## 3. キャットボットを作ってみる
 続いて猫っぽいチャットボットを作ってみます。
 
-``` catbot.py
+``` py:catbot.py
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer

@@ -40,7 +40,7 @@ Variables and secretsという項目があるのでAPIキーなどを設定し�
 ## 環境変数を読み込む
 続いてStreamlitアプリケーション側に環境変数を読み込んで  
 LangSmithの設定を初期化するように設定します。
-``` app.py
+``` py:app.py
 os.environ["LANGSMITH_TRACING"] = os.getenv("LANGSMITH_TRACING")
 os.environ["LANGSMITH_ENDPOINT"] = os.getenv("LANGSMITH_ENDPOINT")
 os.environ["LANGSMITH_API_KEY"] = os.getenv("LANGSMITH_API_KEY")
