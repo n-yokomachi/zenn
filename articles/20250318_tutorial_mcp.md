@@ -23,6 +23,7 @@ LLMに対して外部からコンテキストを与える方法としては、�
 すでにGoogle, AWS Knowledge Base, Slack, GitHubなど多くのMCPサーバが公開されています。
 https://github.com/modelcontextprotocol/servers
 
+https://mcp.so/
 
 
 
