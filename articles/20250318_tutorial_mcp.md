@@ -3,7 +3,7 @@ title: "TypeScriptでMCPサーバを自作して、Hugging Faceのモデルを�
 emoji: "🐈"
 type: "tech"
 topics: [huggingface, typescript, mcp]
-published: false
+published: true
 ---
 
 今回はTypeScriptベースでMCPサーバを構築します。
@@ -34,6 +34,9 @@ MCPサーバでは、ユーザーの入力に応じてLLMからの回答を生�
 また、この時使用するLLMには、先日Hugging Faceにアップロードした猫っぽい回答を生成するモデルを使用します。  
 このモデルに関する記事は以下をご覧ください。  
 https://zenn.dev/yokomachi/articles/20250224_tutorial_localllm
+
+また、今回構築したMCPサーバのソースコードの全量は以下のリポジトリをご覧ください
+https://github.com/n-yokomachi/catbot/tree/main/catbot_mcp
 
 
 # プロジェクトの作成
@@ -251,9 +254,9 @@ Claude Desktopの設定画面でDeveloperタブを選択するとMCPの構成を
 
 
 # テスト
-では最後に、今回構築したMCPサーバの機能を試してみます。
-Claude Desktopに「猫に挨拶して」とリクエストしてみます。
-
+では最後に、今回構築したMCPサーバの機能を試してみます。  
+Claude Desktopから猫に挨拶してもらいます。
+![](https://storage.googleapis.com/zenn-user-upload/01bb4002ae7f-20250319.png)
 
 
 # おわりに
