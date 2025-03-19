@@ -1,8 +1,8 @@
 ---
-title: "TypeScriptでMCPサーバを自作して、Hugging Faceのモデルを呼び出してみる"
+title: "TypeScriptでMCPサーバを自作して、Claude DesktopやClineから実行する"
 emoji: "🐈"
 type: "tech"
-topics: [huggingface, typescript, mcp]
+topics: [huggingface, typescript, mcp, cline]
 published: true
 ---
 
@@ -230,7 +230,7 @@ main().catch((error) => {
 
 # Claude Desktopへの設定
 続いて、ビルド後のスクリプトをMCPサーバとしてLLMアプリケーションに登録します。
-今回はClaude Desktopに登録します。  
+まずはClaude Desktopに登録します。  
 MCPクライアントとしては他にもClineやCursorなども使用できます。
 
 Claude Desktopの設定画面でDeveloperタブを選択するとMCPの構成を編集することができます。
@@ -254,11 +254,19 @@ Claude Desktopの設定画面でDeveloperタブを選択するとMCPの構成を
 ![](https://storage.googleapis.com/zenn-user-upload/64df226dd1fc-20250318.png)
 
 
-# テスト
-では最後に、今回構築したMCPサーバの機能を試してみます。  
-Claude Desktopから猫に挨拶してもらいます。
+ではテストとして、Claude Desktopから猫に挨拶してもらいます。
 ![](https://storage.googleapis.com/zenn-user-upload/01bb4002ae7f-20250319.png)
 
+# Clineへの設定
+MCPの特徴である標準化されたインタフェースを試すために、別のMCPクライアントとしてClineにも登録してみます。  
+ClineのMCP設定のInstalledタブから「Configure MCP Servers」をクリックします。  
+すると「cline_mcp_settings.json」ファイルが開くので、先ほどClaudeに登録したのと同じjsonを追記します。
+![](https://storage.googleapis.com/zenn-user-upload/8975a85b0e30-20250319.png)
+
+以上で設定は終わりです。  
+Clineからも猫に話しかけてみます。
+![](https://storage.googleapis.com/zenn-user-upload/2271c2314a48-20250319.png)
+いい感じ👍
 
 # おわりに
 今回はTypeScriptでMCPサーバの構築を試してみました。  
