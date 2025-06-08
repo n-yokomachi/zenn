@@ -3,7 +3,7 @@ title: "自作エージェントに喋りかけるだけでアプリ開発｜Mas
 emoji: "🎙️"
 type: "tech"
 topics: [mastra,typescript,claude,github,vivecoding,]
-published: false
+published: true
 ---
 
 今回はGitHub ActionsのClaude Code連携を試します。
