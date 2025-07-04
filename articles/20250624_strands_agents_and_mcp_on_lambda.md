@@ -40,7 +40,7 @@ https://x.com/_cityside/status/1935295906490077590
 ・チャットベースでAIエージェントと会話できる。
 ・「AWSで○○（ユーザー名）の作業内容を履歴から推測して」などのメッセージに対して、
 　MCPツールを介してAWS APIを実行してAPIの実行結果から回答を生成できる。
-・すべてAWS上に構築する。
+・すべてをAWS上に構築する。
 
 ## 技術要素の整理
 ・AIエージェントフレームワークにはStrands Agents、WebフレームワークにはStreamlitを使用。
@@ -48,6 +48,7 @@ https://x.com/_cityside/status/1935295906490077590
 ・LLMにはAmazon Bedrockで使用できるモデルから、Claude 3.5 Sonnetを使用。
 ・MCPツール、サーバーはAWS Lambda上に構築。フロントに合わせてPythonで作る。
 ・ユーザーの作業履歴の取得のため、MCPツールからはAmazon CloudTrailのAPIを実行する。
+・すべてをAWS CDKで構築する。
 
 ## 構成図
 今回の構成、つまりこういうことになります。
@@ -89,6 +90,23 @@ https://zenn.dev/yokomachi/articles/20250318_tutorial_mcp
 
 # 構築
 
+
+MCP Server on Lambdaの部分はAWS Lambda Tool MCP Serverで実装できないか？
+MCP Serverはどこにホストされる？ローカル？
+　→ローカルっぽい。やっぱり当初の予定通りAWS Lambda上に構築する。
+
+参考
+https://memoribuka-lab.com/?p=4460
+https://qiita.com/5enxia/items/0dfca327e8f14f0b9d86
+
+FastMCP、Lambda Web Adapterで構築。
+API Gatewayは使わず、Function URLを使う
+また、参考ではSAMを使っているが、今回はCDKを使用する
+Lambda Function URLはIAM認証しか使えないが、リクエストする際には署名付きURLを作る必要がある。
+ECSのタスクロールを取得して署名付きURLを作るカスタムツールを作ってエージェントに使わせられないか？
+いやまて最小構成から実装しよう。まずは認証なしで。
+
+
 ## MCP Server on Lambdaの構築
 
 
@@ -101,8 +119,34 @@ https://zenn.dev/yokomachi/articles/20250318_tutorial_mcp
 # 感想
 ・すべてをAWS CDKで構築するのでモノレポで済む
 ・エージェントがエージェントたる要素としてツールは重要な要素だと感じる
-　単に推論と回答生成だけするのはチャットツール。
-　ツールをいかに増やせるかは重要。
-　公式で足りないならサードパーティも手だが、まだセキュリティの標準化は始まったばかり。社内ツールなどは自分たちで構築するのも手だろう。
-・
+    ・単に推論と回答生成だけするのはチャットツール。
+    ・ツールをいかに増やせるかは重要。
+    ・公式で足りないならサードパーティも手だが、まだセキュリティの標準化は始まったばかり。社内ツールなどは自分たちで構築するのも手だろう。
+・Strands Agentsについて
+    ・MastraやLangGraphでのエージェント構築は簡単にやってみたことがあるが、Strands Agentsが今のところ一番お手軽。モデル駆動の影響が大きい。
+    ・今回触ったのは表層に過ぎない。マルチモーダル処理やメモリ、Slack連携、AWS統合などの機能がツール群と指定提供されており、これらを活用することでより高度なエージェントを作成できる。https://github.com/strands-agents/tools
+    ・
+・MCP Server on Lambdaについて
+    ・MCPサーバーは必ずしもLambda上にデプロイする必要はない。AWSからLambda MCP Serverという、MCP経由でLambda関数を呼び出せるMCPサーバーも公開されており、これを使えばMCPサーバーの機能自体をLambda上にデプロイする必要はない。今回はMCPサーバー自体をリモート化したかったため、Lambda上に構築した。
+    ・MCPのロジックを扱い慣れたAWSで構築できるのは体験がいい。また、各ツールのアクセス範囲もこれまた扱い慣れたIAMで管理できるのもいい。
+    ・MCPサーバーのエンドポイントそのものの認証についてはLambda Function URLの場合はIAM認証（署名付きURLでリクエストする形式）しか利用できない。
+    　今回はデモなので認証なしで構築したが本番利用ではAPI Gatewayなどで認証をかける必要がある（API Gatewayのタイムアウト時間には注意）。
 
+
+# 課題
+
+## AWS Lambda Tool MCP Serverについて
+Lambda関数をMCPツールとして呼び出せるようにするAWS Lambda Tool MCP Serverというものがある。
+ただ、これはローカルでホストするMCPサーバーであり、今回やりたかったことにフィットしなかったので利用を見送った。
+結果的にFastMCPやLambda Web Adapterなど触ったことのなかったライブラリを使う機会が得られた。
+
+## 認証について
+Lambda単体でやろうとするとFunction URLのIAM認証しか使えない。
+それでもECSのタスクロールで認証できるならいいかと思ったら、実際にリクエストする際には認証情報を元にSig4形式で署名付きURLを作らなければいけない。
+MCPツールとして設定されているFunction URLと認証情報から署名付きURLを作ってそれでリクエストする、というところまでエージェントに任せられるかはやってないので不明。
+Strands Agentsはカスタムツールの実装も簡単なので、認証情報取得して署名を生成するツールを作るのも考えた。が、時間的にできていない。
+
+Lambda単体じゃなければAPI GatewayやCloudfrontなどで柔軟に認証をかけられる。
+MCP Server on Lambdaでいい感じの認証・認可の仕組みがあれば是非とも教えて欲しい。
+
+ちなみにAWS Lambda Tool MCP ServerではIAM認証がサポートされているらしい。
