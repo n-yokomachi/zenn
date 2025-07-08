@@ -76,19 +76,45 @@ https://github.com/strands-agents/sdk-python
 
 
 
-# MCP Server on Lambdaの実現方法
+# MCPとは
 MCPはModel Context Protocolの略で、外部システムなどがLLMに対してコンテキストを提供するためのプロトコルのことを指しています。
 
 今年に入ってから話題になり、当初はローカルでMCPサーバーを立ててローカルのLLMアプリケーションから利用するパターンが多かったと思いますが、
 早々に各種サービスがリモートMCPを公開したり、開発者がリモートMCPをデプロイする環境ができたり、
 そして次々とLLMアプリケーションやエディタなどがMCPクライアントの機能を備えていったことにより、急速に普及してきました。
 
-一応私もローカルMCPの自作を試してみたりもしたので良ければ見てください👇
-（4か月前の記事ですがすでに時代遅れかも）
+一応私もローカルMCPの入門記事を書いてみたりもしたので良ければ見てください👇
+（4か月前の記事なのですでに時代遅れかも）
 https://zenn.dev/yokomachi/articles/20250318_tutorial_mcp
 
 
-# 構築
+# 開発・構築
+
+では実装していきます。
+ソースコードについては以降抜粋して説明しますが、CDKを含む全体のコードについては以下のリポジトリをご覧ください。
+https://github.com/n-yokomachi/strands-agents_and_mcp-on-lambda
+
+
+## MCP Server on Lambda
+
+まずはMCPサーバーの実装です。
+以下のライブラリやツールを使用しています。
+
+・FastMCP
+MCPサーバーやツールの定義がシンプルに実装できるライブラリ。
+MCP公式のPython SDKに統合されたFastMCP 1.0と、機能拡張を続けるFastMCP 2.0がありますが、今回は2.0の方を使います。
+
+・Lambda Web Adapter
+Lambda関数が受け取るイベントをLambda独自の形式ではなくHTTPリクエストとして受け取るために、Lambda Web Adapterを使用します。
+なお、今回Lambda関数に対してはFunction URLsで直接HTTTPアクセスします。
+
+実装したコードは以下のとおりです（抜粋）
+
+
+## Agent with Stranda Agents
+
+続いてAIエージェントの実装です。
+
 
 
 MCP Server on Lambdaの部分はAWS Lambda Tool MCP Serverで実装できないか？
@@ -105,14 +131,6 @@ API Gatewayは使わず、Function URLを使う
 Lambda Function URLはIAM認証しか使えないが、リクエストする際には署名付きURLを作る必要がある。
 ECSのタスクロールを取得して署名付きURLを作るカスタムツールを作ってエージェントに使わせられないか？
 いやまて最小構成から実装しよう。まずは認証なしで。
-
-
-## MCP Server on Lambdaの構築
-
-
-
-## エージェントアプリケーションの構築
-
 
 
 
