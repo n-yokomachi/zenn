@@ -9,6 +9,10 @@ published: false
 今回はStrands AgentsとMCPサーバーのLambdaデプロイを試します。
 最終的に自作MCPツールを実行する自作エージェントをAWS上に構築します。
 
+:::message
+この記事は人間が書き、校正にのみAIを使用しています。
+:::
+
 # 発端
 例によってこんなこと👇を言ったので、言ったらやるの精神でやります。
 https://x.com/_cityside/status/1935295906490077590
@@ -38,14 +42,14 @@ https://x.com/_cityside/status/1935295906490077590
 ## 要件整理
 要件は以下の通りです。
 ・チャットベースでAIエージェントと会話できる。
-・「AWSで○○（ユーザー名）の作業内容を履歴から推測して」などのメッセージに対して、
-　MCPツールを介してAWS APIを実行してAPIの実行結果から回答を生成できる。
+・「AWSで○○（ユーザー名）の作業内容を調査して」などのメッセージに対して、
+　MCPツールを介してAWS APIを実行し、APIの実行結果から回答を生成できる。
 ・すべてをAWS上に構築する。
 
 ## 技術要素の整理
 ・AIエージェントフレームワークにはStrands Agents、WebフレームワークにはStreamlitを使用。
 ・エージェントアプリはECS Fargateにデプロイ。
-・LLMにはAmazon Bedrockで使用できるモデルから、Claude 3.5 Sonnetを使用。
+・LLMにはAmazon Bedrockで使用できるモデルから、Claude 3.5 Sonnet V2を使用。
 ・MCPツール、サーバーはAWS Lambda上に構築。フロントに合わせてPythonで作る。
 ・ユーザーの作業履歴の取得のため、MCPツールからはAmazon CloudTrailのAPIを実行する。
 ・すべてをAWS CDKで構築する。
@@ -108,7 +112,171 @@ MCP公式のPython SDKに統合されたFastMCP 1.0と、機能拡張を続け�
 Lambda関数が受け取るイベントをLambda独自の形式ではなくHTTPリクエストとして受け取るために、Lambda Web Adapterを使用します。
 なお、今回Lambda関数に対してはFunction URLsで直接HTTTPアクセスします。
 
-実装したコードは以下のとおりです（抜粋）
+Lambdaのコードは以下のとおりです（抜粋）
+```python: main.py
+
+# FastMCP サーバーの初期化（ステートレスモード）
+mcp = FastMCP(stateless_http=True, json_response=True)
+
+# CloudTrail クライアントの初期化
+def get_cloudtrail_client():
+    """CloudTrailクライアントを作成"""
+    region = os.environ.get('AWS_REGION', 'ap-northeast-1')
+    return boto3.client('cloudtrail', region_name=region)
+
+@mcp.tool
+def lookup_cloudtrail_events(
+    start_time: str,
+    end_time: str,
+    username: Optional[str] = None,
+    max_records: int = 50
+) -> Dict[str, Any]:
+    """
+    CloudTrail APIのlookup_eventsを実行してイベント履歴を取得
+    Note: CloudTrail APIの制限により、LookupAttributesには1つの属性のみ指定可能です。
+    
+    Args:
+        start_time: 検索開始時刻 (ISO 8601形式, 例: "2024-01-01T00:00:00Z")
+        end_time: 検索終了時刻 (ISO 8601形式, 例: "2024-01-01T23:59:59Z")
+        username: フィルターするユーザー名 (オプション)
+        max_records: 取得する最大レコード数 (1-50, デフォルト: 50)
+    
+    Returns:
+        Dict[str, Any]: CloudTrail イベントのリスト
+    """
+    try:
+        cloudtrail = get_cloudtrail_client()
+        
+        # パラメータの準備
+        lookup_params = {
+            'StartTime': datetime.fromisoformat(start_time.replace('Z', '+00:00')),
+            'EndTime': datetime.fromisoformat(end_time.replace('Z', '+00:00')),
+            'MaxResults': min(max_records, 50)  # APIの制限により最大50
+        }
+        
+        # ユーザー名フィルターの追加（指定された場合のみ）
+        if username:
+            lookup_params['LookupAttributes'] = [
+                {
+                    'AttributeKey': 'Username',
+                    'AttributeValue': username
+                }
+            ]
+        
+        # CloudTrail APIの実行
+        response = cloudtrail.lookup_events(**lookup_params)
+        
+        return {
+            'status': 'success',
+            'events': response.get('Events', []),
+            'next_token': response.get('NextToken'),
+            'total_events': len(response.get('Events', []))
+        }
+        
+    except Exception as e:
+        return {
+            'status': 'error',
+            'error_message': str(e),
+            'error_type': type(e).__name__
+        }
+
+
+# FastAPIアプリケーションを取得
+app = mcp.http_app() 
+
+```
+
+これだけです。
+FastMCPのおかげでとてもシンプルな実装ができました。
+
+また、Lambdaにデプロイする際にLambda Web Adapterをパッケージに含めるため、以下のDockerfileを記述します。
+```Dockerfile: Dockerfile
+FROM ghcr.io/astral-sh/uv:python3.13-bookworm
+
+# Copy AWS Lambda Web Adapter
+COPY --from=public.ecr.aws/awsguru/aws-lambda-adapter:0.9.1 /lambda-adapter /opt/extensions/lambda-adapter
+
+WORKDIR /app
+COPY pyproject.toml README.md /app/
+RUN uv sync
+
+COPY . ./
+
+ENV UV_CACHE_DIR=/tmp/uv-cache
+ENV UV_NO_SYNC=1 
+
+ENV AWS_LAMBDA_ADAPTER_BUFFER_OFF=1
+ENV AWS_LAMBDA_ADAPTER_CALLBACK_PATH="/callback"
+ENV AWS_LAMBDA_ADAPTER_HTTP_PROXY_BUFFERING="off"
+
+ENV PYTHONPATH=/app
+ENV PATH="/app/.venv/bin:$PATH"
+
+CMD ["uvicorn", "cloudtrail_mcp.main:app", "--host", "0.0.0.0", "--port", "8080"] 
+```
+
+それからpyproject.toml
+```toml: pyproject.toml
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cloudtrail-mcp"
+version = "0.1.0"
+description = "CloudTrail MCP Server"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastmcp==2.10.4",
+    "boto3==1.35.94",
+    "uvicorn==0.34.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["cloudtrail_mcp"]
+
+[tool.uv]
+dev-dependencies = [] 
+```
+
+また、Lambda部分のCDKスタックは以下のように記述しています。
+```typescript: stack.ts
+// CloudTrail MCP Server Lambda (Container Image)
+const cloudtrailMcpFunction = new lambda.DockerImageFunction(this, 'CloudTrailMCPServer', {
+    code: lambda.DockerImageCode.fromImageAsset('./lambda'),
+    memorySize: 256,
+    timeout: cdk.Duration.minutes(15),
+    architecture: lambda.Architecture.ARM_64,
+    environment: {
+    UV_CACHE_DIR: '/tmp/uv-cache',
+    UV_NO_SYNC: '1',
+    AWS_LAMBDA_ADAPTER_BUFFER_OFF: '1',
+    AWS_LAMBDA_ADAPTER_CALLBACK_PATH: '/callback',
+    AWS_LAMBDA_ADAPTER_HTTP_PROXY_BUFFERING: 'off',
+    PYTHONPATH: '/app',
+    PATH: '/app/.venv/bin:$PATH'
+    },
+    role: cloudtrailMcpRole,
+    description: 'CloudTrail MCP Server with FastMCP and Lambda Web Adapter'
+});
+
+// Function URL
+const functionUrl = cloudtrailMcpFunction.addFunctionUrl({
+    authType: lambda.FunctionUrlAuthType.NONE,
+    invokeMode: lambda.InvokeMode.BUFFERED,
+    cors: {
+    allowCredentials: true,
+    allowedHeaders: ['*'],
+    allowedMethods: [lambda.HttpMethod.ALL],
+    allowedOrigins: ['*']
+    }
+});
+```
+:::message
+Function URLsは認証を有効化していません。
+プロダクション環境で上記のMCP on Lambdaをする場合にはIAM認証をつける、API Gatewayを置くなどして認証を有効化してください。
+:::
 
 
 ## Agent with Stranda Agents
@@ -136,6 +304,7 @@ ECSのタスクロールを取得して署名付きURLを作るカスタムツ�
 
 # 感想
 ・すべてをAWS CDKで構築するのでモノレポで済む
+　特にMCP on LambdaについてはSAMでデプロイする記事ばかりだったので、今回CDKでの構築例を残せたのはよかったかと思う。
 ・エージェントがエージェントたる要素としてツールは重要な要素だと感じる
     ・単に推論と回答生成だけするのはチャットツール。
     ・ツールをいかに増やせるかは重要。
