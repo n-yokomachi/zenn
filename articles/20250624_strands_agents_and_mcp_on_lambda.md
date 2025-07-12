@@ -1,8 +1,8 @@
 ---
-title: "Strands AgentsとMCP Server on Lambdaで作るAWS管理AIエージェント"
+title: "Strands AgentsとMCP Server on Lambdaで作るAWS探偵AIエージェント"
 emoji: "🪢"
 type: "tech"
-topics: [aws,python,bedrock,ai,aiagent,]
+topics: [aws,python,bedrock,mcp,aiagent,]
 published: false
 ---
 
@@ -10,13 +10,13 @@ published: false
 最終的に自作MCPツールを実行する自作エージェントをAWS上に構築します。
 
 :::message
-この記事は人間が書き、校正にのみAIを使用しています。
+この記事は主に人間が書いています。
+ソースコードの生成、記事の校正に生成AIを使用しています。
 :::
 
 # 発端
 例によってこんなこと👇を言ったので、言ったらやるの精神でやります。
 https://x.com/_cityside/status/1935295906490077590
-
 
 そのついでに、MCPサーバーをLambda上に構築してみるのもやってみたかったので、
 この際その両方をいっぺんに触るべくMCPを使うエージェントを作ってみます。
@@ -24,16 +24,18 @@ https://x.com/_cityside/status/1935295906490077590
 
 # まずは完成物から
 
+## GitHubリポジトリ
+以下のリポジトリにソースコードを公開しています。
+CDKでモノレポ構成をとっています。
+https://github.com/n-yokomachi/aws-detective-agent
+
 ## 動画を撮ったよ
 デモ動画を作りました
 
 
-## LTで発表しました
-このブログの内容をLTで発表しました
-リアルタイムでデモもやってます
-
-
-## LTの資料はこちらから
+## LTしたよ
+この記事の内容をテーマにLTをしました。
+スライド資料はこちらをご覧ください。
 
 
 
@@ -41,33 +43,34 @@ https://x.com/_cityside/status/1935295906490077590
 
 ## 要件整理
 要件は以下の通りです。
-・チャットベースでAIエージェントと会話できる。
-・「AWSで○○（ユーザー名）の作業内容を調査して」などのメッセージに対して、
-　MCPツールを介してAWS APIを実行し、APIの実行結果から回答を生成できる。
-・すべてをAWS上に構築する。
+- チャットベースでAIエージェントと会話できる
+- 「AWSで○○（ユーザー名）の作業内容を調査して」などのメッセージに対して、MCPツールを介してAWS APIを実行し、APIの実行結果から回答を生成できる
+- すべてをAWS上に構築する
 
 ## 技術要素の整理
-・AIエージェントフレームワークにはStrands Agents、WebフレームワークにはStreamlitを使用。
-・エージェントアプリはECS Fargateにデプロイ。
-・LLMにはAmazon Bedrockで使用できるモデルから、Claude 3.5 Sonnet V2を使用。
-・MCPツール、サーバーはAWS Lambda上に構築。フロントに合わせてPythonで作る。
-・ユーザーの作業履歴の取得のため、MCPツールからはAmazon CloudTrailのAPIを実行する。
-・すべてをAWS CDKで構築する。
+- エージェント
+    - AIエージェントフレームワークにはStrands Agentsを使用
+    - LLMにはAmazon Bedrockで使用できるモデルから、Claude 3.5 Sonnet V2を使用
+- MCPサーバー
+    - MCPツール、サーバーはAWS Lambda上に構築。フロントに合わせてPythonで作る
+    - LambdaにWebサーバー機能を持たせるため、Lambda Web Adapterを使用
+    - ユーザーの作業履歴の取得のため、MCPツールからはAmazon CloudTrailのAPIを実行する
+- すべてをAWS CDKで構築する
 
 ## 構成図
 今回の構成、つまりこういうことになります。
+※接続元のIPアドレスを制限したかったのでALBをかましています。
+
 ![](https://storage.googleapis.com/zenn-user-upload/f343e121acfd-20250624.png)
 
 
 
 # Strands Agentsとは
 Strands AgentsはAWSが5月に発表したオープンソースのAIエージェントSDKです。
-2025/6月現在ではPython向けのものが公開されています。
+2025年6月時点ではPython向けのものが公開されています。
 
-エージェントのワークフロー定義を開発者が行うフレームワークとは異なって「モデル駆動型」を採用し、
-推論・ツール使用・応答生成のサイクルを最先端LLMの性能に委ねるアプローチをとっています。
-Strands Agentsはプロンプト、コンテキスト、使用できるツールをLLMに渡しながら呼び出し、
-LLMが動的に計画したステップの遂行を繰り返す、「Agentic Loop」をコアコンセプトとしています。
+エージェントのワークフロー定義を開発者が行うフレームワークとは異なって「モデル駆動型」を採用し、推論・ツール使用・応答生成のサイクルを最先端LLMの性能に委ねるアプローチをとっています。
+Strands Agentsはプロンプト、コンテキスト、使用できるツールをLLMに渡しながら呼び出し、LLMが動的に計画したステップの遂行を繰り返す、「Agentic Loop」をコアコンセプトとしています。
 
 詳細については発表時のドキュメントを参照ください。
 https://aws.amazon.com/jp/blogs/news/introducing-strands-agents-an-open-source-ai-agents-sdk/
@@ -92,12 +95,10 @@ MCPはModel Context Protocolの略で、外部システムなどがLLMに対し�
 https://zenn.dev/yokomachi/articles/20250318_tutorial_mcp
 
 
+
 # 開発・構築
 
 では実装していきます。
-ソースコードについては以降抜粋して説明しますが、CDKを含む全体のコードについては以下のリポジトリをご覧ください。
-https://github.com/n-yokomachi/strands-agents_and_mcp-on-lambda
-
 
 ## MCP Server on Lambda
 
@@ -124,6 +125,7 @@ def get_cloudtrail_client():
     region = os.environ.get('AWS_REGION', 'ap-northeast-1')
     return boto3.client('cloudtrail', region_name=region)
 
+# MCPツールの定義。実質CloudTrailのLookupEvents APIをラップしただけ
 @mcp.tool
 def lookup_cloudtrail_events(
     start_time: str,
@@ -251,7 +253,7 @@ const cloudtrailMcpFunction = new lambda.DockerImageFunction(this, 'CloudTrailMC
     environment: {
     UV_CACHE_DIR: '/tmp/uv-cache',
     UV_NO_SYNC: '1',
-    AWS_LAMBDA_ADAPTER_BUFFER_OFF: '1',
+    AWS_LAMBDA_ADAPTER_BUFFER_OFF: '1',             // この辺は明示的に設定する必要ないかも
     AWS_LAMBDA_ADAPTER_CALLBACK_PATH: '/callback',
     AWS_LAMBDA_ADAPTER_HTTP_PROXY_BUFFERING: 'off',
     PYTHONPATH: '/app',
@@ -281,8 +283,7 @@ Function URLsは認証を有効化していません。
 
 ## Agent with Stranda Agents
 
-続いてAIエージェントの実装です。
-Streamlitです。
+続いてStrands Agents + StreamlitによるAIエージェントの実装です。
 
 エージェントの実質的な定義部分は以下の通りです。
 ```python: main.py
@@ -317,56 +318,41 @@ with mcp_client:
     )
 ```
 
-
-MCP Server on Lambdaの部分はAWS Lambda Tool MCP Serverで実装できないか？
-MCP Serverはどこにホストされる？ローカル？
-　→ローカルっぽい。やっぱり当初の予定通りAWS Lambda上に構築する。
-
-参考
-https://memoribuka-lab.com/?p=4460
-https://qiita.com/5enxia/items/0dfca327e8f14f0b9d86
-
-FastMCP、Lambda Web Adapterで構築。
-API Gatewayは使わず、Function URLを使う
-また、参考ではSAMを使っているが、今回はCDKを使用する
-Lambda Function URLはIAM認証しか使えないが、リクエストする際には署名付きURLを作る必要がある。
-ECSのタスクロールを取得して署名付きURLを作るカスタムツールを作ってエージェントに使わせられないか？
-いやまて最小構成から実装しよう。まずは認証なしで。
+Strands Agentsの利用により、エージェントの実装もかなりシンプルになります。
 
 
 
-# 感想
-・すべてをAWS CDKで構築するのでモノレポで済む
-　特にMCP on LambdaについてはSAMでデプロイする記事ばかりだったので、今回CDKでの構築例を残せたのはよかったかと思う。
-・エージェントがエージェントたる要素としてツールは重要な要素だと感じる
-    ・単に推論と回答生成だけするのはチャットツール。
-    ・ツールをいかに増やせるかは重要。
-    ・公式で足りないならサードパーティも手だが、まだセキュリティの標準化は始まったばかり。社内ツールなどは自分たちで構築するのも手だろう。
-・Strands Agentsについて
-    ・MastraやLangGraphでのエージェント構築は簡単にやってみたことがあるが、Strands Agentsが今のところ一番お手軽。モデル駆動の影響が大きい。
-    ・今回触ったのは表層に過ぎない。マルチモーダル処理やメモリ、Slack連携、AWS統合などの機能がツール群と指定提供されており、これらを活用することでより高度なエージェントを作成できる。https://github.com/strands-agents/tools
-    ・
-・MCP Server on Lambdaについて
-    ・MCPサーバーは必ずしもLambda上にデプロイする必要はない。AWSからLambda MCP Serverという、MCP経由でLambda関数を呼び出せるMCPサーバーも公開されており、これを使えばMCPサーバーの機能自体をLambda上にデプロイする必要はない。今回はMCPサーバー自体をリモート化したかったため、Lambda上に構築した。
-    ・MCPのロジックを扱い慣れたAWSで構築できるのは体験がいい。また、各ツールのアクセス範囲もこれまた扱い慣れたIAMで管理できるのもいい。
-    ・MCPサーバーのエンドポイントそのものの認証についてはLambda Function URLの場合はIAM認証（署名付きURLでリクエストする形式）しか利用できない。
-    　今回はデモなので認証なしで構築したが本番利用ではAPI Gatewayなどで認証をかける必要がある（API Gatewayのタイムアウト時間には注意）。
 
 
-# 課題
 
-## AWS Lambda Tool MCP Serverについて
-Lambda関数をMCPツールとして呼び出せるようにするAWS Lambda Tool MCP Serverというものがある。
-ただ、これはローカルでホストするMCPサーバーであり、今回やりたかったことにフィットしなかったので利用を見送った。
-結果的にFastMCPやLambda Web Adapterなど触ったことのなかったライブラリを使う機会が得られた。
 
-## 認証について
-Lambda単体でやろうとするとFunction URLのIAM認証しか使えない。
-それでもECSのタスクロールで認証できるならいいかと思ったら、実際にリクエストする際には認証情報を元にSig4形式で署名付きURLを作らなければいけない。
-MCPツールとして設定されているFunction URLと認証情報から署名付きURLを作ってそれでリクエストする、というところまでエージェントに任せられるかはやってないので不明。
-Strands Agentsはカスタムツールの実装も簡単なので、認証情報取得して署名を生成するツールを作るのも考えた。が、時間的にできていない。
+# おしまい
+## MCP Server on Lambdaの所感
+- MCP Server on LambdaについてはSAMでデプロイする記事が多かったので、今回CDKでの構築例を残せたのはよかったと思う。
+- MCPツールを扱い慣れたAWSで構築できるのは体験がいい。
+    - また、各ツールのアクセス範囲もこれまた扱い慣れたIAMで管理できるのもいい。
+- MCPサーバーのエンドポイントそのものの認証についてはLambda Function URLsの場合はIAM認証（署名付きURLでリクエストする形式）しか利用できない。
+    - 今回は検証なので認証なしで構築したがプロダクション利用ではAPI Gatewayなどで認証をかける必要がある。
+- MCPサーバーは必ずしもLambda上にデプロイする必要はない。
+    - 特にAWSからLambda Tool MCP Serverという、MCP経由でLambda関数を呼び出せるローカルMCPサーバーも公開されており、構築も簡単そう。
+    - 今回はMCPサーバー自体をリモート化したかったため、Lambda上に構築した。
+    - 今回の構成
+    ![](https://storage.googleapis.com/zenn-user-upload/44bb720841ce-20250711.png)
+    - AWS Lambda Tool MCP Serverを採用した構成例
+    ![](https://storage.googleapis.com/zenn-user-upload/d963c2e4ddde-20250711.png)
 
-Lambda単体じゃなければAPI GatewayやCloudfrontなどで柔軟に認証をかけられる。
-MCP Server on Lambdaでいい感じの認証・認可の仕組みがあれば是非とも教えて欲しい。
 
-ちなみにAWS Lambda Tool MCP ServerではIAM認証がサポートされているらしい。
+
+## Strands Agentsの所感
+- MastraのワークフローやLangGraphのエージェント構築は簡単にやってみたことがあるが、Strands Agentsが今のところ一番お手軽。
+    - 複雑なことをやろうとすれば複雑になっていくかもしれないが、少なくともまず動くものを作ろうとしたらとにかく手軽。モデル駆動の影響が大きいのだと思う。
+- とはいえ今回触ったのは表層に過ぎない。
+    - マルチモーダル処理やメモリ、Slack連携、AWS統合などの機能がツール群と指定提供されており、これらを活用することでより高度なエージェントを作成できる。
+    - https://github.com/strands-agents/tools
+- エージェントがエージェントたる要素としてツールは重要な要素だと感じる
+    - 単に推論と回答生成だけするのはチャットツールなので、外部アクセスできるツールをいかに増やせるかは重要。
+    - 公式で足りないならサードパーティも手だが、まだセキュリティの標準化は始まったばかり。社内ツールなどは自分たちで構築するのも手だろう。
+        そのとき扱い慣れたAWS上に構築できるのはいいかも。もっとAWS上でのリモートMCP構築がしやすくなると嬉しい。
+
+## 全体
+・この規模のアプリケーションであればモノレポで済ませたいので、それをCDKでできるのが嬉しい。
