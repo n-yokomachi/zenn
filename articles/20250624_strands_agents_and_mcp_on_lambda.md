@@ -282,7 +282,40 @@ Function URLsは認証を有効化していません。
 ## Agent with Stranda Agents
 
 続いてAIエージェントの実装です。
+Streamlitです。
 
+エージェントの実質的な定義部分は以下の通りです。
+```python: main.py
+
+# 使用するモデルの定義
+bedrock_model = BedrockModel(
+    model_id='apac.anthropic.claude-3-5-sonnet-20241022-v2:0',
+    region_name='ap-northeast-1',
+    temperature=0.7,
+    max_tokens=4000
+)
+
+# 中略
+
+# リモートMCPサーバーのURL
+# Lambda関数のFunction URLsの末尾に/mcpをつける
+MCP_URL = "https://{fucntion-urls-id}.lambda-url.ap-northeast-1.on.aws/mcp"
+
+# MCPクライアントの初期化
+mcp_client = MCPClient(lambda: streamablehttp_client(MCP_URL))
+with mcp_client:
+
+    # MCPツール、内部ツールのリストを作成
+    mcp_tools = mcp_client.list_tools_sync()
+    all_tools = list(mcp_tools) + [get_current_date]
+    
+    # エージェントの定義
+    agent = Agent(
+        model=bedrock_model,
+        tools=all_tools,
+        system_prompt=system_prompt
+    )
+```
 
 
 MCP Server on Lambdaの部分はAWS Lambda Tool MCP Serverで実装できないか？
