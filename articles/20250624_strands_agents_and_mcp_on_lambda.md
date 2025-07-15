@@ -277,7 +277,7 @@ const functionUrl = cloudtrailMcpFunction.addFunctionUrl({
 ```
 :::message
 Function URLsは認証を有効化していません。
-プロダクション環境で上記のMCP on Lambdaをする場合にはIAM認証をつける、API Gatewayを置くなどして認証を有効化してください。
+プロダクション環境で上記のMCP on Lambdaをする場合にはIAM認証をつける、API Gatewayを置くなどしてセキュリティを確保してください。
 :::
 
 
@@ -300,7 +300,8 @@ bedrock_model = BedrockModel(
 
 # リモートMCPサーバーのURL
 # Lambda関数のFunction URLsの末尾に/mcpをつける
-MCP_URL = "https://{fucntion-urls-id}.lambda-url.ap-northeast-1.on.aws/mcp"
+# ex.) https://{fucntion-urls-id}.lambda-url.ap-northeast-1.on.aws/mcp
+MCP_URL = os.environ["MCP_URL"]
 
 # MCPクライアントの初期化
 mcp_client = MCPClient(lambda: streamablehttp_client(MCP_URL))
@@ -316,19 +317,54 @@ with mcp_client:
         tools=all_tools,
         system_prompt=system_prompt
     )
+
+    # エージェントの応答をストリーミング
+    # stream_agent_response関数でストリーミングしたチャンクからテキストなどを取得して表示
+    loop = asyncio.new_event_loop()
+    response = loop.run_until_complete(stream_agent_response(agent, prompt, st.container()))
+    loop.close()
+
+    # 会話履歴に表示
+    if response:
+        st.session_state.messages.append({"role": "assistant", "content": response}) 
 ```
 
-Strands Agentsの利用により、エージェントの実装もかなりシンプルになります。
+Strands Agentsの利用により、エージェントの実装もかなりシンプルになりました。
 
+また、エージェントのCDKスタックは以下のようになります。
+こちらは単純にECSにデプロイするものなので特に変わったことはしていませんが、
+LambdaのFunction URLsのURLを環境変数に設定するようにしています。
 
+```typescript: stack.ts
+// Task Definition
+const taskDefinition = new ecs.FargateTaskDefinition(this, 'StrandsTaskDef', {
+    memoryLimitMiB: 512,
+    cpu: 256,
+    executionRole: fargateExecutionRole,
+    taskRole: fargateTaskRole
+});
 
+// Docker Image Asset
+const dockerImageAsset = new assets.DockerImageAsset(this, 'StrandsAppImage', {
+    directory: './app'
+});
 
-
+// Container Definition
+const container = taskDefinition.addContainer('StrandsContainer', {
+    image: ecs.ContainerImage.fromDockerImageAsset(dockerImageAsset),
+    logging: ecs.LogDrivers.awsLogs({
+    streamPrefix: 'strands-app'
+    }),
+    environment: {
+    MCP_URL: `${functionUrl.url}mcp`    // Function URLのURLに/mcpをつけて環境変数に設定
+    }
+});
+```
 
 
 # おしまい
 ## MCP Server on Lambdaの所感
-- MCP Server on LambdaについてはSAMでデプロイする記事が多かったので、今回CDKでの構築例を残せたのはよかったと思う。
+- MCP Server on LambdaについてはSAMでデプロイする記事が現時点では多かったので、今回CDKでの構築例を残せたのはよかったと思う。
 - MCPツールを扱い慣れたAWSで構築できるのは体験がいい。
     - また、各ツールのアクセス範囲もこれまた扱い慣れたIAMで管理できるのもいい。
 - MCPサーバーのエンドポイントそのものの認証についてはLambda Function URLsの場合はIAM認証（署名付きURLでリクエストする形式）しか利用できない。
@@ -340,19 +376,37 @@ Strands Agentsの利用により、エージェントの実装もかなりシン
     ![](https://storage.googleapis.com/zenn-user-upload/44bb720841ce-20250711.png)
     - AWS Lambda Tool MCP Serverを採用した構成例
     ![](https://storage.googleapis.com/zenn-user-upload/d963c2e4ddde-20250711.png)
-
+- リモートMCP全般に言えることだが、ローカルにランタイムがなくても設定用のjsonを配るだけでいいので、ノンエンジニアでも扱いやすいのが大きな利点だと感じた。
 
 
 ## Strands Agentsの所感
+- 今の所UIの実装がStreamlit一強
+    - チャットボット用途ならChainlitなども良さそう。
+    - 他のGradioとかDashとかReflexとかはそもそも触ったことがない。
+    - あとはAG-UIのサポートも期待。一応ロードマップに入っているみたい。https://github.com/ag-ui-protocol/ag-ui?tab=readme-ov-file#framework-support
 - MastraのワークフローやLangGraphのエージェント構築は簡単にやってみたことがあるが、Strands Agentsが今のところ一番お手軽。
     - 複雑なことをやろうとすれば複雑になっていくかもしれないが、少なくともまず動くものを作ろうとしたらとにかく手軽。モデル駆動の影響が大きいのだと思う。
 - とはいえ今回触ったのは表層に過ぎない。
-    - マルチモーダル処理やメモリ、Slack連携、AWS統合などの機能がツール群と指定提供されており、これらを活用することでより高度なエージェントを作成できる。
+    - マルチモーダル処理やメモリ、Slack連携、AWS統合などのツール群が公式提供されており、これらを活用することでより高度なエージェントを作成できる。
     - https://github.com/strands-agents/tools
-- エージェントがエージェントたる要素としてツールは重要な要素だと感じる
-    - 単に推論と回答生成だけするのはチャットツールなので、外部アクセスできるツールをいかに増やせるかは重要。
-    - 公式で足りないならサードパーティも手だが、まだセキュリティの標準化は始まったばかり。社内ツールなどは自分たちで構築するのも手だろう。
-        そのとき扱い慣れたAWS上に構築できるのはいいかも。もっとAWS上でのリモートMCP構築がしやすくなると嬉しい。
+- エージェントがエージェントたる要素としてツールは重要な要素
+    - 良いツールをどれだけ持っているかがエージェントの価値を左右すると思う。
+    - 公式で足りないならサードパーティも手だが、まだセキュリティの標準化は始まったばかり。社内ツールなどは特にだが、自分たちで構築することも今後増えるだろう。
+    - そのとき扱い慣れたAWS上に構築できるのはいいかも。もっとAWS上でのリモートMCP構築がしやすくなると嬉しい。
+    - そういう意味では「エージェントの実装を簡単にし、ツールの実装に時間をかけられる」というのはStrands Agentsの価値となっていくかもしれない。
 
-## 全体
-・この規模のアプリケーションであればモノレポで済ませたいので、それをCDKでできるのが嬉しい。
+
+
+# 参考
+https://strandsagents.com/latest/
+https://github.com/jlowin/fastmcp
+https://github.com/ag-ui-protocol/ag-ui
+https://github.com/strands-agents/sdk-python
+https://github.com/awslabs/mcp/blob/main/src/lambda-tool-mcp-server
+https://aws.amazon.com/jp/blogs/news/introducing-strands-agents-an-open-source-ai-agents-sdk/
+https://qiita.com/minorun365/items/dd05a3e4938482ac6055
+https://qiita.com/kyuko/items/cb75e8f0a50985ca2030
+https://qiita.com/5enxia/items/0dfca327e8f14f0b9d86
+https://www.ranthebuilder.cloud/post/mcp-server-on-aws-lambda
+https://memoribuka-lab.com/?p=4460#google_vignette
+https://dev.classmethod.jp/articles/aws-lambda-mpc-server/
