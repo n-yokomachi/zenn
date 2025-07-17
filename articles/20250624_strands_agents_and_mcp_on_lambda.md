@@ -24,13 +24,18 @@ https://x.com/_cityside/status/1935295906490077590
 
 # まずは完成物から
 
+## デモ
+今回作成したデモアプリケーションはこんな見た目です。
+ごく単純なチャットボットですが、ユーザーの要望に応じて現在時刻の取得、CloudTrailからの履歴取得をそれぞれツールを使って行います。
+なお、現在時刻の取得はエージェントが内部に持つ組み込みツールで、
+CloudTrailの履歴取得はLambdaに構築したリモートMCPツールを呼び出しています。
+![](https://storage.googleapis.com/zenn-user-upload/d13b0dc1ef96-20250717.png)
+
+
 ## GitHubリポジトリ
 以下のリポジトリにソースコードを公開しています。
 CDKでモノレポ構成をとっています。
 https://github.com/n-yokomachi/aws-detective-agent
-
-## 動画を撮ったよ
-デモ動画を作りました
 
 
 ## LTしたよ
