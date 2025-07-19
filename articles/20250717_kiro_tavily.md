@@ -50,7 +50,7 @@ Kiroでは２か所からMCPを設定できます。
 ![](https://storage.googleapis.com/zenn-user-upload/29f2446d042b-20250717.png)
 
 もう１つはサイドバーでKiroメニューを開き、MCP Server設定を開くと表示されます。
-![](https://storage.googleapis.com/zenn-user-upload/5f52bd873f00-20250717.png)
+![](https://storage.googleapis.com/zenn-user-upload/d8b782d88fbc-20250718.png)
 
 で画像を見てお気づきかもしれませんが、KiroではUser単位（Kiroそのもの）の設定と、Workspace単位での設定が可能です。
 
