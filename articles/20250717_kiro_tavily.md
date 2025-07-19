@@ -74,6 +74,27 @@ autoApproveにツール名を入れると、ツール実行時のユーザー確
 }
 ```
 
+環境によっては上の設定だと動作しないこともあるようです。
+その場合以下の設定も試してみることをお勧めします。
+※atmanさんからコメントで情報提供いただきました！ありがとうございます！
+```javascript: mcp.json
+{
+  "mcpServers": {
+    "tavily-remote-mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.tavily.com/mcp/?tavilyApiKey={your_api_key}"
+      ],
+      "env": {},
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}
+```
+
 
 設定はこれだけです。
 ちゃんとTavilyのサーチツールを使えていますね。
