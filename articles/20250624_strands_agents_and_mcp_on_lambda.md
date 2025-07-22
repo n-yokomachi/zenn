@@ -2,11 +2,11 @@
 title: "デモ実装で考えるStrands Agentsのいいところ"
 emoji: "🪢"
 type: "tech"
-topics: [aws,python,bedrock,mcp,aiagent,]
+topics: [aws,python,strandsagents,mcp,aiagent,]
 published: false
 ---
 
-2025年5月、AWSからStrands AgentsというAIエージェント開発フレームワークが公開されました。
+2025年5月、AWSからStrands AgentsというAIエージェントフレームワークが公開されました。
 昨今数多のAIエージェントフレームワークがある中で、Strands Agentsを選ぶ価値を探るべく実際に触ってみたいと思います。
 
 その触る過程として、今回はStrands Agentsによるエージェントアプリケーションとそれが使用するMCPサーバーを開発してみます。
@@ -35,7 +35,7 @@ https://github.com/n-yokomachi/aws-detective-agent
 ## LTしました
 この記事の内容をテーマにLTをしました。
 スライド資料はこちらをご覧ください。
-
+@[speakerdeck](1b140d724afb48d28e58b0fcbae1477f)
 
 # Strands Agentsとは
 Strands AgentsはAWSが5月に発表したオープンソースのAIエージェントSDKです。
@@ -399,7 +399,7 @@ const container = taskDefinition.addContainer('StrandsContainer', {
 冒頭に述べたとおり今回の目的はStrands Agentsのいいところを考えることでした。
 結論から言うと、私は前述した「お手軽」という点が一番いいところだと感じています。
 
-**エージェントの手続きを定義せずともモデルがステップを生成してタスクを実行してくれるモデル駆動アプローチにより、開発者はプロンプトやツール、あるいはRAGやメモリ管理などの開発や調整、すなわちコンテキスト・エンジニアリングに時間を割くことができる**、というのがStrands Agentsにおける価値だと思います。
+**エージェントの手続きを定義せずともモデルがステップを生成してタスクを実行してくれるモデル駆動アプローチにより、開発者はプロンプトやツール、あるいはRAGやメモリ管理などの開発や調整、すなわちコンテキストエンジニアリングに時間を割くことができる**、というのがStrands Agentsにおける価値だと思います。
 
 モデルやエージェントのSDKが変わっても、コンテキストは切り出して使いまわしやすいはずです。
 Strands Agentsが提供するのは、そのコンテキストの開発に集中させてくれるという価値なのでは、と今回のデモ開発を通じて感じました。
