@@ -36,6 +36,8 @@ https://github.com/n-yokomachi/aws-detective-agent
 この記事の内容をテーマにLTをしました。
 スライド資料はこちらをご覧ください。
 @[speakerdeck](1b140d724afb48d28e58b0fcbae1477f)
+動画はこちら
+https://www.youtube.com/watch?v=XLqhIaqakII
 
 # Strands Agentsとは
 Strands AgentsはAWSが5月に発表したオープンソースのAIエージェントSDKです。
