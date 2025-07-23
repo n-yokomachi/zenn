@@ -3,7 +3,7 @@ title: "デモ実装で考えるStrands Agentsのいいところ"
 emoji: "🪢"
 type: "tech"
 topics: [aws,python,strandsagents,mcp,aiagent,]
-published: false
+published: true
 ---
 
 2025年5月、AWSからStrands AgentsというAIエージェントフレームワークが公開されました。
