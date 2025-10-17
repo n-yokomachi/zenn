@@ -44,7 +44,14 @@ AgentCoreはRuntimeを中心にCDKの対応も進んでいますが、
 
 ### Amazon Bedrock
 
-### 
+### Bedrock AgentCore SDK
+
+## シングルエージェントの実装
+ではまずローカルで動くエージェントを作ります。
+Strands Agentsを使用してごく簡単に、ユーザーの質問に答えるだけのエージェントです。
+
+
+## デプロイ
 
 
 # A2AでマルチAIエージェントを作る
@@ -54,6 +61,14 @@ AgentCoreはRuntimeを中心にCDKの対応も進んでいますが、
 ## 構成図
 エージェントの構成は以下のようになります
 
+## セットアップ
+
+## マルチエージェントの実装
+
+## デプロイ
+
+
+# おわりに
 
 # 参考
 https://github.com/awslabs/amazon-bedrock-agentcore-samples/tree/main/01-tutorials/01-AgentCore-runtime
