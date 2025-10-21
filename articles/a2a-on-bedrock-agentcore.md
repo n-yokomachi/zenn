@@ -42,9 +42,16 @@ AgentCoreはRuntimeを中心にCDKの対応も進んでいますが、
 
 ## セットアップ
 
-### Amazon Bedrock
+### AWS側設定
+AWSのマネジメントコンソール上からAmazon Bedrockのサービス画面にアクセスし、
+今回使用するモデルの有効化を行います。
+今回はClaude Sonnet 4.5を使用します。
+*最近になってAnthropicのモデルはアクセス有効化の手順が変わったらしいのでスクショ付きで
+
 
 ### Bedrock AgentCore SDK
+Bedrock AgentCore SDKをインストールします
+
 
 ## シングルエージェントの実装
 ではまずローカルで動くエージェントを作ります。
