@@ -11,7 +11,7 @@ published: false
 :::
 
 # はじめに
-2025年10月13日、Amazon Bedrock AgentCore（以降Bedrock AgentCore）がGAされ利用できるリージョンの拡大や新しい機能の追加が行われました。
+2025年10月13日、Amazon Bedrock AgentCore（以降Bedrock AgentCore）がGAされ、利用できるリージョンの拡大や新しい機能の追加が行われました。
 機能追加の中でA2Aのサポートがされたようなので、今回はBedrock AgentCoreを使用してA2Aに準拠したエージェントのデプロイ、そしてそれらを使用するマルチエージェントの構築をしてみたいと思います。
 
 ## Amazon Bedrock AgentCoreとは
@@ -48,41 +48,121 @@ Bedrock AgentCoreではSDK, CLIが提供されています。
 （2025年11月現在CDKへの対応も進んではいるようですが、まだRuntimeなど一部の機能に限られているようです）
 
 今回エージェントフレームワークにはAWSが提供しているStrands Agentsを使用します。
-またLLMはAmazon BedrockのClaude Sonnet 4.5を使用します。
+またLLMはAmazon BedrockのClaude Sonnet 4.5を使用するので、事前にAWSのマネジメントコンソール上でモデルの有効化を行なっておきます。
 
 
-## AWS側設定
-AWSのマネジメントコンソール上からAmazon Bedrockのサービス画面にアクセスし、今回使用するモデルの有効化を行います。
-*最近になってAnthropicのモデルはアクセス有効化の手順が変わったらしいのでスクショ付きで
+## ローカルで動作するエージェントの実装
+ではまず、ローカル環境で動作するエージェントを作ります。
+この時点ではまだBedrock AgentCore SDKを使用せず、シンプルなStrands Agentsを使用したエージェントを作成します。
 
+```bash: Terminal
+uv a2a-on-bedrock-agentcore
+cd a2a-on-bedrock-agentcore
+uv venv
+source .venv/bin/activate
+uv pip install strands-agents
+touch agent.py
+```
 
-## バニラなエージェントの実装
-ではまずローカルで動くエージェントを作ります。
-Strands Agentsを使用してごく簡単に、ユーザーの質問に答えるだけのエージェントです。
+```python: simple_agent.py
+from strands import Agent
 
+agent = Agent()
+
+while True:
+    question = input("> ")
+    if question.lower() in ['quit', 'exit']:
+        break
+    print(agent(question))
+```
+
+動作確認してみます
 
 ## Bedrock AgentCore SDKのインストール
-Bedrock AgentCore SDKをインストールします
+では先ほど作成したエージェントにBedrock AgentCore SDKをインストールします
 
+```bash: Terminal
+uv pip install bedrock-agentcore
+```
 
-## Bedrock AgentCore CLI（bedrock-agentcore-starter-toolkit）のインストール
-ツールキットを使用せずboto3でデプロイする方法もあるらしい。
-https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/getting-started-custom.html
+```python: simple_agent_on_core.py
+from strands import Agent
+from bedrock_agentcore import BedrockAgentCoreApp
 
+agent = Agent()
+
+app = BedrockAgentCoreApp()
+
+@app.entrypoint
+def invoke(payload):
+    question = payload.get("prompt", "")
+    return {"result": agent(question)}
+
+if __name__ == "__main__":
+    app.run()
+```
+Bedrock AgentCore SDKではローカルサーバーを立てて動作確認が可能なので試してみます。
+
+```bash: Terminal
+uv run simple_agent_on_core.py
+```
+すると、以下のようにローカルサーバーが立ち上がるので、
+これに向けてcurlコマンドでリクエストを送信してみます。
+
+```bash: Terminal
+uv curl -X POST http://localhost:8080/invocations \
+-H "Content-Type: application/json" \
+-d '{"prompt": "こんにちは、君は誰？"}'
+```
 
 ## デプロイ
+ローカルでの動作確認ができたのでいよいよBedrock AgentCoreにデプロイしてみます
+Bedrock AgentCoreではECRのコンテナイメージを使用するので、まずはその準備をします。
+先ほど作成したエージェントのファイルを含め、以下のようなディレクトリを作成します。
+```
+my-simple-agent
+├── requirements.txt
+└── simple_agent_on_core.py
+```
+
+requirements.txtには以下の内容を記載します。
+```text: requirements.txt
+bedrock-agentcore
+strands-agents
+```
+
+bedrock-agentcore-starter-toolkitをインストールして、CLIコマンドでデプロイを行います。
+ちなみにToolkitを使用せずに[boto3でデプロイする方法](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/getting-started-custom.html)もあるようです。
+
+```bash: Terminal
+uv pip install bedrock-agentcore-starter-toolkit
+agentcore configure -e simple_agent_on_core.py
+agentcore launch
+```
+
+## 動作確認
+無事デプロイが完了しました。
+Bedrock AgentCore CLIで呼び出してみます。
+
+```bash: Terminal
+agentcore invoke '{"prompt": ""}'
+```
 
 
 # A2AでマルチAIエージェントを作る
 続いて本題のA2Aによるマルチエージェントの構築をしていきます。
 
+まず作成するエージェントのそれぞれの役割を整理します。
+- リモートエージェント1: ブラウザで予約サイトの空きを確認し、結果を返す。また予約を命令された時は予約操作を行うエージェント
+- リモートエージェント2: DynamoDBのテーブルから予約したい日時のリストを取得するエージェント
+- クライアントエージェント: 2つのリモートエージェントを使用して、予約確認->ユーザーが希望する予約日時に合致するものを判定、予約操作を行い、最終的な結果をユーザーに返すエージェント
 
-## 構成図
-エージェントの構成は以下のようになります
+図にするとこんな感じです
 
-## セットアップ
 
 ## マルチエージェントの実装
+
+
 
 ## デプロイ
 
