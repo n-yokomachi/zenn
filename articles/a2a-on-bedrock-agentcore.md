@@ -1,10 +1,12 @@
 ---
-title: "Bedrock AgentCoreでA2Aのマルチエージェントを構築する"
+title: "Amazon Bedrock AgentCoreでA2Aのマルチエージェントを構築する"
 emoji: "📇"
 type: "tech"
 topics: [aws, bedrock, a2a, python, strandsagents]
 published: false
 ---
+
+この記事は[AIエージェント構築＆運用 Advent Calendar 2025](https://qiita.com/advent-calendar/2025/agents) 15日目のエントリです。
 
 :::message
 この記事は人間が書き、記事の校正に生成AIを使用しています。
