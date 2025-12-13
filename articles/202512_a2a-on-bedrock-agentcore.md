@@ -39,7 +39,7 @@ Bedrock AgentCoreではSDK, CLIが提供されています。
 
 ```bash: Terminal
 # プロジェクト・仮想環境の作成
->uv a2a-on-bedrock-agentcore
+>uv init a2a-on-bedrock-agentcore
 >cd a2a-on-bedrock-agentcore
 >uv venv
 >.venv\Scripts\activate.bat
@@ -67,7 +67,7 @@ while True:
     print(agent(question))
 ```
 
-動作確認してみます
+動作確認してみます。
 
 ```bash: Terminal
 >uv run simple_agent.py                
@@ -79,7 +79,7 @@ while True:
 
 
 ## Bedrock AgentCore SDKのインストール
-では先ほど作成したエージェントをベースにBedrock AgentCore SDKをインストールします
+では先ほど作成したエージェントをベースにBedrock AgentCore SDKを使用した実装に変更します。
 
 ```bash: Terminal
 # Bedrock AgentCore SDKのインストール
@@ -125,7 +125,7 @@ Bedrock AgentCore SDKではローカルサーバーを立てて動作確認が�
 構造化されたレスポンスが返ってきていることが確認できました。
 
 ## Bedrock AgentCoreにデプロイ
-ローカルでの動作確認ができたのでBedrock AgentCoreにデプロイしてみます
+ローカルでの動作確認ができたのでBedrock AgentCoreにデプロイしてみます。
 Bedrock AgentCoreではECRのコンテナイメージを使用するので、まずはその準備をします。
 先ほど作成したエージェントのファイルを含め、以下のようなディレクトリを作成します。
 ```
@@ -143,7 +143,7 @@ strands-agents
 bedrock-agentcore-starter-toolkitをインストールして、CLIコマンドでデプロイを行います。
 
 ```bash: Terminal
-# starter-tooklitのインストール
+# starter-toolkitのインストール
 >uv pip install bedrock-agentcore-starter-toolkit
 
 # AgentCoreのコンフィグ
@@ -193,8 +193,6 @@ traces=[<strands.telemetry.metrics.Trace object at 0xffff6b7bd640>], accumulated
 - リモートエージェント1: Nova 2 Liteによるテキスト生成を行うエージェント
 - リモートエージェント2: Claude Sonnet 4.5によるテキスト生成を行うエージェント
 - クライアントエージェント: 2つのリモートエージェントを使用して、各モデルが生成したテキストの違いを分析するエージェント
-
-図にするとこんな感じです
 
 
 ## リモートエージェントの実装
@@ -248,7 +246,7 @@ if __name__ == "__main__":
 ## クライアントエージェントの実装
 続いてクライアントエージェントを実装します。
 なお、コード内で使用しているリモートエージェントのARNは以下の形式です。
-`arn:aws:bedrock-agentcore:ap-northeast-1:765653276628:runtime/{runtime_agent_name}`
+`arn:aws:bedrock-agentcore:ap-northeast-1:{aws_account_id}:runtime/{runtime_agent_name}`
 
 ```python: client_agent.py
 # 中略
@@ -323,7 +321,7 @@ if __name__ == "__main__":
 ```
 
 
-## Bedorkc AgentCoreにデプロイ
+## Bedrock AgentCoreにデプロイ
 
 ### Cognitoユーザープールの作成
 
