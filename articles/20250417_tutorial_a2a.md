@@ -14,7 +14,7 @@ published: true
 A2Aは米国時間2025年4月9日にGoogleから発表されたオープンプロトコルです。
 複数のAIエージェント間の連携を定義し、クライアントエージェントがタスクの作成と伝達を、リモートエージェントがそのタスクの実行や情報提供を行うことで、最終的なアーティファクトを生成することを目的としています。
 
-https://google-a2a.github.io/A2A/#/
+https://a2a-protocol.org/latest/
 
 今年話題のMCP（Model Context Protocol）とは性質が違うものであり、どちらかがどちらかを代替するということはなく、むしろ互いに補完しあうものです。
 具体的には、ユーザーから与えられたタスクの実行はA2Aによるマルチエージェントで実行しつつ、それらのエージェントが外部システムやデータと連携を行う際にはMCPを利用してアクセスする、みたいにレイヤーや役割が分かれています。
@@ -49,11 +49,7 @@ Python 3.13.3
 
 >git clone https://github.com/google-a2a/a2a-samples.git -b main --depth 1
 >cd a2a-samples
-```
 
-A2A SDKではuvを使っていますが、このTutorialではvenvを使うみたいです。
-
-```
 >python -m venv .venv
 >.venv\Scripts\activate
 ```
@@ -338,6 +334,6 @@ Tutorialの範囲では1:1でA2Aの仕組みに焦点を当てた感じのサン
 
 # 参考
 
-https://google-a2a.github.io/A2A/tutorials/python/1-introduction/
+https://a2a-protocol.org/latest/tutorials/python/1-introduction/
 https://github.com/google-a2a/A2A
 https://github.com/google-a2a/a2a-samples

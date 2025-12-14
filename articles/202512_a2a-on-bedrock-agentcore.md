@@ -6,10 +6,11 @@ topics: [aws, bedrock, a2a, python, strandsagents]
 published: false
 ---
 
-この記事は[AIエージェント構築＆運用 Advent Calendar 2025](https://qiita.com/advent-calendar/2025/agents) 15日目のエントリです。
+
 
 :::message
 この記事は人間が書き、記事の校正に生成AIを使用しています。
+またこの記事は[AIエージェント構築＆運用 Advent Calendar 2025](https://qiita.com/advent-calendar/2025/agents) 15日目のエントリです。
 :::
 
 # はじめに
@@ -25,7 +26,7 @@ https://zenn.dev/yokomachi/articles/20250417_tutorial_a2a
 
 
 # シングルAIエージェントを作る
-まずはBedrock AgentCoreの使い方を確認するために簡単なシングルAIエージェントを構築します。
+まずはBedrock AgentCoreの使い方を確認するために簡単な単体のAIエージェントを構築します。
 Bedrock AgentCoreではSDK, CLIが提供されています。
 エージェントにSDKでBedrock AgentCore Runtimeからのエントリポイントを実装し、CLIによりランタイムの設定やデプロイを行う形となります。
 
