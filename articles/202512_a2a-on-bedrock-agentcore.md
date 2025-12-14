@@ -1,6 +1,6 @@
 ---
 title: "A2A×Strands Agents×Bedrock AgentCoreでマルチエージェントを構築する"
-emoji: "🧗🏻"
+emoji: "🪢"
 type: "tech"
 topics: [aws, bedrock, a2a, python, strandsagents]
 published: true
