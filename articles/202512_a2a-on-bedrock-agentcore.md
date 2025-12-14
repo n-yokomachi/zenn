@@ -45,7 +45,7 @@ Bedrock AgentCoreではSDK, CLIが提供されています。
 >.venv\Scripts\activate.bat
 
 # Strands Agentsのインストール
->uv pip install strands-agents
+>uv add strands-agents
 ```
 
 以下の内容でファイルを作成します。
@@ -83,7 +83,7 @@ while True:
 
 ```bash: Terminal
 # Bedrock AgentCore SDKのインストール
->uv pip install bedrock-agentcore
+>uv add bedrock-agentcore
 ```
 
 以下の内容でファイルを作成します。
@@ -109,13 +109,12 @@ def invoke(payload):
 if __name__ == "__main__":
     app.run()
 ```
-Bedrock AgentCore SDKではローカルサーバーを立てて動作確認が可能なので試してみます。
+ローカルで動作確認をしてみます。
 
 ```bash: Terminal
 >uv run simple_agent_on_core.py
 ```
-すると、以下のようにローカルサーバーが立ち上がるので、
-これに向けてcurlコマンドでリクエストを送信してみます。
+上記のコマンドでローカルサーバーが立ち上がるので、これに向けてcurlコマンドでリクエストを送信してみます。
 
 ```bash: Terminal
 >curl -X POST http://localhost:8080/invocations -H "Content-Type: application/json" -d "{\"prompt\": \"こんにちは、君は誰？\"}"
@@ -144,11 +143,11 @@ bedrock-agentcore-starter-toolkitをインストールして、CLIコマンド�
 
 ```bash: Terminal
 # starter-toolkitのインストール
->uv pip install bedrock-agentcore-starter-toolkit
+>uv add bedrock-agentcore-starter-toolkit
 
 # AgentCoreのコンフィグ
 # 対話型のコンフィグが立ち上がるので全部Enter（メモリの使用部分はsでスキップ）
-agentcore configure -e simple_agent_on_core.py
+>agentcore configure -e simple_agent_on_core.py
 Configuring Bedrock AgentCore...
 ✓ Using file: simple_agent_on_core.py
 
@@ -158,7 +157,7 @@ Agent name [simple_agent_on_core]:
 ...
 
 # AgentCoreへのデプロイ
-agentcore launch
+>agentcore launch
 ```
 
 ## 動作確認
@@ -365,7 +364,7 @@ Enter allowed OAuth custom claims as JSON string (comma-separated):
 ```bash
 >cd client_agent
 # Strands AgentsのA2Aクライアント拡張をインストール
->uv pip install strands-agents-tools[a2a_client]
+>uv add strands-agents-tools[a2a_client]
 # クライアントエージェントを実行
 >uv run client_agent.py
 ```
