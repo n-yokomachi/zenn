@@ -3,7 +3,7 @@ title: "A2A×Strands Agents×Bedrock AgentCoreでマルチエージェントを�
 emoji: "🧗🏻"
 type: "tech"
 topics: [aws, bedrock, a2a, python, strandsagents]
-published: false
+published: true
 ---
 
 
@@ -14,7 +14,7 @@ published: false
 :::
 
 # はじめに
-今回はAmazon Bedrock AgentCoreを使用し、A2Aに準拠したエージェントのデプロイ、そしてそれらを使用するマルチエージェントの構築をしてみたいと思います。
+今回はAmazon Bedrock AgentCoreを使用し、A2Aに対応したエージェントのデプロイ、そしてそれらを使用するマルチエージェントの構築をしてみたいと思います。
 以下のリポジトリに今回使用したコードを置いています。
 https://github.com/n-yokomachi/a2a-on-bedrock-agentcore
 
