@@ -3,7 +3,7 @@ title: "\"人\"が頑張るAI駆動開発"
 emoji: "🚙"
 type: "idea"
 topics: [sdd, ai駆動開発, aiエージェント, チーム開発]
-published: false
+published: true
 ---
 
 
