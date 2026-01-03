@@ -1,5 +1,5 @@
 ---
-title: "自作言語をAWS Lambdaで実行する"
+title: "Goで作った自作言語をAWS Lambdaカスタムランタイムで実行する"
 emoji: "⚡"
 type: "tech"
 topics: [aws, lambda, 自作言語, go]
