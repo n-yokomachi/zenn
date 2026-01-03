@@ -3,7 +3,7 @@ title: "自作言語をAWS Lambdaで実行する"
 emoji: "⚡"
 type: "tech"
 topics: [aws, lambda, 自作言語, go]
-published: false
+published: true
 ---
 
 :::message
