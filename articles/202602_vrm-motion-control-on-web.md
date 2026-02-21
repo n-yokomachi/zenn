@@ -16,6 +16,11 @@ published: true
 
 ![](https://storage.googleapis.com/zenn-user-upload/481cdad6c3c1-20260221.png)
 
+ちなみに、本記事の内容は最近発表したLTでも触れています。
+LTの資料はこちら
+@[speakerdeck](345f449950cf468d8fd52422979c3026)
+
+
 # 技術スタック
 
 - VRMモデル作成: [VRoid Studio](https://vroid.com/studio)
