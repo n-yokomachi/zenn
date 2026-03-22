@@ -1,5 +1,5 @@
 ---
-title: "Strands Agents SkillとCode InterpreterでAWSコストの可視化ワークフローを作る"
+title: "Strands Agents SkillとBedrock AgentCore Code InterpreterでAWSコストの可視化ワークフローを作る"
 emoji: "💹"
 type: "tech"
 topics: [aws, bedrock, strandsagents, aiagent, python]
