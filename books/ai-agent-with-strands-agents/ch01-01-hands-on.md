@@ -46,6 +46,10 @@ AWS IAM Identity Center（旧SSO）を利用している場合は、`aws configu
 
 ## エージェントを作る
 
+この章のサンプルコードはGitHubリポジトリの `ch01/` ディレクトリに公開しています。
+
+https://github.com/n-yokomachi/building-ai-agents-on-aws-samples/tree/main/ch01
+
 必要なライブラリをインストールします。
 
 ```sh:ターミナル
@@ -56,7 +60,7 @@ pip install strands-agents strands-agents-tools
 
 続いて、以下のファイルを作成します。たった10行のコードで、天気を調べてくれるAIエージェントが完成します。
 
-```python:agent.py
+```python:ch01/agent.py
 from strands import Agent
 from strands_tools import http_request
 
