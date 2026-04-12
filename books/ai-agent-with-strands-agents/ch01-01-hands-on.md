@@ -14,14 +14,14 @@ title: "まずは動かしてみよう"
 
 ## AWSの準備
 
-AIエージェントの頭脳として、Amazon Bedrockが提供するClaude Haikuモデルを使います。AWSアカウントに対して、このモデルへのアクセスを有効にする必要があります。
+AIエージェントの頭脳として、Amazon Bedrockが提供するClaude Haiku 4.5モデルを使います。AWSアカウントに対して、このモデルへのアクセスを有効にする必要があります。
 
 ### Bedrockのモデルアクセスを有効にする
 
 1. AWSマネジメントコンソールにログインし、リージョンを `us-east-1`（バージニア北部）に切り替える
 2. 検索バーに「Bedrock」と入力し、Amazon Bedrockのコンソールを開く
 3. 左メニューから「モデルアクセス」を選択する
-4. 「モデルアクセスを管理」を押し、Anthropic > Claude 3.5 Haiku にチェックを入れて保存する
+4. 「モデルアクセスを管理」を押し、Anthropic > Claude Haiku 4.5 にチェックを入れて保存する
 
 アクセスのリクエストが承認されるまで数分かかることがあります。ステータスが「アクセスが付与されました」に変われば準備完了です。
 
@@ -56,7 +56,7 @@ from strands import Agent
 from strands_tools import http_request
 
 agent = Agent(
-    model="us.anthropic.claude-3-5-haiku-20241022-v1:0",
+    model="anthropic.claude-haiku-4-5-20251001-v1:0",
     tools=[http_request],
     system_prompt="あなたは親切なアシスタントです。日本語で回答してください。",
 )

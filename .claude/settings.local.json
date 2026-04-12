@@ -11,7 +11,9 @@
       "WebFetch(domain:qiita.com)",
       "WebFetch(domain:www.jaist.ac.jp)",
       "WebFetch(domain:kousei.club)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "WebFetch(domain:strandsagents.com)",
+      "WebFetch(domain:pypi.org)"
     ]
   }
 }

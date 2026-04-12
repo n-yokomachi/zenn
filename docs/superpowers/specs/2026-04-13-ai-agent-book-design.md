@@ -1,4 +1,4 @@
-# Strands Agentsで作るAIエージェント入門 ― AWS Bedrock + AgentCoreで動かす実践ガイド
+# Strands Agentsで作るAIエージェント入門 ― Amazon BedrockとAgentCoreで動かす実践ガイド
 
 設計ドキュメント | 2026-04-13
 

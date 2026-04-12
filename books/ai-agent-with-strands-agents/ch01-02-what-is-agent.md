@@ -27,7 +27,7 @@ from strands import Agent
 from strands_tools import http_request
 
 agent = Agent(
-    model="us.anthropic.claude-3-5-haiku-20241022-v1:0",
+    model="anthropic.claude-haiku-4-5-20251001-v1:0",
     tools=[http_request],
     system_prompt="あなたは親切なアシスタントです。日本語で回答してください。",
 )
@@ -41,7 +41,7 @@ print(response)
 ### 脳 ── LLM
 
 ```python
-model="us.anthropic.claude-3-5-haiku-20241022-v1:0"
+model="anthropic.claude-haiku-4-5-20251001-v1:0"
 ```
 
 `model=` で指定しているのは、エージェントの頭脳となるLLMです。ユーザーからのリクエストを理解し、何をすべきか考え、最終的な回答を組み立てる。人間でいえば脳にあたる部分です。
