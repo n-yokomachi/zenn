@@ -14,7 +14,7 @@ title: "まずは動かしてみよう"
 
 ## AWSの準備
 
-エージェントのLLMとして、Amazon Bedrockが提供するClaude Haiku 4.5を使います。AWSアカウントに対して、このモデルへのアクセスを有効にする必要があります。
+エージェントのLLM（Large Language Model、大規模言語モデル）として、Amazon Bedrockが提供するClaude Haiku 4.5を使います。AWSアカウントに対して、このモデルへのアクセスを有効にする必要があります。
 
 ### Bedrockのモデルアクセスを有効にする
 
