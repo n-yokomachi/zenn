@@ -14,16 +14,21 @@ title: "まずは動かしてみよう"
 
 ## AWSの準備
 
-エージェントのLLM（Large Language Model、大規模言語モデル）として、Amazon Bedrockが提供するClaude Haiku 4.5を使います。AWSアカウントに対して、このモデルへのアクセスを有効にする必要があります。
+エージェントのLLM（Large Language Model、大規模言語モデル）として、Amazon Bedrockが提供するClaude Haiku 4.5を使います。
 
-### Bedrockのモデルアクセスを有効にする
+Amazon Bedrockのモデルは、適切なIAM権限があればデフォルトで利用可能です。ただしAnthropicのモデルについては、初回利用時にユースケースの提出が求められます。
 
-1. AWSマネジメントコンソールにログインし、リージョンを `us-east-1`（バージニア北部）に切り替える
-2. 検索バーに「Bedrock」と入力し、Amazon Bedrockのコンソールを開く
-3. 左メニューから「モデルアクセス」を選択する
-4. 「モデルアクセスを管理」を押し、Anthropic > Claude Haiku 4.5 にチェックを入れて保存する
+### Anthropicモデルのユースケース提出
 
-アクセスのリクエストが承認されるまで数分かかることがあります。ステータスが「アクセスが付与されました」に変われば準備完了です。
+1. AWSマネジメントコンソールにログインし、リージョンを `us-east-1`（バージニア北部）に切り替えます
+2. Amazon Bedrockのコンソールを開き、左メニューから「モデルカタログ」を選択します
+3. Anthropic > Claude Haiku 4.5 を選択し、ユースケースの詳細を入力して提出します
+
+提出後すぐにモデルを利用できるようになります。この手続きはAWSアカウントにつき1回のみ必要です。
+
+:::message
+IAMユーザーまたはロールに `aws-marketplace:Subscribe` および `aws-marketplace:ViewSubscriptions` の権限が付与されている必要があります。詳細はAmazon Bedrockの公式ドキュメントを参照してください。
+:::
 
 ### AWS CLIの設定
 
