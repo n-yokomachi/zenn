@@ -68,7 +68,7 @@ title: "本書の歩き方"
 本書のサンプルコードはGitHubリポジトリで公開しています。各章に対応するブランチとタグを用意しているので、任意の章の状態からコードを確認・実行できます。
 
 ```sh:ターミナル
-git clone https://github.com/yokomachi/ai-agent-book-tonari.git
+git clone https://github.com/yokomachi/ai-agent-with-strands-agents.git
 ```
 
 :::message

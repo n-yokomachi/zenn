@@ -1,7 +1,17 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:dev.to)"
+      "WebFetch(domain:dev.to)",
+      "Bash(wc -l /Users/Naoki/work/workshop/zenn/articles/*.md)",
+      "Bash(npx zenn:*)",
+      "WebFetch(domain:zenn.dev)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "WebFetch(domain:heartbeats.jp)",
+      "WebFetch(domain:qiita.com)",
+      "WebFetch(domain:www.jaist.ac.jp)",
+      "WebFetch(domain:kousei.club)",
+      "Bash(ls:*)"
     ]
   }
 }

@@ -1,4 +1,4 @@
-title: "AIエージェント構築入門 ― TONaRiと学ぶ、動くエージェントの作り方"
+title: "Strands Agentsで作るAIエージェント入門 ― AWS Bedrock + AgentCoreで動かす実践ガイド"
 summary: "Strands Agents SDKとAmazon Bedrock AgentCoreを使い、パーソナルAIエージェントを一から構築する実践ガイド。各章が独立したモジュールとして読め、通読すれば複数サービスを連携する完成されたAIエージェントが手に入る。"
 topics: ["ai-agent", "aws", "bedrock", "python", "strands"]
 published: false

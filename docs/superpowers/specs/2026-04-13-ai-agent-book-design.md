@@ -1,4 +1,4 @@
-# AIエージェント構築入門 ― TONaRiと学ぶ、動くエージェントの作り方
+# Strands Agentsで作るAIエージェント入門 ― AWS Bedrock + AgentCoreで動かす実践ガイド
 
 設計ドキュメント | 2026-04-13
 
