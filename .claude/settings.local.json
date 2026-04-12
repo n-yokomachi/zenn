@@ -13,7 +13,8 @@
       "WebFetch(domain:kousei.club)",
       "Bash(ls:*)",
       "WebFetch(domain:strandsagents.com)",
-      "WebFetch(domain:pypi.org)"
+      "WebFetch(domain:pypi.org)",
+      "Bash(gh repo:*)"
     ]
   }
 }

@@ -65,14 +65,10 @@ title: "本書の歩き方"
 
 ## サンプルコード
 
-本書のサンプルコードはGitHubリポジトリで公開しています。各章に対応するブランチとタグを用意しているので、任意の章の状態からコードを確認・実行できます。
+本書のサンプルコードはGitHubリポジトリで公開しています。各章に対応するディレクトリにコードを配置しているので、必要な章のコードを確認・実行できます。
 
 ```sh:ターミナル
-git clone https://github.com/yokomachi/ai-agent-with-strands-agents.git
+git clone https://github.com/n-yokomachi/building-ai-agents-on-aws-samples.git
 ```
-
-:::message
-リポジトリのURLは変更される可能性があります。最新の情報は本書の更新履歴を確認してください。
-:::
 
 次の第2章から、エージェントの構築を始めていきます。
