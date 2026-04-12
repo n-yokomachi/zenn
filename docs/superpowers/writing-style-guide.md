@@ -195,6 +195,14 @@ agent = Agent(
 
 「使う」「使用する」「利用する」は文脈に応じて自然な方を選んでよい。ただし「活用する」はAI的な語彙のため避ける。
 
+本書固有の用語統一:
+
+| 統一表記 | 使わない表記 |
+|---------|------------|
+| Strands Agents | Strands Agents SDK |
+| Amazon Bedrock | AWS Bedrock |
+| Amazon Bedrock AgentCore | Bedrock AgentCore、AgentCore（単独で呼ぶ場合） |
+
 （本書固有の用語統一は執筆を進めながら追記する）
 
 ## 漢字の閉じ開き

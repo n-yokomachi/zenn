@@ -8,7 +8,7 @@ title: "はじめに"
 
 本書の目的は、読者がAIエージェントの設計思想を理解し、自分自身のパーソナルAIエージェントを構築できるようになることです。
 
-AIエージェントの概念や仕組みの解説にとどまらず、Strands Agents SDKとAmazon Bedrock AgentCoreを使った実装を、ハンズオン形式で段階的に進めていきます。各章で1つずつ能力を追加していくことで、最終的に以下の機能を備えたエージェントが完成します。
+AIエージェントの概念や仕組みの解説にとどまらず、Strands AgentsとAmazon Bedrock AgentCoreを使った実装を、ハンズオン形式で段階的に進めていきます。各章で1つずつ能力を追加していくことで、最終的に以下の機能を備えたエージェントが完成します。
 
 - 自然言語での対話
 - Googleカレンダー、Gmail、Notionなど複数の外部サービスとのツール連携
@@ -48,7 +48,7 @@ AIエージェントの概念や仕組みの解説にとどまらず、Strands A
 
 | 技術 | 概要 |
 |---|---|
-| Strands Agents SDK | AWSが公開したオープンソースのAIエージェントフレームワーク（Python） |
+| Strands Agents | AWSが公開したオープンソースのAIエージェントフレームワーク（Python） |
 | Amazon Bedrock | AWSが提供するフルマネージドのLLMサービス。本書ではClaude Haiku 4.5をLLMとして使用します |
 | Amazon Bedrock AgentCore | エージェントのランタイム、メモリ管理、ツール連携などをマネージドで提供するサービス |
 | AgentCore Gateway | MCP（Model Context Protocol）に対応したツール連携の仕組み |
