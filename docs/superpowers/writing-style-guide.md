@@ -92,7 +92,7 @@ Strands Agents SDKをインストールしてください！✨
 
 \```python:agent.py
 agent = Agent(
-    model="us.anthropic.claude-3-5-haiku-20241022-v1:0",
+    model="anthropic.claude-haiku-4-5-20251001-v1:0",
     tools=[http_request],
 )
 \```
