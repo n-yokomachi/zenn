@@ -14,7 +14,12 @@
       "Bash(ls:*)",
       "WebFetch(domain:strandsagents.com)",
       "WebFetch(domain:pypi.org)",
-      "Bash(gh repo:*)"
+      "Bash(gh repo:*)",
+      "WebFetch(domain:www.ibm.com)",
+      "WebFetch(domain:aws.amazon.com)",
+      "WebFetch(domain:blogs.oracle.com)",
+      "WebFetch(domain:www.apideck.com)",
+      "WebFetch(domain:www.anthropic.com)"
     ]
   }
 }
