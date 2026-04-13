@@ -115,7 +115,9 @@ https://github.com/n-yokomachi/building-ai-agents-on-aws-samples
 
 ### GitHub Codespacesの準備
 
-サンプルコードのリポジトリ（[building-ai-agents-on-aws-samples](https://github.com/n-yokomachi/building-ai-agents-on-aws-samples)）をGitHubでフォークまたはクローンし、Codespacesを起動してください。ブラウザ上にPythonとAWS CLIが使える開発環境がそのまま立ち上がります。
+GitHub上で新規のリポジトリを作成し、そのリポジトリでCodespacesを起動してください。ブラウザ上にPythonが使える開発環境がそのまま立ち上がります。本書のハンズオンでは、この新規リポジトリ内でコードを書き、動作を確認していく想定です。
+
+サンプルコードのリポジトリ（[building-ai-agents-on-aws-samples](https://github.com/n-yokomachi/building-ai-agents-on-aws-samples)）は参照用です。コードをコピーして自分のリポジトリに貼り付けたり、必要な章の実装を確認するためにお使いください。
 
 ### macOS・Linuxローカル環境を使う場合
 
