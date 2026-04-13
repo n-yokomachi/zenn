@@ -107,12 +107,20 @@ https://github.com/n-yokomachi/building-ai-agents-on-aws-samples
 | Node.js | 22以上（第6章のみ） |
 | AWSアカウント | Anthropicモデルのユースケース提出が完了していること |
 | AWS CLI | v2 |
-| OS | macOS / Linux / WSL2 |
+| OS | macOS / Linux / GitHub Codespaces |
 
-### Windowsを使用している場合
+本書のハンズオンはGitHub Codespaces（Ubuntu Linux）の利用を前提に記述しています。ブラウザから開くだけで同一の環境が立ち上がるため、macOS、Linux、Windowsのいずれのマシンからでも同じ手順で進められます。
 
-本書のハンズオンはUnix系の環境を前提としています。Windowsを使用している場合は、以下のいずれかの方法で環境を用意してください。
+本書に掲載するコマンドはLinux（Codespacesでの実行）を基本としていますが、macOSで異なるコマンドが必要な場合は都度補足します。
 
-WSL2（Windows Subsystem for Linux）をインストールすると、Windows上でLinux環境を利用できます。Microsoft Storeからインストール可能で、本書のすべての内容をそのまま実行できます。
+### GitHub Codespacesの準備
 
-ローカルに環境を構築せずに進めたい場合は、GitHub Codespacesも選択肢になります。開発用のリポジトリを用意してCodespacesを開けば、ブラウザ上でPythonとAWS CLIが利用可能な開発環境がすぐに立ち上がります。AWSの認証情報はCodespaces内のターミナルで `aws configure` を実行して設定してください。
+サンプルコードのリポジトリ（[building-ai-agents-on-aws-samples](https://github.com/n-yokomachi/building-ai-agents-on-aws-samples)）をGitHubでフォークまたはクローンし、Codespacesを起動してください。ブラウザ上にPythonとAWS CLIが使える開発環境がそのまま立ち上がります。
+
+### macOS・Linuxローカル環境を使う場合
+
+ローカルのターミナルをそのまま利用できます。Pythonとホームブリュー（Homebrew、macOSの場合）またはapt（Ubuntuの場合）がインストールされている必要があります。
+
+### Windowsローカル環境を使う場合
+
+本書ではWindowsのPowerShellやコマンドプロンプト向けのコマンドは扱いません。Codespacesの利用を推奨します。WSL2（Windows Subsystem for Linux）をインストールして利用する選択肢もあります。
