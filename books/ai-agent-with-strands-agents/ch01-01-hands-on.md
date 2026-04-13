@@ -20,7 +20,7 @@ Amazon Bedrockのモデルは、適切なIAM権限があればデフォルトで
 
 ### Anthropicモデルのユースケース提出
 
-1. AWSマネジメントコンソールにログインし、リージョンを `us-east-1`（バージニア北部）に切り替えます
+1. AWSマネジメントコンソールにログインし、リージョンを `ap-northeast-1`（東京）に切り替えます
 2. Amazon Bedrockのコンソールを開き、左メニューから「モデルカタログ」を選択します
 3. Anthropic > Claude Haiku 4.5 を選択し、ユースケースの詳細を入力して提出します
 
@@ -52,7 +52,7 @@ aws login --remote
 
 `--remote` オプションは、CLIの実行環境とブラウザが別の場合（GitHub Codespaces など）に指定します。コマンドを実行すると認証用URLと検証コードが表示されるので、URLをブラウザで開き、検証コードを入力してサインインします。完了するとプロファイルが作成され、以降のCLI操作で利用できるようになります。
 
-リージョンは `us-east-1` を設定してください。プロファイル作成時にリージョンを指定できます。
+リージョンは `ap-northeast-1` を設定してください。プロファイル作成時にリージョンを指定できます。
 
 :::message
 `aws login` はIAM Identity Centerの事前設定なしで使えますが、AWS CDKなど一部のエコシステムでは対応待ちの段階です。ツールとの互換性が必要な場合は `aws configure sso` を使う方法も検討してください。
@@ -75,7 +75,7 @@ from strands import Agent
 from strands_tools import http_request
 
 agent = Agent(
-    model="anthropic.claude-haiku-4-5-20251001-v1:0",
+    model="jp.anthropic.claude-haiku-4-5-20251001-v1:0",
     tools=[http_request],
     system_prompt="あなたは親切なアシスタントです。日本語で回答してください。",
 )
@@ -90,6 +90,8 @@ print(response)
 - `http_request` はWebページを取得するツールです。エージェントが外部情報にアクセスする手段となります
 - `agent("...")` で自然言語の指示を渡すと、エージェントが処理を開始します
 
+モデルIDの先頭にある `jp.` は、日本国内のリージョン間で推論をルーティングするクロスリージョン推論プロファイルを示すプレフィックスです。ap-northeast-1（東京）からこのプロファイルを呼び出すと、リクエストが日本国内のリージョン内で処理されます。
+
 ### 実行する
 
 ```sh:ターミナル
@@ -101,7 +103,7 @@ python agent.py
 :::message alert
 `botocore.exceptions.NoCredentialsError` が出た場合、AWS CLIの認証情報が正しく設定されていない。`aws sts get-caller-identity` を実行して、AWSへの接続を確認する。
 
-`AccessDeniedException` が出た場合は、Bedrockのモデルアクセスが有効になっていない可能性がある。コンソールでステータスを再確認する。リージョンが `us-east-1` になっているかも合わせて確認する。
+`AccessDeniedException` が出た場合は、Bedrockのモデルアクセスが有効になっていない可能性がある。コンソールでステータスを再確認する。リージョンが `ap-northeast-1` になっているかも合わせて確認する。
 :::
 
 ## 何が起きたのか

@@ -217,6 +217,12 @@ agent = Agent(
 | Amazon Bedrock | AWS Bedrock |
 | Amazon Bedrock AgentCore | Bedrock AgentCore、AgentCore（単独で呼ぶ場合） |
 
+本書の共通設定:
+
+- AWSリージョン: `ap-northeast-1`（東京）
+- LLMモデル: Claude Haiku 4.5
+- Bedrockモデル ID: `jp.anthropic.claude-haiku-4-5-20251001-v1:0`（日本国内ルーティングのクロスリージョン推論プロファイル）
+
 （本書固有の用語統一は執筆を進めながら追記する）
 
 ## 漢字の閉じ開き
