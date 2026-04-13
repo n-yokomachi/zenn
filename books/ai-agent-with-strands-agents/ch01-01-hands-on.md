@@ -30,18 +30,32 @@ Amazon Bedrockのモデルは、適切なIAM権限があればデフォルトで
 IAMユーザーまたはロールに `aws-marketplace:Subscribe` および `aws-marketplace:ViewSubscriptions` の権限が付与されている必要があります。詳細はAmazon Bedrockの公式ドキュメントを参照してください。
 :::
 
-### AWS CLIの設定
+### AWS CLIのインストール
 
-ローカルからBedrockにアクセスするために、AWS CLIの認証情報を設定します。
+環境からBedrockにアクセスするために、AWS CLI v2をインストールします。Linux（GitHub Codespacesを含む）の場合、以下のコマンドでインストールできます。
 
 ```sh:ターミナル
-aws configure
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
 ```
 
-プロンプトに従い、アクセスキーID・シークレットアクセスキー・リージョン（`us-east-1`）を入力してください。
+インストール後、`aws --version` でバージョンを確認できます。macOS の場合は `brew install awscli` でもインストールできます。
+
+### AWS CLIへのログイン
+
+AWS CLI v2.32.0 以降では、ブラウザを利用したログインコマンド `aws login` が使えます。アクセスキーを払い出す必要がなく、ブラウザでAWSにサインインしている認証情報をそのままCLIに引き継げます。
+
+```sh:ターミナル
+aws login --remote
+```
+
+`--remote` オプションは、CLIの実行環境とブラウザが別の場合（GitHub Codespaces など）に指定します。コマンドを実行すると認証用URLと検証コードが表示されるので、URLをブラウザで開き、検証コードを入力してサインインします。完了するとプロファイルが作成され、以降のCLI操作で利用できるようになります。
+
+リージョンは `us-east-1` を設定してください。プロファイル作成時にリージョンを指定できます。
 
 :::message
-AWS IAM Identity Center（旧SSO）を利用している場合は、`aws configure sso` でプロファイルを設定し、`aws sso login --profile プロファイル名` でログインする。その後、環境変数 `AWS_PROFILE` にプロファイル名を設定しておく。
+`aws login` はIAM Identity Centerの事前設定なしで使えますが、AWS CDKなど一部のエコシステムでは対応待ちの段階です。ツールとの互換性が必要な場合は `aws configure sso` を使う方法も検討してください。
 :::
 
 ## エージェントを作る
