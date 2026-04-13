@@ -225,6 +225,33 @@ agent = Agent(
 
 （本書固有の用語統一は執筆を進めながら追記する）
 
+## 実行環境の前提
+
+本書のハンズオンは以下のUnix系環境を前提とする。
+
+- GitHub Codespaces（Linux、本書のデフォルト想定環境）
+- macOS
+- Linux（Ubuntu等）
+- Windows の場合はWSL2またはGitHub Codespaces
+
+Windowsローカル環境（PowerShell・コマンドプロンプト）向けのコマンドは記載しない。Codespacesで完結させるか、WSL2の利用を案内する。
+
+### コマンドの記載方針
+
+- 基本はLinux（Codespaces/Ubuntu）のコマンドを記載する
+- macOSで異なるコマンドが必要な場合は、併記する
+
+macOSとの互換対応が必要な主な例:
+
+| 用途 | Linux（Codespaces） | macOS |
+|------|---------------------|-------|
+| AWS CLIインストール | `curl` + `unzip` + `sudo ./aws/install` | `brew install awscli` |
+| Python | `apt install python3` など | `brew install python` |
+| Node.js | `apt install nodejs` など | `brew install node` |
+| unzip | 標準で利用可能 | 標準で利用可能 |
+
+パッケージマネージャのコマンドは、Linuxは `apt`（Ubuntu/Debian系）、macOSは `brew`（Homebrew）を前提とする。
+
 ## 漢字の閉じ開き
 
 技術書で表記揺れが起きやすい語の基準。
