@@ -32,10 +32,11 @@ IAMユーザーまたはロールに `aws-marketplace:Subscribe` および `aws-
 
 ### AWS CLIのインストール
 
-環境からBedrockにアクセスするために、AWS CLI v2をインストールします。macOSの場合はHomebrewでインストールできます。
+環境からBedrockにアクセスするために、AWS CLI v2をインストールします。macOSの場合、公式のインストーラーをcurlで取得して実行します。
 
 ```sh:ターミナル
-brew install awscli
+curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+sudo installer -pkg AWSCLIV2.pkg -target /
 ```
 
 インストール後、`aws --version` でバージョンを確認します。

@@ -245,11 +245,11 @@ macOSとLinuxで異なる主な例:
 
 | 用途 | macOS | Linux（Codespaces / Ubuntu） |
 |------|-------|------------------------------|
-| AWS CLIインストール | `brew install awscli` | `curl` + `unzip` + `sudo ./aws/install` |
+| AWS CLIインストール | `curl` + `sudo installer -pkg` | `curl` + `unzip` + `sudo ./aws/install` |
 | Python | `brew install python` | `apt install python3` など |
 | Node.js | `brew install node` | `apt install nodejs` など |
 
-パッケージマネージャのコマンドは、macOSは `brew`（Homebrew）、Linuxは `apt`（Ubuntu/Debian系）を前提とする。
+公式のインストーラーが提供されている場合は公式のインストーラー（curl経由）を優先する。公式インストーラーが存在しない場合のパッケージマネージャは、macOSは `brew`（Homebrew）、Linuxは `apt`（Ubuntu/Debian系）を前提とする。
 
 ## 漢字の閉じ開き
 
