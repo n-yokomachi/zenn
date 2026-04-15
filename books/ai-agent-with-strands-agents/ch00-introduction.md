@@ -109,20 +109,18 @@ https://github.com/n-yokomachi/building-ai-agents-on-aws-samples
 | AWS CLI | v2 |
 | OS | macOS / Linux / GitHub Codespaces |
 
-本書のハンズオンはGitHub Codespaces（Ubuntu Linux）の利用を前提に記述しています。ブラウザから開くだけで同一の環境が立ち上がるため、macOS、Linux、Windowsのいずれのマシンからでも同じ手順で進められます。
+本書のハンズオンはmacOSでの実行を前提に記述しています。パッケージ管理にはHomebrewを使用し、Linux環境（GitHub Codespacesを含む）向けのコマンドが異なる場合は都度補足します。
 
-本書に掲載するコマンドはLinux（Codespacesでの実行）を基本としていますが、macOSで異なるコマンドが必要な場合は都度補足します。
+### macOSを使う場合
 
-### GitHub Codespacesの準備
+ローカルのターミナルをそのまま利用できます。Homebrewがインストールされていない場合は[公式サイト](https://brew.sh/)の手順に従ってインストールしてください。
 
-GitHub上で新規のリポジトリを作成し、そのリポジトリでCodespacesを起動してください。ブラウザ上にPythonが使える開発環境がそのまま立ち上がります。本書のハンズオンでは、この新規リポジトリ内でコードを書き、動作を確認していく想定です。
+### GitHub Codespacesを使う場合
+
+macOSを使わない場合は、GitHub Codespacesの利用を推奨します。GitHub上で新規のリポジトリを作成し、そのリポジトリでCodespacesを起動してください。ブラウザ上にPythonが使える開発環境（Ubuntu Linux）がそのまま立ち上がります。本書のハンズオンでは、この新規リポジトリ内でコードを書き、動作を確認していく想定です。
 
 サンプルコードのリポジトリ（[building-ai-agents-on-aws-samples](https://github.com/n-yokomachi/building-ai-agents-on-aws-samples)）は参照用です。コードをコピーして自分のリポジトリに貼り付けたり、必要な章の実装を確認するためにお使いください。
 
-### macOS・Linuxローカル環境を使う場合
+### Linuxローカル環境・Windowsを使う場合
 
-ローカルのターミナルをそのまま利用できます。Pythonとホームブリュー（Homebrew、macOSの場合）またはapt（Ubuntuの場合）がインストールされている必要があります。
-
-### Windowsローカル環境を使う場合
-
-本書ではWindowsのPowerShellやコマンドプロンプト向けのコマンドは扱いません。Codespacesの利用を推奨します。WSL2（Windows Subsystem for Linux）をインストールして利用する選択肢もあります。
+UbuntuなどLinuxローカル環境でも、Codespacesと同じ手順で進められます。Windowsを使っている場合は、Codespacesの利用を推奨します。WSL2（Windows Subsystem for Linux）をインストールして利用する選択肢もあります。

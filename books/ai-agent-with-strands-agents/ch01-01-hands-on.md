@@ -32,15 +32,21 @@ IAMユーザーまたはロールに `aws-marketplace:Subscribe` および `aws-
 
 ### AWS CLIのインストール
 
-環境からBedrockにアクセスするために、AWS CLI v2をインストールします。Linux（GitHub Codespacesを含む）の場合、以下のコマンドでインストールできます。
+環境からBedrockにアクセスするために、AWS CLI v2をインストールします。macOSの場合はHomebrewでインストールできます。
+
+```sh:ターミナル
+brew install awscli
+```
+
+インストール後、`aws --version` でバージョンを確認します。
+
+Linux（GitHub Codespacesを含む）の場合は、以下のコマンドでインストールします。
 
 ```sh:ターミナル
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
 ```
-
-インストール後、`aws --version` でバージョンを確認できます。macOS の場合は `brew install awscli` でもインストールできます。
 
 ### AWS CLIへのログイン
 
