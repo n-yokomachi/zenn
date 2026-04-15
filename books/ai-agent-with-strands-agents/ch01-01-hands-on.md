@@ -62,7 +62,7 @@ aws login --remote
 リージョンは `ap-northeast-1` を設定してください。プロファイル作成時にリージョンを指定できます。
 
 :::message
-`aws login` はIAM Identity Centerの事前設定なしで使えますが、AWS CDKなど一部のエコシステムでは対応待ちの段階です。ツールとの互換性が必要な場合は `aws configure sso` を使う方法も検討してください。
+`aws login` で作成されたプロファイルを利用するには、boto3 1.41.0以上とAWS Common Runtime（CRT）が必要です。本書で使用するStrands Agentsはboto3経由でAWSにアクセスするため、この要件を満たしていれば追加の設定は不要です。
 :::
 
 ## エージェントを作る
