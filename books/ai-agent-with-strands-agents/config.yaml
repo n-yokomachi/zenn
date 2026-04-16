@@ -6,3 +6,4 @@ price: 0
 toc_depth: 2
 chapters:
   - ch00-introduction
+  - ch01-first-agent
