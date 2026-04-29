@@ -19,7 +19,10 @@
       "WebFetch(domain:aws.amazon.com)",
       "WebFetch(domain:blogs.oracle.com)",
       "WebFetch(domain:www.apideck.com)",
-      "WebFetch(domain:www.anthropic.com)"
+      "WebFetch(domain:www.anthropic.com)",
+      "WebFetch(domain:github.com)",
+      "Bash(AWS_REGION=ap-northeast-1 uv run python agent.py)",
+      "Bash(tee /tmp/ch01-agent-output.txt)"
     ]
   }
 }

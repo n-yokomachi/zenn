@@ -1,12 +1,9 @@
-title: "AWSで作るパーソナルAIエージェント入門 ― ハンズオンで学ぶ Strands Agents & Amazon Bedrock AgentCore"
+title: "AWSで作るパーソナルAIエージェント入門 ― Strands Agents & Amazon Bedrock AgentCoreハンズオン"
 summary: "Strands AgentsとAmazon Bedrock AgentCoreを使い、パーソナルAIエージェントを一から構築する実践ガイド。各章が独立したモジュールとして読め、通読すれば複数サービスを連携する完成されたAIエージェントが手に入る。"
-topics: ["ai-agent", "aws", "bedrock", "python", "strands"]
+topics: ["aiagent", "aws", "bedrock", "python", "strandsagents"]
 published: false
 price: 0
 toc_depth: 2
 chapters:
   - ch00-introduction
-  - ch01-01-hands-on
-  - ch01-02-what-is-agent
-  - ch01-03-why-agent-now
-  - ch01-column-frameworks
+  - ch01-first-agent

@@ -2,6 +2,17 @@
 
 本書の執筆・校正時に参照するスタイルガイド。執筆を進めながら随時更新する。
 
+## 最優先ルール: ファクトチェックの徹底
+
+執筆全体に適用される、他のすべてのルールに優先する原則。
+
+- 自身の知識を信用せず、ウェブ調査を最大限活用する
+- コードの正しさ、引用の正確さ、技術用語の適切な使い方は必ず一次情報（公式ドキュメント、公式リポジトリ）で確認する
+- 不正確な情報を本文・サンプルコードに含めない
+- 確認できない事実を推測で書かない。確認できないものは執筆前にウェブ検索を行う
+- AWSサービス・SDK・モデルID・コマンド・パッケージ名・APIシグネチャ等、変わりやすい技術仕様は執筆時点の最新情報を確認する
+- 引用する際は出典を明示する（公式ドキュメントのURL、Anthropicの公式ブログ等）
+
 ## 文体
 
 - **ですます調**で統一する
@@ -217,7 +228,39 @@ agent = Agent(
 | Amazon Bedrock | AWS Bedrock |
 | Amazon Bedrock AgentCore | Bedrock AgentCore、AgentCore（単独で呼ぶ場合） |
 
+本書の共通設定:
+
+- AWSリージョン: `ap-northeast-1`（東京）
+- LLMモデル: Claude Haiku 4.5
+- Bedrockモデル ID: `jp.anthropic.claude-haiku-4-5-20251001-v1:0`（日本国内ルーティングのクロスリージョン推論プロファイル）
+
 （本書固有の用語統一は執筆を進めながら追記する）
+
+## 実行環境の前提
+
+本書のハンズオンは以下のUnix系環境を前提とする。
+
+- macOS（本書のデフォルト想定環境）
+- Linux（Ubuntu等）
+- GitHub Codespaces（Ubuntu Linux）
+- Windows の場合はGitHub CodespacesまたはWSL2
+
+Windowsローカル環境（PowerShell・コマンドプロンプト）向けのコマンドは記載しない。Codespacesで完結させるか、WSL2の利用を案内する。
+
+### コマンドの記載方針
+
+- 基本はmacOSのコマンドを記載する（パッケージマネージャはHomebrew）
+- Linux（GitHub Codespaces / Ubuntu）で異なるコマンドが必要な場合は、補足として併記する
+
+macOSとLinuxで異なる主な例:
+
+| 用途 | macOS | Linux（Codespaces / Ubuntu） |
+|------|-------|------------------------------|
+| AWS CLIインストール | `curl` + `sudo installer -pkg` | `curl` + `unzip` + `sudo ./aws/install` |
+| Python | `brew install python` | `apt install python3` など |
+| Node.js | `brew install node` | `apt install nodejs` など |
+
+公式のインストーラーが提供されている場合は公式のインストーラー（curl経由）を優先する。公式インストーラーが存在しない場合のパッケージマネージャは、macOSは `brew`（Homebrew）、Linuxは `apt`（Ubuntu/Debian系）を前提とする。
 
 ## 漢字の閉じ開き
 
