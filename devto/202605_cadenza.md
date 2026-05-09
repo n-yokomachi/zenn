@@ -1,5 +1,5 @@
 ---
-title: "I Built a Claude Code Plugin That Supports Technical Output Creation"
+title: "I Built an Issue-Based Claude Code Plugin 'cadenza' for Technical Output Creation"
 emoji: "🎼"
 type: "idea"
 topics: [claudecode, claude, ai, aiagent, productivity]
@@ -78,7 +78,7 @@ Ideally I'd want a guard that prevents output unless the user demonstrably under
 
 The cadenza repository itself functions as a Claude Code marketplace. You can use it just by registering the marketplace and installing the plugin.
 
-```bash: Terminal
+```bash
 claude plugin marketplace add github.com/n-yokomachi/cadenza
 claude plugin install cadenza@cadenza
 ```
@@ -137,48 +137,48 @@ The final issue was decided as follows.
 
 ### Phase 2: Issue Decomposition
 
-When `/cadenza:issue-decomposition` is launched, it enters the process of building the storyline.
+Launching `/cadenza:issue-decomposition` enters the process of building the storyline.
 
 The following 5 steps run.
 
 | Step | Lead | Interaction details |
 |---|------|----------|
 | 1 | AI proposal → user agreement | Decomposition pattern selection. This time, Compare-Select (Options → Criteria → Decision) was proposed → adopted |
-| 2 | User (this time, AI draft → user edit) | One-line hypothesis for each sub-issue. Since I had answered "no experience getting stuck / no unique elements" in Phase 1, the AI offered a draft that I adopted as-is |
+| 2 | User (this time: AI draft → user edit) | One-line hypothesis for each sub-issue. Since I had already answered "no experience getting stuck / no unique elements" in Phase 1, the AI provided a draft that I adopted as-is |
 | 3 | AI proposal → user agreement | Storyline pattern. Sky-Rain-Umbrella, suitable for long-form articles, was proposed → adopted |
-| 4 | User | Fix the claim in one sentence. Selected from 3 candidates |
+| 4 | User | Pin the claim down to one sentence. Selected from 3 candidates |
 | 5 | AI-led | Storyline validity check (5 items). All items passed |
 
-The following storyline was decided.
+The storyline was settled as follows.
 
 | Role | Question |
 |------|------|
-| ☁️ Sky (fact) | What does it look like when each tool's free tier limits are aligned in common units? |
-| 🌧️ Rain (interpretation) | Do the differences in limits come from each company's business model? (Does the 3-strategy classification of growth-first / paid conversion / platform infiltration hold?) |
-| ☂️ Umbrella (action) | How do we sort by use case (completion / agent / refactoring) into "try first" vs. "paid required"? |
+| ☁️ Sky (fact) | What does it look like when each tool's free-tier limits are aligned in common units? |
+| 🌧️ Rain (interpretation) | Do the differences in limits stem from each provider's business model? (Does the 3-strategy classification of growth-first / paid conversion / platform infiltration hold up?) |
+| ☂️ Umbrella (action) | How should we sort the tools by use case (completion / agent / refactoring) into "try first" vs. "paid required"? |
 
 The claim is as follows.
-> Each company's free tier reflects **3 strategic patterns** (growth-first / paid conversion / platform infiltration), and the right answer is to choose by matching the reader's use case with each company's strategic pattern.
+> Each provider's free tier reflects **3 strategic patterns** (growth-first / paid conversion / platform infiltration), and the right approach is to choose by matching the reader's use case to each provider's strategic pattern.
 
 
 ### Phase 3: Storyboarding
 
-When `/cadenza:storyboarding` is launched, you design "how to show it" (code / diagrams / tables / benchmarks, etc.) and "what needs to be verified vs. what won't be verified" for each sub-issue.
+Launching `/cadenza:storyboarding` lets you design "how to show it" (code / diagrams / tables / benchmarks, etc.) and "what needs to be verified vs. what won't be" for each sub-issue.
 
 | Step | Lead | Interaction details |
 |---|------|----------|
-| 1, 2 | AI proposal → user agreement | Propose format (presentation) and specifications (content) for each sub-issue |
+| 1, 2 | AI proposal → user agreement | Propose the format (presentation) and specifications (content) for each sub-issue |
 | 3 | AI proposal → user agreement | Adjust to match the output style. This time I specified "drop flat onto Zenn, no diagrams, tables only" |
-| 4 | AI-led | Organize all verification items and excluded items (what won't be done) |
+| 4 | AI-led | Organize all verification items and out-of-scope items (what won't be done) |
 | 5 | AI-led | Storyboard review (5 items). All items passed |
 
 The policy is to express each sub-issue in a single table (Mermaid diagrams are not used).
 
 | Sub-issue | Format | Specification overview |
 |----------|------|------------|
-| ☁️ Sky (sub-issue 1) | Comparison table | Rows = 7 tools / Columns = official limits, common unit conversion (tasks/day), billing trigger, credit card requirement |
-| 🌧️ Rain (sub-issue 2) | 3-strategy classification table | Rows = 7 tools / Columns = strategy pattern, limit thickness, offering form, judgment basis |
-| ☂️ Umbrella (sub-issue 3) | Decision matrix + descriptive paragraph | 21 cells of rows = 3 use cases × columns = 7 tools with judgments (◎ / ○ / △ / ×), with decision guidance paragraph below |
+| ☁️ Sky (sub-issue 1) | Comparison table | Rows = 7 tools / Columns = official limits, common-unit conversion (tasks/day), billing trigger, credit card requirement |
+| 🌧️ Rain (sub-issue 2) | 3-strategy classification table | Rows = 7 tools / Columns = strategy pattern, limit generosity, offering type, basis for judgment |
+| ☂️ Umbrella (sub-issue 3) | Decision matrix + descriptive paragraph | A 21-cell grid of rows = 3 use cases × columns = 7 tools, marked with ◎ / ○ / △ / ×, followed by a decision-guidance paragraph |
 
 
 ### Phase 4: Analysis Execution
@@ -196,7 +196,7 @@ Main findings:
 - Claude Code / Codex CLI's free tiers are essentially zero (Pro at $20/month is required for serious use)
 - Refactoring and large-scale tasks exceed the free tier across all providers; a paid plan is required
 
-#### Issue reconsideration (partial occurrence)
+#### Issue reconsideration (partial)
 
 The 3-strategy names (growth-first / paid conversion / platform infiltration) set in Phase 2 turned out to be inaccurate when checked against the data; "platform on-ramp / pure-tool paid funnel / completion-focused giveaway" proved to be a more persuasive classification.
 
@@ -204,18 +204,18 @@ cadenza defines 3 types of upstream regression signals (storyline collapse / new
 
 Partial shifts in the storyline driven by data are within the expected range, and cadenza is designed to ask the user whether to handle such shifts by "going all the way back upstream" or "updating in place."
 
-#### Materials to hand over to Phase 5
+#### Materials to hand off to Phase 5
 
-- Comparison table (7 tools × 4 columns: official limits / task conversion / billing trigger / credit card requirement)
-- 3-strategy classification table (revised, with judgment basis for each tool)
-- Decision matrix (3 use cases × 7 tools = 21 cells of ◎/○/△/× judgment)
-- Updated claim candidate (version with 3-strategy labels replaced)
+- Comparison table (7 tools × 4 columns: official limits / task conversion / billing trigger / credit-card requirement)
+- 3-strategy classification table (revised, with the basis for each tool's classification)
+- Decision matrix (3 use cases × 7 tools = 21 cells of ◎/○/△/× judgments)
+- Updated claim candidate (version with the 3-strategy labels replaced)
 
-This completes Phase 4. Next is Phase 5 (Output Crafting), which generates `./.cadenza/output.md`.
+That wraps up Phase 4. Next is Phase 5 (Output Crafting), which generates `./.cadenza/output.md`.
 
 ### Phase 5: Output Crafting
 
-`/cadenza:output-crafting` writes out the final Markdown to `./.cadenza/output.md` based on the confirmed information from Phase 1 through 4 so far.
+`/cadenza:output-crafting` writes out the final Markdown to `./.cadenza/output.md` based on the confirmed information from Phases 1 through 4.
 
 | Step | Lead | Interaction details |
 |---|------|----------|
@@ -228,11 +228,9 @@ This completes Phase 4. Next is Phase 5 (Output Crafting), which generates `./.c
 
 #### Output body
 
-The output content is pasted below as-is.
+The generated `output.md` is reproduced verbatim below as a raw Markdown source.
 
-<details>
-<summary>output.md</summary>
-
+```markdown
 # AI Coding Agent Free Tiers Reflect 3 Strategies: Sorting 7 Tools by Use Case
 
 ## TL;DR
@@ -354,5 +352,5 @@ These follow a "tool free, API at cost" model, so they don't fit on this article
 - [GitHub Copilot Plans](https://github.com/features/copilot/plans)
 - [Windsurf Pricing](https://windsurf.com/pricing)
 - [Kiro Pricing](https://kiro.dev/pricing/)
+```
 
-</details>
