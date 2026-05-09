@@ -6,10 +6,6 @@ topics: [aws, bedrock, agentcore, strandsagents, aiagent]
 published: true
 ---
 
-:::message
-この記事は人間が書き、プログラムの実装・記事の校正に生成AIを使用しています。
-:::
-
 # はじめに
 
 2026年4月、Amazon Bedrock AgentCoreに「Optimization」という機能が追加されました。
