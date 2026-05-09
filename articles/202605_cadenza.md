@@ -1,14 +1,10 @@
 ---
-title: "アウトプット制作をサポートするClaude Codeプラグインを作った"
+title: "イシューベースでアウトプット制作をサポートするClaude Codeプラグイン「cadenza（カデンツァ）」を作った"
 emoji: "🎼"
 type: "idea"
 topics: [claudecode, claude, ai, aiagent, productivity]
 published: true
 ---
-
-:::message
-この記事は人間が書き、プラグインの実装・記事の校正に生成AIを使用しています。
-:::
 
 # はじめに
 
