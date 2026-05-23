@@ -3,7 +3,7 @@ title: "AIエージェントに感情を導入してみる（ver.プルチック
 emoji: "🎭"
 type: "tech"
 topics: ["aiagent", "llm", "go", "aws", "strandsagents"]
-published: false
+published: true
 ---
 
 # はじめに
