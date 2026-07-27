@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="628" viewBox="0 0 1160 628" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif">
+  <rect width="1160" height="628" fill="#fbfbfa"/>
+
+  <!-- 上段ラベル -->
+  <text x="60" y="66" font-size="20" fill="#6b6b66">Gendron &amp; Barrett (2009) が示した3つの系統</text>
+  <line x1="60" y1="82" x2="1100" y2="82" stroke="#dcdcd6" stroke-width="1"/>
+
+  <!-- 上段: 3系統 -->
+  <g>
+    <rect x="60" y="106" width="300" height="88" rx="6" fill="#ffffff" stroke="#b9b9b1" stroke-width="1.5"/>
+    <text x="210" y="142" font-size="25" fill="#24241f" text-anchor="middle">基本感情</text>
+    <text x="210" y="172" font-size="18" fill="#7a7a72" text-anchor="middle">basic emotion</text>
+  </g>
+  <g>
+    <rect x="430" y="106" width="300" height="88" rx="6" fill="#ffffff" stroke="#b9b9b1" stroke-width="1.5"/>
+    <text x="580" y="142" font-size="25" fill="#24241f" text-anchor="middle">評価</text>
+    <text x="580" y="172" font-size="18" fill="#7a7a72" text-anchor="middle">appraisal</text>
+  </g>
+  <g>
+    <rect x="800" y="106" width="300" height="88" rx="6" fill="#ffffff" stroke="#8a8a80" stroke-width="2.5"/>
+    <text x="950" y="142" font-size="25" fill="#24241f" text-anchor="middle">心理構成主義</text>
+    <text x="950" y="172" font-size="18" fill="#7a7a72" text-anchor="middle">psychological constructionist</text>
+  </g>
+
+  <!-- 矢印 -->
+  <defs>
+    <marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#8a8a80"/>
+    </marker>
+  </defs>
+  <line x1="210" y1="194" x2="210" y2="330" stroke="#8a8a80" stroke-width="1.5" marker-end="url(#a)"/>
+  <line x1="580" y1="194" x2="580" y2="330" stroke="#8a8a80" stroke-width="1.5" marker-end="url(#a)"/>
+  <!-- 分岐 -->
+  <path d="M950,194 L950,258 L830,258 L830,330" fill="none" stroke="#8a8a80" stroke-width="1.5" marker-end="url(#a)"/>
+  <path d="M950,194 L950,258 L1070,258 L1070,330" fill="none" stroke="#8a8a80" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="950" y="296" font-size="17" fill="#8a6a3a" text-anchor="middle">材料の層を切り出す</text>
+
+  <!-- 下段ラベル -->
+  <text x="60" y="392" font-size="20" fill="#6b6b66">本書が使う4つの系統</text>
+  <line x1="60" y1="408" x2="1100" y2="408" stroke="#dcdcd6" stroke-width="1"/>
+
+  <!-- 下段: 4系統 -->
+  <g>
+    <rect x="60" y="432" width="300" height="122" rx="6" fill="#ffffff" stroke="#5a5a52" stroke-width="1.5"/>
+    <text x="210" y="468" font-size="21" fill="#24241f" text-anchor="middle">カテゴリー</text>
+    <text x="210" y="494" font-size="21" fill="#24241f" text-anchor="middle">パラメーター型</text>
+    <text x="210" y="521" font-size="19" fill="#5a5a52" text-anchor="middle">Plutchik</text>
+    <text x="210" y="544" font-size="17" fill="#9a9a92" text-anchor="middle">第4章</text>
+  </g>
+  <g>
+    <rect x="430" y="432" width="300" height="122" rx="6" fill="#ffffff" stroke="#5a5a52" stroke-width="1.5"/>
+    <text x="580" y="481" font-size="21" fill="#24241f" text-anchor="middle">評価導出型</text>
+    <text x="580" y="512" font-size="19" fill="#5a5a52" text-anchor="middle">OCC モデル</text>
+    <text x="580" y="538" font-size="17" fill="#9a9a92" text-anchor="middle">第6章</text>
+  </g>
+  <g>
+    <rect x="740" y="432" width="180" height="122" rx="6" fill="#ffffff" stroke="#5a5a52" stroke-width="1.5"/>
+    <text x="830" y="468" font-size="20" fill="#24241f" text-anchor="middle">次元</text>
+    <text x="830" y="494" font-size="20" fill="#24241f" text-anchor="middle">パラメーター型</text>
+    <text x="830" y="521" font-size="19" fill="#5a5a52" text-anchor="middle">Russell</text>
+    <text x="830" y="544" font-size="17" fill="#9a9a92" text-anchor="middle">第5章</text>
+  </g>
+  <g>
+    <rect x="980" y="432" width="180" height="122" rx="6" fill="#ffffff" stroke="#5a5a52" stroke-width="1.5"/>
+    <text x="1070" y="481" font-size="20" fill="#24241f" text-anchor="middle">経験構成型</text>
+    <text x="1070" y="512" font-size="19" fill="#5a5a52" text-anchor="middle">Barrett</text>
+    <text x="1070" y="538" font-size="17" fill="#9a9a92" text-anchor="middle">第7章</text>
+  </g>
+
+  <text x="60" y="594" font-size="18" fill="#7a7a72">分けているのは3つ目の系統だけです。理論としては材料と構成は地続きですが、作るものとしては別になります。</text>
+</svg>

@@ -1,0 +1,137 @@
+---
+title: "感情モデルの整理"
+---
+
+本章では、感情心理学の理論群を4つの系統に整理します。第4章から第7章までは、この4つに沿って理論とその実装を扱います。
+
+先に断っておくことがあります。この4区分は筆者が実装の都合で切ったものであり、心理学の標準的な分類ではありません。そもそも分類のしかた自体が論者によって割れるという事情もあります。本章は、その事情を見てから4つの系統を出すという順序で進みます。遠回りに見えるかもしれませんが、感情の理論に正解が一つあるわけではないという前提を共有しておかないと、以降の章で選んだモデルが唯一の選択肢のように見えてしまいます。
+
+## 「感情とは何か」に定説はない
+
+エージェントに感情を持たせようとして最初に手が止まるのは、何を数値にするかです。喜びと悲しみを1本の軸の両端に置くのか、それぞれ独立した量として持つのか。怒りと恐怖は別の感情なのか、どちらも不快で覚醒（興奮や活性化の度合い）の高い状態の言い換えなのか。決めあぐねて心理学の側を見に行くと、そこにも決めてくれる人はいません。
+
+Tracy と Randles は2011年に、基本感情説の代表的な4つのモデルを並べて比較しています。Ekman と Cordaro、Izard、Levenson、Panksepp と Watt の4つです。個々のモデルの中身はここでは要りません。基本感情説は少数の生物学的に基本的な感情があるとする立場ですから、4つは同じ陣営に属している、という事実だけを見ます。実際、大枠では収束しており、感情研究の到達点と大きく食い違うものではないと同論文も述べています。それでも各論では一致しません。たとえば pride（誇り）を基本感情に数えるかどうかで、モデルによって扱いが分かれます。一つの立場の内部ですら、感情をいくつに分けるかで合意がありません。
+
+立場をまたぐと、対立はもっと長く続いています。Ekman が1992年に基本感情の条件を定式化し、Russell が1994年に表情から感情を読み取る実験の方法論を批判し、Ekman と Izard が同じ年に同じ誌上で反論しました。2019年には Barrett らが、表情と感情状態の対応を支持する証拠は乏しいとする大規模なレビューを出しています。四半世紀を越えて決着していません。
+
+ただし、この論争が争っているのは表情から感情を読み取れるかどうかであり、感情をどう分類するかではありません。測定と表出のレベルの話です。それでも、感情がどう表に出るかという、比較的観察しやすいところですら見解が割れています。だとすれば、理論そのものをどう束ねるかという一段抽象的なレベルで、答えが一つに定まっていると期待するほうが無理があります。
+
+そういうわけで、本章がこれから示す4つの系統は、心理学の合意ではありません。筆者が実装の都合で切った整理です。そしてどの立場を採るかによって、エージェントの外に置く状態の形も変わります。感情を数値にするという作業は、その時点ですでに理論の選択を含んでいます。
+
+## 同じ理論家でも、置かれる場所は論者によって変わる
+
+4つの系統を出す前に、整理のしかた自体が論者によって割れる例を一つだけ見ておきます。
+
+ウィリアム・ジェームズは、1884年に「What is an Emotion?」を書いた心理学者です。この論文は感情研究の出発点の一つとして扱われています。
+
+節1で表情研究のレビューを引いた Barrett は、その10年前に Gendron との共著で感情理論の分類を提案しています。本書がのちに土台にするのがこの分類です。2009年のこのレビューは、ジェームズを心理構成主義の系譜に置いています。それだけでなく、ジェームズを基本感情説の先駆として引用する現代の文献があることを、誤った分類だと名指しで指摘しています。
+
+一方、Cornelius が1996年の教科書で示した分類では、ジェームズは独立した一つの伝統の起点です。基本感情の系譜とも、認知的な評価の系譜とも別に、ジェームズの名を冠した枠が立っています。同じ人物が、一方では他の系譜に吸収され、もう一方では系譜そのものになっています。
+
+Cornelius の分類には、本書にとって都合の悪いところがもう一つあります。感情を次元で表す立場の居場所がありません。節1で表情研究の方法論を批判した側として名前を出した Russell も、この四伝統の中では基本感情の系譜への批判者として現れるだけです。
+
+ジェームズ自身の理論の中身は、本章の最後で扱います。ここで見ておきたかったのは、分類が対象の側の性質ではなく、分類する側の関心の反映だということです。では本書はどの切り方を採るのか。次の節で決めます。
+
+## 本書の4つの系統
+
+本書は、Gendron と Barrett が2009年のレビューで示した3つの系統を土台にします。これが優れた分類だからではなく、本書の目的に合うからです。
+
+理由は2つあります。一つは、前節で触れたとおり Cornelius の四伝統には次元で感情を表す立場の枠がないことです。本書は快と不快、覚醒の高低といった軸で感情を持つ設計を扱うため、その立場が入らない分類では足りません。もう一つは、Cornelius が身体反応の系譜に四分の一を割いていることです。前節でジェームズが起点に立てられていると書いた枠が、これにあたります。身体を持たないエージェントでは、そのままの形では扱えない系統になります。
+
+Gendron と Barrett の3つは、基本感情（basic emotion）、評価（appraisal）、心理構成主義（psychological constructionist）です。同論文の定義に沿うと、それぞれ次のようになります。基本感情の立場は、生物学的に特権的な種類の感情があり、それが世界の対象や出来事によって自動的に引き起こされると考えます。評価の立場では、感情は対象によって反射的あるいは習慣的に引き起こされるだけのものではなく、個人が対象に与える意味づけから生じます。心理構成主義は、感情を、それ自体は感情に特化していない、より基本的な心理的材料から構成された心的な複合物とみなします。3つ目は言い換えておきます。感情は生まれつき備わったカテゴリーではなく、もっと素朴な材料から組み立てられるという見方です。
+
+同論文は分類の軸を明示的に宣言していません。ただ、3つの定義がどれも感情がどこから生じるかを語っているため、生成のしくみで分けたものだと考えられます。何によって記述するかでも、どう測るかでもありません。感情を何から作るかという本書の関心には、この軸が噛み合います。
+
+本書はこの3系統のうち、心理構成主義の系統を2つに分けます。
+
+Gendron と Barrett は、19世紀末に感情を3つの次元で捉えた Wundt を、心理構成主義の系譜の始まりに置いています。快と不快、興奮と鎮静、緊張と弛緩という独立した性質の組み合わせで感情を捉える立場です。この材料にあたる部分は、後に Russell と Barrett が1999年に core affect として定義しました。同論文は Russell の2003年の議論も、この系譜の現代的な展開として扱っています。
+
+理論としては、材料の層とその上に構成が乗る層は地続きです。しかし作るものとしては別になります。感情そのものを表す量だけを外に持つ設計と、その量に名前を与えて記憶していく設計とでは、必要な部品も、保存するデータの形も違います。本書は実装を扱うので、この2つを分けます。違いが実際にどう形になるかは、第5章と第7章で確かめます。
+
+ここで切り出しているのは、Gendron と Barrett が構成主義の系譜に置いた範囲、つまり Wundt と Russell の2003年の議論に限られます。感情を次元で表す発想には、Schlosberg の表情研究や Osgood の意味微分法といった別の起源もあり、それらは同論文のレビュー範囲の外にあります。次元の立場全体が構成主義の伝統に属する、という話ではありません。
+
+Russell の位置は少しややこしいところです。1980年に円環モデルを出したときの Russell は、感情を2つの軸が張る空間の中の位置として表す次元論の人でした。それが1999年に core affect の論文を Barrett と共著し、2003年には自ら psychological construction を掲げた論文を書いています。同じ人物が次元論から構成主義へ移っています。これが、本書がこの系統を2つに分ける背景にある事情です。ただし本書が次元パラメーター型の代表に据えるのは、この移動の起点にあたる1980年の円環モデルであって、切り出しの根拠にした Wundt や2003年の議論ではありません。どの時点の Russell を代表に置くかも、ひとつの選択です。
+
+3系統から4系統への対応をまとめると、次の図のようになります。分岐しているのは心理構成主義の系統だけです。
+
+![Gendron と Barrett の3系統から本書の4系統への対応。心理構成主義だけが材料の層と構成の層に分かれる](/images/emotion-models-for-llm-agents/ch02-four-paradigms.png)
+
+以降の章で使う呼び名を、ここで決めておきます。日本語の定訳が見当たらないため、どのみち造語になります。ならば実装の話に接続しやすい名前にします。
+
+| 本書の呼称 | 対応する系統 | 本書で扱う代表 | 章 |
+|---|---|---|---|
+| カテゴリーパラメーター型 | basic emotion | Plutchik | 第4章 |
+| 次元パラメーター型 | dimensional（心理構成主義から切り出し） | Russell | 第5章 |
+| 評価導出型 | appraisal | OCC モデル | 第6章 |
+| 経験構成型 | psychological constructionist | Barrett | 第7章 |
+
+名前の意味は、それぞれのモデルを扱う章で回収します。ここでは呼び名を決めただけです。
+
+系統の切り分けはこれで決まりました。ただし、それぞれの系統の中で誰を代表に立てるかには、また別の恣意性が入り込みます。
+
+## 本書が選んだ代表は恣意的である
+
+上の表と図には、4つの系統の代表として Plutchik、Russell、OCC モデル、Barrett の名前がすでに出ています。どれも、その系統を一人で代表できるような立場ではありません。
+
+基本感情の系統なら Ekman を立てることもできます。次元の系統には、快と覚醒に支配（dominance）を加えた PAD モデルがあります。評価の系統では、感情の生起を複数の評価の連鎖として定式化した Scherer の理論が知られています。心理構成主義の系統からは、Schachter と Singer の二要因説を挙げられます。ただし Schachter と Singer を構成主義に置くのは Gendron と Barrett の分類であって、学界の合意ではありません。生理的な覚醒の解釈で感情が決まるという説明は評価の系統にも近く見えますが、Gendron と Barrett はその解釈の材料そのものを構成の素材とみなしています。
+
+本書が Plutchik、Russell、OCC モデル、Barrett を選んだのは、理論としての優劣によるものではありません。実装のしやすさと、筆者がどこに関心を持ったかによる選択です。
+
+いちばんはっきりしているのは Plutchik です。8つの基本感情に、対極をなす組と、混ぜ合わせると別の感情になる組が定義されています。喜びの反対は悲しみ、嫌悪と怒りを混ぜれば憎悪、というように、感情どうしの関係が理論の側ですでに決まっています。一方が上がれば対極が下がるという関係まで理論そのものに書き込まれているため、理論と実装の間に挟まる解釈の余地がほとんどありません。
+
+残りの3つは、それぞれ別の理由で選びました。Russell は2軸という最小の構成で済むこと、OCC モデル（Ortony、Clore、Collins の3人の姓の頭文字による通称）は評価から感情を導く手続きが if-then の形で書けること、Barrett は構成主義の中では計算モデルとしての先行研究があることです。
+
+網羅的に比較検討した結果ではありません。本書の4区分は、理論の全体像を見渡してから切ったものではなく、作りながら必要になった順に増えていったものを後から整理し直したものです。実装しては足りないところに気づき、次の理論を見に行くという繰り返しの副産物です。
+
+ここまでに、筆者の判断だという断りが3回出てきました。層が違うので整理しておきます。どの体系を土台にするか、その体系をどこで切るか、各系統の代表に誰を立てるか。3つは別々の層の判断ですが、いずれも本書の目的から逆算したものであって、心理学的な正しさから導いたものではありません。そして、この3層の判断からこぼれ落ちるものもあります。
+
+## この整理に収まらないもの
+
+4つの系統に整理すれば、そこに入らない理論が出ます。本書がそれをどう扱うかを書いておきます。
+
+一つは Panksepp の感情神経科学です。節1で挙げた Tracy と Randles の比較対象の一つが Panksepp と Watt でしたから、基本感情説の一種として数えられてはいます。ただしこの立場は、感情の基盤を大脳皮質より下の回路に求める点で、他の3つとは議論している層が違います。哺乳類に種を越えて共通する一次的な情動システムがあるとして、7つに名前が与えられています。
+
+| システム | おおよその意味 |
+|---|---|
+| SEEKING | 探索 |
+| RAGE | 怒り |
+| FEAR | 恐れ |
+| LUST | 性欲 |
+| CARE | 養育 |
+| PANIC/GRIEF | 悲嘆 |
+| PLAY | 遊び |
+
+大文字で表記するのは、日常語の怒りや恐れと区別するためです。本書はこれを独立した系統には立てません。7つを外部の状態として持たせること自体はできますが、そうすると形の上では Plutchik の8軸とほとんど変わらなくなり、皮質下の回路に基盤を置くというこの立場の主眼が失われます。名前を挙げるにとどめます。
+
+もう一つは、身体そのものが感情の原因になるという考え方です。悲しいから泣くのではなく、泣くから悲しいという順序の逆転で知られる、節2で名前を出したジェームズの理論がこれにあたります。20世紀の終わりには Damasio が、身体の状態が意思決定に先立って選択肢を絞り込むというソマティック・マーカー仮説を出しています。
+
+ここで注意が要ります。Gendron と Barrett の分類では、ジェームズは心理構成主義に含まれます。理論の分類としては、この系譜は本書の4区分の内側にあります。しかし身体反応説そのものは身体があることを前提にするため、身体を持たないエージェントの外部状態として持たせる対象にはなりません。理論としてどこに分類されるかと、実装できるかどうかは別の問題です。
+
+ただし身体の系譜は、形を変えて第7章に戻ってきます。身体の内側の状態を脳が推定するという内受容推論の考え方が、Barrett の理論の中核にあたるためです。
+
+4つの系統が出そろいました。次章では、この4つに共通してかかってくる問題、つまり感情の何を LLM の外側に置くのかを扱います。
+
+## 参考文献
+
+本章で言及した文献を、登場順に挙げます。所在は DOI を優先し、無料で読めるものはその URL を添えています。
+
+- Tracy, J. L., & Randles, D. (2011). Four Models of Basic Emotions: A Review of Ekman and Cordaro, Izard, Levenson, and Panksepp and Watt. Emotion Review. https://doi.org/10.1177/1754073911410747
+- Ekman, P. (1992). An Argument for Basic Emotions. Cognition and Emotion. https://doi.org/10.1080/02699939208411068
+- Russell, J. A. (1994). Is There Universal Recognition of Emotion From Facial Expression? A Review of the Cross-Cultural Studies. Psychological Bulletin. https://doi.org/10.1037/0033-2909.115.1.102
+- Ekman, P. (1994). Strong Evidence for Universals in Facial Expressions: A Reply to Russell's Mistaken Critique. Psychological Bulletin. https://doi.org/10.1037/0033-2909.115.2.268
+- Izard, C. E. (1994). Innate and Universal Facial Expressions: Evidence From Developmental and Cross-Cultural Research. Psychological Bulletin. https://doi.org/10.1037/0033-2909.115.2.288
+- Barrett, L. F., Adolphs, R., Marsella, S., Martinez, A. M., & Pollak, S. D. (2019). Emotional Expressions Reconsidered: Challenges to Inferring Emotion From Human Facial Movements. Psychological Science in the Public Interest. https://doi.org/10.1177/1529100619832930
+- James, W. (1884). What is an Emotion? Mind, os-9(34), 188-205. 全文は https://psychclassics.yorku.ca/James/emotion.htm で公開されています
+- Cornelius, R. R. (1996). The Science of Emotion: Research and Tradition in the Psychology of Emotion. Prentice Hall. ISBN 0133001539. 絶版ですが、著者自身が同じ四分法を要約した Cornelius, R. R. (2000). Theoretical Approaches to Emotion. Proceedings of the ISCA Workshop on Speech and Emotion が ISCA アーカイブで無料公開されています
+- Gendron, M., & Barrett, L. F. (2009). Reconstructing the Past: A Century of Ideas About Emotion in Psychology. Emotion Review. https://doi.org/10.1177/1754073909338877
+- Wundt, W. (1896). Grundriss der Psychologie. Wilhelm Engelmann. 英訳 Outlines of Psychology（1897）の全文が https://psychclassics.yorku.ca/Wundt/Outlines/ で公開されています
+- Russell, J. A. (1980). A Circumplex Model of Affect. Journal of Personality and Social Psychology. https://doi.org/10.1037/h0077714
+- Russell, J. A., & Barrett, L. F. (1999). Core Affect, Prototypical Emotional Episodes, and Other Things Called Emotion: Dissecting the Elephant. Journal of Personality and Social Psychology. https://doi.org/10.1037/0022-3514.76.5.805
+- Russell, J. A. (2003). Core Affect and the Psychological Construction of Emotion. Psychological Review. https://doi.org/10.1037/0033-295X.110.1.145
+- Plutchik, R. (2001). The Nature of Emotions. American Scientist. https://www.jstor.org/stable/27857503
+- Mehrabian, A., & Russell, J. A. (1974). An Approach to Environmental Psychology. MIT Press. ISBN 978-0-262-13090-5
+- Scherer, K. R. (2005). What are emotions? And how can they be measured? Social Science Information. https://doi.org/10.1177/0539018405058216
+- Schachter, S., & Singer, J. E. (1962). Cognitive, Social, and Physiological Determinants of Emotional State. Psychological Review. https://doi.org/10.1037/h0046234
+- Ortony, A., Clore, G. L., & Collins, A. (1988). The Cognitive Structure of Emotions. Cambridge University Press. 2022年に新版が出ています（ISBN 9781108928755）
+- Panksepp, J. (1998). Affective Neuroscience: The Foundations of Human and Animal Emotions. Oxford University Press.
+- Damasio, A. R. (1994). Descartes' Error: Emotion, Reason, and the Human Brain. Putnam. 学術論文としては Damasio, A. R. (1996). The Somatic Marker Hypothesis and the Possible Functions of the Prefrontal Cortex. Philosophical Transactions of the Royal Society B, 351(1346), 1413-1420. https://doi.org/10.1098/rstb.1996.0125

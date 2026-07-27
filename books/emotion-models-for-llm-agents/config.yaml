@@ -1,0 +1,16 @@
+# タイトル・summary・topics はすべて仮。公開判断まで published: false / price: 0 を維持する
+title: "LLMエージェントのための感情モデル"
+summary: "「感情とは何か」への答えは、心理学でも一つに定まっていない。その理論群を筆者なりに4つのパラダイムへ整理し、LLMエージェントの外部状態として実装し、応答の違いを実測するまでを解説する。"
+topics: ["llm", "aiagent", "ai", "go"]
+published: false
+price: 0
+toc_depth: 2
+chapters:
+  - ch01-introduction
+  - ch02-emotion-models
+  - ch03-implementing-emotion-models
+  - ch04-plutchik
+  - ch05-russell
+  - ch06-occ
+  - ch07-barrett
+  - ch08-comparison
