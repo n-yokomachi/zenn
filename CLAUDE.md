@@ -1,10 +1,13 @@
 # プロジェクトルール
 
-## レビュー用サブエージェントのモデル
+## サブエージェントのモデル
 
-- 書籍執筆に関わるレビュー（骨子レビュー・原稿レビュー・ファクトチェック・書誌検証など）を実行するサブエージェントには、**常にその時点で利用できる最高モデルを明示指定する**。2026-07 時点では Fable（Agent 呼び出しの `model` に `"fable"` を渡す）
-- `~/.claude/settings.json` の `CLAUDE_CODE_SUBAGENT_MODEL` が `sonnet` に設定されているため、**指定を省略するとサブエージェントは Sonnet で動く**。省略してはならない
-- グローバル設定（`~/.claude/settings.json`）は他プロジェクトにも影響するため書き換えない。Agent 呼び出しごとの `model` 指定で上書きする
+このプロジェクトのサブエージェントは、`.claude/settings.json` の `env.CLAUDE_CODE_SUBAGENT_MODEL` で最高モデル（2026-07 時点では `fable`）に固定している。書籍のレビュー・ファクトチェック・書誌検証を下位モデルで実行させないための設定。
+
+- ユーザースコープの `~/.claude/settings.json` は `CLAUDE_CODE_SUBAGENT_MODEL` を `sonnet` に設定している。設定の適用順は user → project → local なので、**プロジェクト側の値が勝つ**
+- **Agent 呼び出しの `model` パラメータでは上書きできない**。環境変数のほうが強く、`model: "fable"` を渡してもサブエージェントは `claude-sonnet-5` で実行される（2026-07-28 に実測で確認）
+- グローバル設定は他プロジェクトに影響するため書き換えない
+- **モデルが実際に何で動いたかは、`~/.claude/projects/<sanitized-cwd>/<session-id>/subagents/agent-*.meta.json` の `model` フィールドで確認できる**。パラメータを渡したことを実行されたことと同一視せず、記録で確かめること
 
 ## Git 運用
 
