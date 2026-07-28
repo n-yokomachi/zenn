@@ -23,9 +23,10 @@
 2. Gendron, M., & Barrett, L. F. (2009). Reconstructing the Past: A Century of Ideas About Emotion in Psychology. Emotion Review, 1(4), 316-339. doi:10.1177/1754073909338877 — 基本感情／評価／構成主義の3伝統を心理学史に位置づける。PMC 無料全文
 3. Moors, A. (2009). Theories of emotion causation: A review. Cognition and Emotion, 23(4), 625-662. doi:10.1080/02699930802645739 — 生起・強度・分化という説明課題で理論横断比較。Ghent 大リポジトリに無料 PDF
 4. Gross, J. J., & Barrett, L. F. (2011). Emotion Generation and Emotion Regulation: One or Two Depends on Your Point of View. Emotion Review, 3(1), 8-16. doi:10.1177/1754073910380974 — 理論的立場の違いが研究設計に波及する実例。著者サイトに無料 PDF
-5. Scarantino, A. (Ed.). Emotion Theory: The Routledge Comprehensive Guide（旧題 The Routledge Handbook of Emotion Theory）. Routledge, 2巻51章. ISBN 9781138676688 — 最も包括的な学際ハンドブック
+5. Scarantino, A. (Ed.) (2024). Emotion Theory: The Routledge Comprehensive Guide（旧題 The Routledge Handbook of Emotion Theory）. Routledge — 最も包括的な学際ハンドブック。**2巻62章・執筆者101名**（2024-07-23 刊）。ISBN は Vol.I 9781138676688 / Vol.II 9781032743721 / 2巻セット 9781032731872
+   > **⚠ 訂正（2026-07-28）**: 旧記載「2巻51章」は誤り。正しくは62章・101名。また ISBN 9781138676688 は **Volume I 単体**のものであり全体を代表しない
 6. Barrett, L. F., Lewis, M., & Haviland-Jones, J. M. (Eds.). (2016). Handbook of Emotions (4th ed.). Guilford Press — 定番リファレンス
-7. Davidson, R. J., Scherer, K. R., & Goldsmith, H. H. (Eds.). (2003). Handbook of Affective Sciences. Oxford University Press — 感情科学の初期体系化
+7. Davidson, R. J., Scherer, K. R., & Goldsmith, H. H. (Eds.). (2003). Handbook of Affective Sciences. Oxford University Press. ISBN 9780195126013 — 感情科学の初期体系化。改訂版は未刊行。**⚠ 頁数は情報源間で揺れており統一値が確定できない（xvii+1199 / 1119 / 1217）。頁数を書かないこと**（2026-07-28 確認）
 8. Scherer, K. R. (2005). What are emotions? And how can they be measured? Social Science Information, 44(4), 695-729. doi:10.1177/0539018405058216 — CPM の代表的定式化（頁表記 695-727/729 が併存、引用時は DOI ページ優先）
 9. Calvo, R. A., & D'Mello, S. (2010). Affect Detection. IEEE TAFFC, 1(1), 18-37. doi:10.1109/T-AFFC.2010.1 — **garden の affective-computing 側に既存ノートあり（2010-calvo-affect-detection-survey.md）。新規追加不要、相互参照のみ**
 10. Adolphs, R., & Anderson, D. J. (2018). The Neuroscience of Emotion: A New Synthesis. Princeton UP. ISBN 9780691174082 — 神経科学からの独自統合（第五の視点の対比材料）
@@ -38,13 +39,14 @@
 4. Lu & Li (2025). Dynamic Affective Memory Management for Personalized LLM Agents. arXiv:2510.27418 — DAM-LLM・感情メモリ管理（Barrett 章の隣接研究候補）
 5. Ma et al. (2025). Emotional Cognitive Modeling Framework…. arXiv:2510.13195 — 欲求駆動の感情認知フレームワーク
 6. van der Ben et al. (2026). Where Do Models Find Happiness? Emotion Vectors in Open-Source LLMs. arXiv:2606.26987 — Anthropic 2026 のオープンモデル追試（PC1 相関 r=0.76/0.83）。**S2 の根拠補強に有力**
-7. Bhattacharyya et al. (2025/2026). CoRE ベンチマーク. arXiv:2508.05880 — 評価理論に基づく LLM の感情推論検証（v2 で改題に注意）
+7. Bhattacharyya et al. (2025/2026). CoRE ベンチマーク. arXiv:2508.05880 — 評価理論に基づく LLM の感情推論検証。**v1（2025-08-07）"Do Machines Think Emotionally? Cognitive Appraisal Analysis of Large Language Models" → v2（2026-03-13）"Large language models show fragile cognitive reasoning about human emotions" に改題**（2026-07-28 確認）。知見は「評価と感情の系統的な関係は捉えるが、人間の判断とずれ、文脈で不安定」
 8. Yeo & Jaidka (2025). Beyond Context to Cognitive Appraisal. arXiv:2506.00334 — 評価理論×ToM ベンチマーク
 9. Keeman (2026). AIPsy-Affect. arXiv:2604.23719 — キーワード不含の Plutchik 8感情刺激セット（解釈可能性の方法論）
-10. Schuller et al. (2026). Affective Computing Has Changed: The Foundation Model Disruption. npj Artificial Intelligence (s44387-025-00061-3, 2026-01 採録。プレプリント arXiv:2409.08907) — Zhang 2024 と対になる査読誌採録サーベイ
+10. Schuller et al. (2026). Affective Computing Has Changed: The Foundation Model Disruption. npj Artificial Intelligence 2, 16. doi:10.1038/s44387-025-00061-3（Accepted 2025-11-28 / Published 2026-01-31）— Zhang 2024 と対になる査読誌採録サーベイ
+    > **⚠ 注記（2026-07-28）**: arXiv:2409.08907 との同一性は**公式メタデータ上のリンクが存在せず、タイトル・著者・アブストラクトの一致による推定**。末尾1文が異なる（arXiv 版は倫理・規制、npj 版は評価上の課題）。「査読後版」と断定して書かないこと
 
 ## D. ファクトチェック結果（fact-checker, 14項目）
 
 - 年号誤りゼロ。補足3件: Plutchik（1980 確立・原型は 1958 論文 doi:10.1111/j.2164-0947.1958.tb00600.x と 1962 著書）／OCC（2022-08 Cambridge 新版 ISBN 9781108928755、更新＋回顧章）／Panksepp（PANIC/GRIEF 表記か注記）
-- 精緻化2件: PANAS（1985 = 2因子構造理論、1988 = 尺度開発。Watson, Clark & Tellegen 1988, JPSP 54(6), 1063-1070, doi:10.1037/0022-3514.54.6.1063）／Damasio（一般書 1994 Descartes' Error・学術 1996 Phil Trans R Soc B, doi:10.1098/rstb.1996.0125 併記推奨）
+- 精緻化2件: PANAS（1985 = 2因子構造理論、1988 = 尺度開発。Watson, Clark & Tellegen 1988, JPSP 54(6), 1063-1070, doi:10.1037/0022-3514.54.6.1063）／Damasio（一般書 1994 Descartes' Error・学術 1996 Phil Trans R Soc B 351(1346), 1413-1420, doi:10.1098/rstb.1996.0125 併記推奨。**単著。Everitt・Bishop を共著者とする表記が二次資料に流通しているが誤り。彼らは同巻の Discussion の発言者。2026-07-28 に Crossref・PubMed で確認**）
 - 参考: Schachter & Singer 1962 には再現性・実在性への史学的疑義（Dror 2017 等）。Scherer CPM の代表初出は Scherer (1984) In Approaches to Emotion (Erlbaum), pp.293-317
