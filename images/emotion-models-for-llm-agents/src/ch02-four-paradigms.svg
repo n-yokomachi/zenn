@@ -2,7 +2,7 @@
   <rect width="1160" height="628" fill="#fbfbfa"/>
 
   <!-- 上段ラベル -->
-  <text x="60" y="66" font-size="20" fill="#6b6b66">Gendron &amp; Barrett (2009) が示した3つの系統</text>
+  <text x="60" y="66" font-size="20" fill="#6b6b66">ジェンドロンとバレット（2009）が示した3つの系統</text>
   <line x1="60" y1="82" x2="1100" y2="82" stroke="#dcdcd6" stroke-width="1"/>
 
   <!-- 上段: 3系統 -->
@@ -57,13 +57,13 @@
     <rect x="740" y="432" width="180" height="122" rx="6" fill="#ffffff" stroke="#5a5a52" stroke-width="1.5"/>
     <text x="830" y="468" font-size="20" fill="#24241f" text-anchor="middle">次元</text>
     <text x="830" y="494" font-size="20" fill="#24241f" text-anchor="middle">パラメーター型</text>
-    <text x="830" y="521" font-size="19" fill="#5a5a52" text-anchor="middle">Russell</text>
+    <text x="830" y="521" font-size="19" fill="#5a5a52" text-anchor="middle">ラッセル</text>
     <text x="830" y="544" font-size="17" fill="#9a9a92" text-anchor="middle">第5章</text>
   </g>
   <g>
     <rect x="980" y="432" width="180" height="122" rx="6" fill="#ffffff" stroke="#5a5a52" stroke-width="1.5"/>
     <text x="1070" y="481" font-size="20" fill="#24241f" text-anchor="middle">経験構成型</text>
-    <text x="1070" y="512" font-size="19" fill="#5a5a52" text-anchor="middle">Barrett</text>
+    <text x="1070" y="512" font-size="19" fill="#5a5a52" text-anchor="middle">バレット</text>
     <text x="1070" y="538" font-size="17" fill="#9a9a92" text-anchor="middle">第7章</text>
   </g>
 
