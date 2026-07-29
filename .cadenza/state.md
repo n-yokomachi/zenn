@@ -176,7 +176,8 @@ ch2 で実際に通した手順を型として記録する。以降の章はこ�
 |---|---|---|
 | ch2 感情モデルの整理 | chapters/ch02.md | 本文執筆完了（2026-07-28）。参考文献リストは章末形式で決着。オーナーレビュー待ち |
 | ch3 感情モデルを LLM エージェントに実装するには | chapters/ch03.md | 本文執筆完了（2026-07-28）。図版3枚＋表1。**抽象的な設計論。affectus は出していない**。オーナーレビュー待ち |
-| ch4〜ch8, ch1 | 未作成 | 未着手 |
+| ch4 Plutchik | chapters/ch04.md | storyboarding 完了（2026-07-29）。分析待ち。語彙問題（原典 acceptance/sorrow/expectancy vs 実装の流布版）の決定はオーナー確認事項 |
+| ch5〜ch8, ch1 | 未作成 | 未着手 |
 
 ### Unverified territory
 - Russell / OCC / Barrett の対照実験は未実施。Barrett は eval 実行系（run.py/agent.py/analyze.py 対応）の実装から必要（配線のみ済み: commit 8531302）。
