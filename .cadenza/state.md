@@ -22,7 +22,7 @@
 
 ### Primary-source basis
 - affectus 自作: Plutchik → Russell → OCC → Barrett の4パラダイムを段階実装した OSS（github.com/n-yokomachi/affectus）。docs/superpowers/specs/ の設計書6本が設計判断の一次資料。
-- strands-eval 実測: 性格 × affectus on/off の対照実験。Plutchik フェーズは実施済み。**book 執筆中に Russell/OCC/Barrett へ実測を拡充する（オーナー確定）**。Barrett は eval 実行系（run.py/agent.py/analyze.py 対応）の実装から必要（配線のみ済み: commit 8531302）。
+- 実測リグ（affectus `examples/evaluation`。旧 strands-eval・2026-08-09 改名）: 性格 × affectus on/off の対照実験。Plutchik フェーズは実施済み。**LLM は Claude Agent SDK 経由のサブスクリプション実行（2026-08-09 切り替え。temperature 指定なし・4並列。Strands+Bedrock 経路は `EVAL_BACKEND=bedrock` で再現用に温存）**。**book 執筆中に Russell/OCC/Barrett へ実測を拡充する（オーナー確定）**。Barrett は eval 実行系（run.py/agent.py/analyze.py 対応）の実装から必要（配線のみ済み: commit 8531302）。
 - 文献ノート群49件（garden: ai-emotion-synthesis 22 + affective-computing 27）。deep-research の書誌誤記は一次資料で訂正済み。ただし Barrett 一般書・茂木本・OCC 原典等に未読／二次情報ベースの留保あり——執筆時に一次資料へ当たり直す。
 
 ### 人名の表記（オーナー確定 2026-07-28・全章に適用）

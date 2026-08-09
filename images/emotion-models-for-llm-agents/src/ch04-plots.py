@@ -1,15 +1,15 @@
 """ch4 実測グラフの生成スクリプト。
 
-affectus examples/strands-eval の再ラン結果(2026-07-30・改名済み軸名)から、
-書籍用の日本語ラベル図2枚を生成する。
+affectus examples/evaluation の実測結果から、書籍用の日本語ラベル図2枚を
+生成する。
 
-  python ch04-plots.py [strands-eval ディレクトリ]
+  python ch04-plots.py [evaluation ディレクトリ]
 
 出力(このファイルの親の親 = images/emotion-models-for-llm-agents/):
   - ch04-polarity.png  極性カーブ(4セル・3ラン平均)
   - ch04-8axis.png     friendly-on の8軸スモールマルチプル(3ラン平均)
 
-依存: matplotlib(strands-eval の venv にある。`uv run python` で実行する)
+依存: matplotlib(evaluation の venv にある。`uv run python` で実行する)
 """
 
 from __future__ import annotations
@@ -27,7 +27,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 EVAL_DIR = Path(sys.argv[1] if len(sys.argv) > 1 else
-                "/Users/Naoki/work/workshop/affectus/examples/strands-eval")
+                "/Users/Naoki/work/workshop/affectus/examples/evaluation")
 OUT_DIR = Path(__file__).resolve().parent.parent
 
 BG = "#fbfbfa"
