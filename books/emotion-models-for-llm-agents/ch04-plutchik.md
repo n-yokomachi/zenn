@@ -147,7 +147,7 @@ feel は適用後の状態をそのまま返します。足した喜びと驚き
 本章で言及した文献を、登場順に挙げます。所在は DOI を優先し、無料で読めるものはその URL を添えています。
 
 - Plutchik, R. (2001). The Nature of Emotions. American Scientist. https://www.jstor.org/stable/27857503
-- Plutchik, R. (2001). Integration, Differentiation, and Derivatives of Emotion. Evolution and Cognition, 7(2), 114-125. 掲載号の PDF が Konrad Lorenz Institute のサイトで公開されています(https://kli.ac.at/webroot/files/file/Evolution%20&%20Cognition/2001%207-2.pdf)
+- Plutchik, R. (2001). Integration, Differentiation, and Derivatives of Emotion. Evolution and Cognition, 7(2), 114-125. 掲載号の PDF が Konrad Lorenz Institute のサイトで公開されています（https://kli.ac.at/webroot/files/file/Evolution%20&%20Cognition/2001%207-2.pdf）
 
 [^plutchik-amsci2001]: Plutchik, R. (2001). The Nature of Emotions. American Scientist, 89(4). https://www.jstor.org/stable/27857503
 [^vocab-variants]: 原語の揺れの例。本人の別論文（Evolution and Cognition 誌）の円環図はラベルが sadness と anticipation、American Scientist 論文の本文は sorrow と expectancy です。trust が本人の図のラベルに使われた例は、筆者が参照した範囲では見つかりませんでした。
