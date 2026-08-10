@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="760" viewBox="0 0 1160 760" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif">
+<rect width="1160" height="760" fill="#fbfbfa"/>
+
+<!-- 2軸(快-不快 / 覚醒-眠気) -->
+<line x1="330" y1="375" x2="830" y2="375" stroke="#dcdcd6" stroke-width="1" stroke-dasharray="4,5"/>
+<line x1="580" y1="125" x2="580" y2="625" stroke="#dcdcd6" stroke-width="1" stroke-dasharray="4,5"/>
+
+<!-- 円環 -->
+<circle cx="580" cy="375" r="250" fill="none" stroke="#8a8a80" stroke-width="1.5"/>
+
+<!-- 角度の目盛り(円の内側) -->
+<text x="795" y="379" font-size="12" fill="#a8a8a2" text-anchor="middle">0°</text>
+<text x="732" y="227" font-size="12" fill="#a8a8a2" text-anchor="middle">45°</text>
+<text x="580" y="168" font-size="12" fill="#a8a8a2" text-anchor="middle">90°</text>
+<text x="428" y="227" font-size="12" fill="#a8a8a2" text-anchor="middle">135°</text>
+<text x="365" y="379" font-size="12" fill="#a8a8a2" text-anchor="middle">180°</text>
+<text x="428" y="535" font-size="12" fill="#a8a8a2" text-anchor="middle">225°</text>
+<text x="580" y="598" font-size="12" fill="#a8a8a2" text-anchor="middle">270°</text>
+<text x="732" y="535" font-size="12" fill="#a8a8a2" text-anchor="middle">315°</text>
+
+<!-- 8概念の点 -->
+<circle cx="830" cy="375" r="6" fill="#24241f"/>
+<circle cx="756.8" cy="198.2" r="6" fill="#24241f"/>
+<circle cx="580" cy="125" r="6" fill="#24241f"/>
+<circle cx="403.2" cy="198.2" r="6" fill="#24241f"/>
+<circle cx="330" cy="375" r="6" fill="#24241f"/>
+<circle cx="403.2" cy="551.8" r="6" fill="#24241f"/>
+<circle cx="580" cy="625" r="6" fill="#24241f"/>
+<circle cx="756.8" cy="551.8" r="6" fill="#24241f"/>
+
+<!-- ラベル(日本語 + 原語) -->
+<text x="864" y="368" font-size="22" fill="#24241f" text-anchor="start">快</text>
+<text x="864" y="392" font-size="14" fill="#7a7a72" text-anchor="start">pleasure</text>
+
+<text x="800" y="150" font-size="22" fill="#24241f" text-anchor="middle">興奮</text>
+<text x="800" y="174" font-size="14" fill="#7a7a72" text-anchor="middle">excitement</text>
+
+<text x="580" y="85" font-size="22" fill="#24241f" text-anchor="middle">覚醒</text>
+<text x="580" y="109" font-size="14" fill="#7a7a72" text-anchor="middle">arousal</text>
+
+<text x="360" y="150" font-size="22" fill="#24241f" text-anchor="middle">苦悩</text>
+<text x="360" y="174" font-size="14" fill="#7a7a72" text-anchor="middle">distress</text>
+
+<text x="296" y="368" font-size="22" fill="#24241f" text-anchor="end">みじめさ</text>
+<text x="296" y="392" font-size="14" fill="#7a7a72" text-anchor="end">misery</text>
+
+<text x="360" y="600" font-size="22" fill="#24241f" text-anchor="middle">抑うつ</text>
+<text x="360" y="624" font-size="14" fill="#7a7a72" text-anchor="middle">depression</text>
+
+<text x="580" y="668" font-size="22" fill="#24241f" text-anchor="middle">眠気</text>
+<text x="580" y="692" font-size="14" fill="#7a7a72" text-anchor="middle">sleepiness</text>
+
+<text x="800" y="600" font-size="22" fill="#24241f" text-anchor="middle">満足</text>
+<text x="800" y="624" font-size="14" fill="#7a7a72" text-anchor="middle">contentment</text>
+
+<!-- 再構成の注記 -->
+<text x="20" y="740" font-size="14" fill="#7a7a72">Russell (1980) の Figure 1 をもとに再構成した図です。概念の並びは原図のとおり、配置は45°等間隔に理念化しています(原図の座標は類似性データからの統計配置)。</text>
+</svg>
