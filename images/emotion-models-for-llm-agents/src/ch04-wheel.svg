@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="760" viewBox="0 0 1160 760" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif">
+<rect width="1160" height="760" fill="#fbfbfa"/>
+<path d="M580.0,304.0 L580.0,110.0 A250,250 0 0 1 756.8,183.2 L619.6,320.4 A56,56 0 0 0 580.0,304.0 Z" fill="#ffffff" stroke="#8a8a80" stroke-width="1.5"/>
+<path d="M619.6,320.4 L756.8,183.2 A250,250 0 0 1 830.0,360.0 L636.0,360.0 A56,56 0 0 0 619.6,320.4 Z" fill="#ffffff" stroke="#8a8a80" stroke-width="1.5"/>
+<path d="M636.0,360.0 L830.0,360.0 A250,250 0 0 1 756.8,536.8 L619.6,399.6 A56,56 0 0 0 636.0,360.0 Z" fill="#ffffff" stroke="#8a8a80" stroke-width="1.5"/>
+<path d="M619.6,399.6 L756.8,536.8 A250,250 0 0 1 580.0,610.0 L580.0,416.0 A56,56 0 0 0 619.6,399.6 Z" fill="#ffffff" stroke="#8a8a80" stroke-width="1.5"/>
+<path d="M580.0,416.0 L580.0,610.0 A250,250 0 0 1 403.2,536.8 L540.4,399.6 A56,56 0 0 0 580.0,416.0 Z" fill="#ffffff" stroke="#8a8a80" stroke-width="1.5"/>
+<path d="M540.4,399.6 L403.2,536.8 A250,250 0 0 1 330.0,360.0 L524.0,360.0 A56,56 0 0 0 540.4,399.6 Z" fill="#ffffff" stroke="#8a8a80" stroke-width="1.5"/>
+<path d="M524.0,360.0 L330.0,360.0 A250,250 0 0 1 403.2,183.2 L540.4,320.4 A56,56 0 0 0 524.0,360.0 Z" fill="#ffffff" stroke="#8a8a80" stroke-width="1.5"/>
+<path d="M540.4,320.4 L403.2,183.2 A250,250 0 0 1 580.0,110.0 L580.0,304.0 A56,56 0 0 0 540.4,320.4 Z" fill="#ffffff" stroke="#8a8a80" stroke-width="1.5"/>
+<line x1="601.4" y1="308.3" x2="558.6" y2="411.7" stroke="#dcdcd6" stroke-width="1" stroke-dasharray="3,4"/>
+<line x1="631.7" y1="338.6" x2="528.3" y2="381.4" stroke="#dcdcd6" stroke-width="1" stroke-dasharray="3,4"/>
+<line x1="631.7" y1="381.4" x2="528.3" y2="338.6" stroke="#dcdcd6" stroke-width="1" stroke-dasharray="3,4"/>
+<line x1="601.4" y1="411.7" x2="558.6" y2="308.3" stroke="#dcdcd6" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="643.1" y="203.6" font-size="22" fill="#24241f" text-anchor="middle">受容</text>
+<text x="643.1" y="227.6" font-size="14" fill="#7a7a72" text-anchor="middle">acceptance</text>
+<text x="732.4" y="292.9" font-size="22" fill="#24241f" text-anchor="middle">恐れ</text>
+<text x="732.4" y="316.9" font-size="14" fill="#7a7a72" text-anchor="middle">fear</text>
+<text x="732.4" y="419.1" font-size="22" fill="#24241f" text-anchor="middle">驚き</text>
+<text x="732.4" y="443.1" font-size="14" fill="#7a7a72" text-anchor="middle">surprise</text>
+<text x="643.1" y="508.4" font-size="22" fill="#24241f" text-anchor="middle">悲しみ</text>
+<text x="643.1" y="532.4" font-size="14" fill="#7a7a72" text-anchor="middle">sorrow</text>
+<text x="516.9" y="508.4" font-size="22" fill="#24241f" text-anchor="middle">嫌悪</text>
+<text x="516.9" y="532.4" font-size="14" fill="#7a7a72" text-anchor="middle">disgust</text>
+<text x="427.6" y="419.1" font-size="22" fill="#24241f" text-anchor="middle">怒り</text>
+<text x="427.6" y="443.1" font-size="14" fill="#7a7a72" text-anchor="middle">anger</text>
+<text x="427.6" y="292.9" font-size="22" fill="#24241f" text-anchor="middle">予期</text>
+<text x="427.6" y="316.9" font-size="14" fill="#7a7a72" text-anchor="middle">expectancy</text>
+<text x="516.9" y="203.6" font-size="22" fill="#24241f" text-anchor="middle">喜び</text>
+<text x="516.9" y="227.6" font-size="14" fill="#7a7a72" text-anchor="middle">joy</text>
+<text x="580.0" y="60.0" font-size="19" fill="#8a6a3a" text-anchor="middle">愛</text>
+<text x="580.0" y="80.0" font-size="13" fill="#b09a7e" text-anchor="middle">love</text>
+<text x="786.5" y="151.5" font-size="19" fill="#8a6a3a" text-anchor="start">服従</text>
+<text x="786.5" y="171.5" font-size="13" fill="#b09a7e" text-anchor="start">submission</text>
+<text x="872.0" y="358.0" font-size="19" fill="#8a6a3a" text-anchor="start">畏怖</text>
+<text x="872.0" y="378.0" font-size="13" fill="#b09a7e" text-anchor="start">awe</text>
+<text x="786.5" y="564.5" font-size="19" fill="#8a6a3a" text-anchor="start">失望</text>
+<text x="786.5" y="584.5" font-size="13" fill="#b09a7e" text-anchor="start">disappointment</text>
+<text x="580.0" y="664.0" font-size="19" fill="#8a6a3a" text-anchor="middle">自責</text>
+<text x="580.0" y="684.0" font-size="13" fill="#b09a7e" text-anchor="middle">remorse</text>
+<text x="373.5" y="564.5" font-size="19" fill="#8a6a3a" text-anchor="end">軽蔑</text>
+<text x="373.5" y="584.5" font-size="13" fill="#b09a7e" text-anchor="end">contempt</text>
+<text x="288.0" y="358.0" font-size="19" fill="#8a6a3a" text-anchor="end">攻撃性</text>
+<text x="288.0" y="378.0" font-size="13" fill="#b09a7e" text-anchor="end">aggressiveness</text>
+<text x="373.5" y="151.5" font-size="19" fill="#8a6a3a" text-anchor="end">楽観</text>
+<text x="373.5" y="171.5" font-size="13" fill="#b09a7e" text-anchor="end">optimism</text>
+<circle cx="580" cy="360" r="56" fill="#fbfbfa" stroke="#8a8a80" stroke-width="1.5"/>
+<text x="580" y="358" font-size="15" fill="#7a7a72" text-anchor="middle">強度は</text>
+<text x="580" y="378" font-size="15" fill="#7a7a72" text-anchor="middle">中心ほど高い</text>
+<text x="60" y="700" font-size="18" fill="#7a7a72">向かい合う扇形が対極、外側の茶色が隣接どうしの混合(一次双対)です。</text>
+<text x="60" y="728" font-size="16" fill="#9a9a92">Plutchik (2001) Evolution and Cognition 誌の Figure 2 を本書の表記で再構成した図です。</text>
+</svg>
