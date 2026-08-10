@@ -4,6 +4,8 @@
 <!-- 2軸(快-不快 / 覚醒-眠気) -->
 <line x1="330" y1="375" x2="830" y2="375" stroke="#dcdcd6" stroke-width="1" stroke-dasharray="4,5"/>
 <line x1="580" y1="125" x2="580" y2="625" stroke="#dcdcd6" stroke-width="1" stroke-dasharray="4,5"/>
+<text x="668" y="396" font-size="13" fill="#a8a8a2" text-anchor="middle">快 − 不快の軸</text>
+<text x="566" y="255" font-size="13" fill="#a8a8a2" text-anchor="middle" transform="rotate(-90 566 255)">覚醒の程度の軸</text>
 
 <!-- 円環 -->
 <circle cx="580" cy="375" r="250" fill="none" stroke="#8a8a80" stroke-width="1.5"/>

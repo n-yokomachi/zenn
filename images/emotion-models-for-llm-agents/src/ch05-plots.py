@@ -105,7 +105,7 @@ def plot_va_trajectory() -> None:
     # 平面の目安: 快-不快の境界と、象限の読みの例語
     ax.axvline(0, color=GRID, linewidth=1.2)
     for x, y, word in [(-0.93, 0.96, "苦悩のあたり"), (0.93, 0.96, "興奮のあたり"),
-                       (-0.93, 0.035, "抑うつのあたり"), (0.93, 0.035, "リラックスのあたり")]:
+                       (-0.93, 0.035, "抑うつのあたり"), (0.93, 0.035, "満足のあたり")]:
         ax.text(x, y, word, color=MUTED, fontsize=11,
                 ha="left" if x < 0 else "right", va="center")
 
@@ -142,7 +142,7 @@ def plot_va_trajectory() -> None:
     ax.set_ylabel("arousal(覚醒)", color=INK, fontsize=12)
     ax.legend(loc="upper center", ncol=2, fontsize=10.5, frameon=False)
     fig.text(0.01, 0.01,
-             "フレンドリー + affectus(和解台本)の外部状態の軌跡です。点は各ターン終了時の値(3ランの平均)です。",
+             "フレンドリー + affectus(和解台本)の軌跡です。点は各ターン終了時の値(3ランの平均)、点線は基準点から t1 への移動です。",
              color=MUTED, fontsize=11)
     fig.tight_layout(rect=(0, 0.04, 1, 1))
     fig.savefig(OUT_DIR / "ch05-va-trajectory-anger-to-praise.png", facecolor=BG)
