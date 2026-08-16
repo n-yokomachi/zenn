@@ -20,7 +20,7 @@
   <text x="250" y="193" font-size="19" fill="#24241f" text-anchor="middle">相手の発話（出来事）</text>
   <line x1="250" y1="220" x2="250" y2="286" stroke="#8a8a80" stroke-width="1.5" marker-end="url(#a)"/>
   <rect x="110" y="290" width="280" height="70" rx="6" fill="#ffffff" stroke="#b9b9b1" stroke-width="1.5"/>
-  <text x="250" y="322" font-size="19" fill="#24241f" text-anchor="middle">LLM が応答し、</text>
+  <text x="250" y="322" font-size="19" fill="#24241f" text-anchor="middle">LLMが応答し、</text>
   <text x="250" y="346" font-size="19" fill="#24241f" text-anchor="middle">感情の差分を申告</text>
 
   <!-- 右の流れ -->
@@ -28,12 +28,12 @@
   <text x="910" y="193" font-size="19" fill="#24241f" text-anchor="middle">時間の経過</text>
   <line x1="910" y1="220" x2="910" y2="286" stroke="#8a8a80" stroke-width="1.5" marker-end="url(#a)"/>
   <rect x="770" y="290" width="280" height="70" rx="6" fill="#ffffff" stroke="#b9b9b1" stroke-width="1.5"/>
-  <text x="910" y="322" font-size="19" fill="#24241f" text-anchor="middle">cron が定期的に</text>
-  <text x="910" y="346" font-size="19" fill="#24241f" text-anchor="middle">tick を実行</text>
+  <text x="910" y="322" font-size="19" fill="#24241f" text-anchor="middle">cronが定期的に</text>
+  <text x="910" y="346" font-size="19" fill="#24241f" text-anchor="middle">tickを実行</text>
 
   <!-- 状態ファイルへ -->
   <path d="M250,360 L250,505 L452,505" fill="none" stroke="#8a8a80" stroke-width="1.5" marker-end="url(#a)"/>
-  <text x="340" y="496" font-size="16" fill="#8a6a3a" text-anchor="middle">feel が加算</text>
+  <text x="340" y="496" font-size="16" fill="#8a6a3a" text-anchor="middle">feelが加算</text>
   <path d="M910,360 L910,505 L708,505" fill="none" stroke="#8a8a80" stroke-width="1.5" marker-end="url(#a)"/>
   <text x="830" y="496" font-size="16" fill="#8a6a3a" text-anchor="middle">減衰が進む</text>
 
@@ -43,7 +43,7 @@
 
   <!-- show で読んで次のターンへ -->
   <path d="M460,532 L85,532 L85,185 L104,185" fill="none" stroke="#8a8a80" stroke-width="1.5" stroke-dasharray="6,6" marker-end="url(#a)"/>
-  <text x="110" y="562" font-size="16" fill="#7a7a72">show が現在の状態を渡し、次のターンへ</text>
+  <text x="110" y="562" font-size="16" fill="#7a7a72">showが現在の状態を渡し、次のターンへ</text>
 
-  <text x="620" y="604" font-size="18" fill="#7a7a72">第3章の二つの契機が、show・feel・tick の3操作になります。</text>
+  <text x="620" y="604" font-size="18" fill="#7a7a72">第3章の二つの契機が、show・feel・tickの3操作になります。</text>
 </svg>

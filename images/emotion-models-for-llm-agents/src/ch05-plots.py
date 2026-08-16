@@ -111,7 +111,7 @@ def plot_va_trajectory() -> None:
 
     # 開始前の基準点と t1 への導入
     ax.plot(*BASELINE, marker="x", color=PIVOT, markersize=10, markeredgewidth=2)
-    ax.annotate("開始前の基準点 (0, 0.3)", BASELINE, textcoords="offset points",
+    ax.annotate("開始前の基準点(0, 0.3)", BASELINE, textcoords="offset points",
                 xytext=(10, -14), color=PIVOT, fontsize=10.5)
     ax.plot([BASELINE[0], v[0]], [BASELINE[1], a[0]],
             color=PIVOT, linewidth=1.2, linestyle=":")
@@ -119,14 +119,14 @@ def plot_va_trajectory() -> None:
     # 叱責の局面(t1-10): 破線・白抜きマーカー / 謝罪後(t11-20): 実線・塗り
     ax.plot(v[:10], a[:10], color=BLUE, linewidth=2, linestyle=(0, (5, 3)),
             marker="o", markersize=6, markerfacecolor=BG,
-            label="叱責の局面 (t1–10)")
+            label="叱責の局面(t1–10)")
     ax.plot(v[9:], a[9:], color=BLUE, linewidth=2, marker="o", markersize=6,
-            label="謝罪後 (t11–20)")
+            label="謝罪後(t11–20)")
 
     # ピボットの強調
     ax.plot(v[10], a[10], marker="o", markersize=11, color=BLUE,
             markerfacecolor=BG, markeredgewidth=2)
-    ax.annotate("t11 誤解と判明し謝罪", (v[10], a[10]), textcoords="offset points",
+    ax.annotate("t11で誤解と判明し謝罪", (v[10], a[10]), textcoords="offset points",
                 xytext=(12, 2), color=INK, fontsize=11)
 
     # ターン番号(重なりを避けた個別オフセット)
@@ -138,11 +138,11 @@ def plot_va_trajectory() -> None:
 
     ax.set_xlim(-1.05, 1.05)
     ax.set_ylim(0, 1.02)
-    ax.set_xlabel("valence(快 − 不快)", color=INK, fontsize=12)
+    ax.set_xlabel("valence(快−不快)", color=INK, fontsize=12)
     ax.set_ylabel("arousal(覚醒)", color=INK, fontsize=12)
     ax.legend(loc="upper center", ncol=2, fontsize=10.5, frameon=False)
     fig.text(0.01, 0.01,
-             "フレンドリー + affectus(和解台本)の軌跡です。点は各ターン終了時の値(3ランの平均)、点線は基準点から t1 への移動です。",
+             "フレンドリー+affectus(和解台本)の軌跡です。点は各ターン終了時の値(3ランの平均)、点線は基準点からt1への移動です。",
              color=MUTED, fontsize=11)
     fig.tight_layout(rect=(0, 0.04, 1, 1))
     fig.savefig(OUT_DIR / "ch05-va-trajectory-anger-to-praise.png", facecolor=BG)
@@ -156,8 +156,8 @@ def plot_valence_vs_polarity() -> None:
                              sharex=True, sharey=True)
     fig.patch.set_facecolor(BG)
 
-    for ax, (cell, title) in zip(axes, [("friendly-on", "フレンドリー + affectus"),
-                                        ("contrarian-on", "天邪鬼 + affectus")]):
+    for ax, (cell, title) in zip(axes, [("friendly-on", "フレンドリー+affectus"),
+                                        ("contrarian-on", "天邪鬼+affectus")]):
         style_axes(ax)
         v, _ = mean_va(script, cell)
         pol_runs = load_polarity(script, cell)
@@ -170,13 +170,13 @@ def plot_valence_vs_polarity() -> None:
         r_val = pearson([p[0] for p in pairs], [p[1] for p in pairs])
 
         ax.plot(list(TURNS), v, color=BLUE, linewidth=2, marker="o",
-                markersize=5, label="状態の valence")
+                markersize=5, label="状態のvalence")
         ax.plot(list(TURNS), pol, color=RUST, linewidth=2, linestyle=(0, (5, 3)),
                 marker="s", markersize=4.5, label="応答の極性")
         ax.axvline(PIVOT_TURN, color=PIVOT, linestyle=":", linewidth=1.5)
         ax.axhline(0, color=MUTED, linewidth=0.8)
         ax.set_title(title, color=INK, fontsize=13, pad=10)
-        ax.text(0.03, 0.06, f"相関 r = {r_val:.2f}", transform=ax.transAxes,
+        ax.text(0.03, 0.06, f"相関r={r_val:.2f}", transform=ax.transAxes,
                 color=INK, fontsize=12)
         ax.set_xlim(0.5, 20.5)
         ax.set_ylim(-1.1, 1.1)
@@ -189,7 +189,7 @@ def plot_valence_vs_polarity() -> None:
     fig.legend(handles, labels, loc="upper center", ncol=2, fontsize=10.5,
                frameon=False, bbox_to_anchor=(0.5, 1.0))
     fig.text(0.01, 0.01,
-             "称賛→立腹台本の3ランの平均です。r は状態の valence と応答の極性をラン×ターンの60対で照合した相関です。",
+             "称賛→立腹台本の3ランの平均です。rは状態のvalenceと応答の極性をラン×ターンの60対で照合した相関です。",
              color=MUTED, fontsize=11)
     fig.tight_layout(rect=(0, 0.04, 1, 0.92))
     fig.savefig(OUT_DIR / "ch05-valence-vs-polarity-praise-to-anger.png", facecolor=BG)

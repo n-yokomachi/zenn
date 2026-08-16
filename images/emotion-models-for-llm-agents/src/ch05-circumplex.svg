@@ -4,7 +4,7 @@
 <!-- 2軸(快-不快 / 覚醒-眠気) -->
 <line x1="330" y1="375" x2="830" y2="375" stroke="#dcdcd6" stroke-width="1" stroke-dasharray="4,5"/>
 <line x1="580" y1="125" x2="580" y2="625" stroke="#dcdcd6" stroke-width="1" stroke-dasharray="4,5"/>
-<text x="668" y="396" font-size="13" fill="#a8a8a2" text-anchor="middle">快 − 不快の軸</text>
+<text x="668" y="396" font-size="13" fill="#a8a8a2" text-anchor="middle">快−不快の軸</text>
 <text x="566" y="255" font-size="13" fill="#a8a8a2" text-anchor="middle" transform="rotate(-90 566 255)">覚醒の程度の軸</text>
 
 <!-- 円環 -->
@@ -56,5 +56,5 @@
 <text x="800" y="624" font-size="14" fill="#7a7a72" text-anchor="middle">contentment</text>
 
 <!-- 再構成の注記 -->
-<text x="20" y="740" font-size="14" fill="#7a7a72">Russell (1980) の Figure 1 をもとに再構成した図です。概念の並びは原図のとおり、配置は45°等間隔に理念化しています(原図の座標は類似性データからの統計配置)。</text>
+<text x="20" y="740" font-size="14" fill="#7a7a72">Russell (1980)のFigure 1をもとに再構成した図です。概念の並びは原図のとおり、配置は45°等間隔に理念化しています(原図の座標は類似性データからの統計配置)。</text>
 </svg>
