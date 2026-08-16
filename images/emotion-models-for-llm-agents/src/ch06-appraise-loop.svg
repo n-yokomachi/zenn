@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="640" viewBox="0 0 1160 640" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif">
+<rect width="1160" height="640" fill="#fbfbfa"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+<path d="M0,0 L10,5 L0,10 z" fill="#8a8a80"/>
+</marker>
+</defs>
+
+<!-- 見出し -->
+<text x="80" y="60" font-size="20" fill="#24241f">会話のターン</text>
+<line x1="80" y1="74" x2="560" y2="74" stroke="#dcdcd6" stroke-width="1.5"/>
+<text x="80" y="100" font-size="15" fill="#7a7a72">評価の申告から感情の導出まで</text>
+
+<!-- 中央の流れ -->
+<rect x="170" y="130" width="330" height="58" rx="8" fill="#ffffff" stroke="#8a8a80" stroke-width="1.5"/>
+<text x="335" y="165" font-size="19" fill="#24241f" text-anchor="middle">相手の発話（出来事）</text>
+
+<line x1="335" y1="188" x2="335" y2="228" stroke="#8a8a80" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<rect x="170" y="230" width="330" height="76" rx="8" fill="#ffffff" stroke="#8a8a80" stroke-width="1.5"/>
+<text x="335" y="261" font-size="19" fill="#24241f" text-anchor="middle">LLMが応答し、</text>
+<text x="335" y="288" font-size="19" fill="#24241f" text-anchor="middle">出来事への評価を申告</text>
+
+<line x1="335" y1="306" x2="335" y2="352" stroke="#8a8a80" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="352" y="332" font-size="15" fill="#8a6a3a">appraiseが評価を渡す</text>
+
+<rect x="170" y="354" width="330" height="76" rx="8" fill="#ffffff" stroke="#2f6fb3" stroke-width="2"/>
+<text x="335" y="385" font-size="19" fill="#24241f" text-anchor="middle">決定論の導出</text>
+<text x="335" y="411" font-size="14" fill="#7a7a72" text-anchor="middle">理論の規則が評価から感情の差分を導く</text>
+
+<line x1="335" y1="430" x2="335" y2="476" stroke="#8a8a80" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="352" y="456" font-size="15" fill="#8a6a3a">導出された差分を加算</text>
+
+<rect x="170" y="478" width="330" height="76" rx="8" fill="#ffffff" stroke="#24241f" stroke-width="2"/>
+<text x="335" y="509" font-size="19" fill="#24241f" text-anchor="middle">状態ファイル</text>
+<text x="335" y="535" font-size="14" fill="#7a7a72" text-anchor="middle">22軸の数値と、見込み台帳</text>
+
+<!-- 戻りの点線 -->
+<path d="M500,516 L610,516 L610,159 L500,159" fill="none" stroke="#8a8a80" stroke-width="1.2" stroke-dasharray="5,5" marker-end="url(#arrow)"/>
+<text x="628" y="168" font-size="15" fill="#7a7a72">showが数値と台帳を渡し、</text>
+<text x="628" y="190" font-size="15" fill="#7a7a72">次のターンへ</text>
+
+<!-- 右の補足 -->
+<rect x="760" y="230" width="330" height="200" rx="8" fill="none" stroke="#dcdcd6" stroke-width="1.5"/>
+<text x="780" y="264" font-size="16" fill="#24241f">導出と同時に起きること</text>
+<text x="780" y="298" font-size="14" fill="#7a7a72">・まだ確定していない見込みは、</text>
+<text x="794" y="320" font-size="14" fill="#7a7a72">希望や恐れを立てつつ台帳に記録される</text>
+<text x="780" y="352" font-size="14" fill="#7a7a72">・台帳の見込みが決着したと申告されると、</text>
+<text x="794" y="374" font-size="14" fill="#7a7a72">安堵や失望などが導出され、台帳から消える</text>
+<text x="780" y="406" font-size="14" fill="#7a7a72">・導出された差分は足すだけ。下げるのは減衰</text>
+
+<!-- 注記 -->
+<text x="80" y="612" font-size="15" fill="#7a7a72">前章までの会話のループに、評価から感情を導く1段が入ります。時間の経過のループ（tick）は第4章と同じです。</text>
+</svg>
