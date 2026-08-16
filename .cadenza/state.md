@@ -180,7 +180,8 @@ ch2 で実際に通した手順を型として記録する。以降の章はこ�
 | ch3 感情モデルを LLM エージェントに実装するには | chapters/ch03.md | オーナーレビュー進行中。節2冒頭の指摘3件を反映、以降は脚注ルールの遡及適用と先回りチェック済み（2026-08-09） |
 | ch4 Plutchik | chapters/ch04.md | 本文執筆完了・3観点レビュー反映済み（2026-08-10）。図4枚＋表1＋コード2。オーナーレビュー待ち |
 | ch5 Russell | chapters/ch05.md | 本文執筆完了（2026-08-11）。骨子3観点レビュー収束済み・本文レビュー進行中。図3枚＋表1＋コード2 |
-| ch6〜ch8, ch1 | 未作成 | 未着手 |
+| ch6 OCC | chapters/ch06.md | storyboarding 完了（2026-08-16）。分析待ち。リグの OCC 対応（実装作業）と OCC 原典の当たり直しを含む |
+| ch7〜ch8, ch1 | 未作成 | 未着手 |
 
 ### Unverified territory
 - Russell / OCC / Barrett の対照実験は未実施。Barrett は eval 実行系（run.py/agent.py/analyze.py 対応）の実装から必要（配線のみ済み: commit 8531302）。
