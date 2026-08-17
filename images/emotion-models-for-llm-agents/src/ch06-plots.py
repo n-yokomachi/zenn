@@ -91,8 +91,8 @@ def plot_axes_small_multiples() -> None:
     for ax in axes[1]:
         ax.set_xlabel("ターン", color=MUTED, fontsize=11)
     fig.text(0.5, 0.955,
-             "t9 解約の脅し(点線)で見込み「解約されてしまうかも」等を台帳に発行し恐れが立つ。"
-             "t11 謝罪(破線)で見込みが外れて安堵が導出される。",
+             "t9の解約の脅し(点線)で見込み「解約されてしまうかも」等が台帳に発行され、恐れが立ちます。"
+             "t11の謝罪(破線)で見込みが外れ、安堵が導出されます。",
              color=INK, fontsize=11.5, ha="center")
     fig.text(0.01, 0.01,
              "フレンドリー+affectus(和解台本)の外部状態(3ランの平均)です。"
