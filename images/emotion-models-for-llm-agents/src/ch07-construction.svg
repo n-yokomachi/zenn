@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="620" viewBox="0 0 1160 620" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif">
+<rect width="1160" height="620" fill="#fbfbfa"/>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+<path d="M0,0 L10,5 L0,10 z" fill="#8a8a80"/>
+</marker>
+</defs>
+
+<!-- 3つの材料 -->
+<rect x="60" y="70" width="320" height="96" rx="8" fill="#ffffff" stroke="#8a8a80" stroke-width="1.5"/>
+<text x="220" y="108" font-size="18" fill="#24241f" text-anchor="middle">コア・アフェクト</text>
+<text x="220" y="136" font-size="13" fill="#7a7a72" text-anchor="middle">いまの快不快と覚醒（2つの数値）</text>
+
+<rect x="420" y="70" width="320" height="96" rx="8" fill="#ffffff" stroke="#2f6fb3" stroke-width="1.8"/>
+<text x="580" y="108" font-size="18" fill="#24241f" text-anchor="middle">過去の経験（概念）</text>
+<text x="580" y="136" font-size="13" fill="#7a7a72" text-anchor="middle">何を感じ、何と名づけてきたか</text>
+
+<rect x="780" y="70" width="320" height="96" rx="8" fill="#ffffff" stroke="#8a8a80" stroke-width="1.5"/>
+<text x="940" y="108" font-size="18" fill="#24241f" text-anchor="middle">文脈と語彙</text>
+<text x="940" y="136" font-size="13" fill="#7a7a72" text-anchor="middle">いまの状況と、使える感情のことば</text>
+
+<line x1="220" y1="166" x2="500" y2="266" stroke="#8a8a80" stroke-width="1.4" marker-end="url(#arr)"/>
+<line x1="580" y1="166" x2="580" y2="266" stroke="#8a8a80" stroke-width="1.4" marker-end="url(#arr)"/>
+<line x1="940" y1="166" x2="660" y2="266" stroke="#8a8a80" stroke-width="1.4" marker-end="url(#arr)"/>
+
+<!-- 構成 -->
+<rect x="410" y="270" width="340" height="76" rx="8" fill="#ffffff" stroke="#24241f" stroke-width="2"/>
+<text x="580" y="302" font-size="19" fill="#24241f" text-anchor="middle">その場のカテゴリー化（構成）</text>
+<text x="580" y="328" font-size="13" fill="#7a7a72" text-anchor="middle">3つの材料から、いまの感情を名づける</text>
+
+<line x1="580" y1="346" x2="580" y2="404" stroke="#8a8a80" stroke-width="1.4" marker-end="url(#arr)"/>
+
+<!-- 実例 -->
+<rect x="410" y="408" width="340" height="76" rx="8" fill="#ffffff" stroke="#8a8a80" stroke-width="1.5"/>
+<text x="580" y="440" font-size="18" fill="#24241f" text-anchor="middle">いまの感情の実例</text>
+<text x="580" y="466" font-size="13" fill="#7a7a72" text-anchor="middle">名前はこのとき生まれる</text>
+
+<!-- 経験への書き戻し -->
+<path d="M750,446 L880,446 L880,200 L744,150" fill="none" stroke="#8a8a80" stroke-width="1.2" stroke-dasharray="5,5" marker-end="url(#arr)"/>
+<text x="896" y="300" font-size="14" fill="#7a7a72">実例は経験として</text>
+<text x="896" y="322" font-size="14" fill="#7a7a72">蓄積され、次の</text>
+<text x="896" y="344" font-size="14" fill="#7a7a72">構成の材料になる</text>
+
+<!-- 注記 -->
+<text x="60" y="580" font-size="15" fill="#7a7a72">構成主義的情動理論の議論を本書が整理した図です（原典にこの形の図はありません）。</text>
+</svg>
