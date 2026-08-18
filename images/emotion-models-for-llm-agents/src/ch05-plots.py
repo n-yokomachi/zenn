@@ -7,7 +7,7 @@ affectus examples/evaluation の Russell 実測結果から、書籍用の日本
 
 出力(このファイルの親の親 = images/emotion-models-for-llm-agents/):
   - ch05-va-trajectory-anger-to-praise.png
-    (和解台本 friendly-on の valence-arousal 平面軌跡。3ラン平均・ターン番号付き)
+    (和解台本 friendly-on の valence-arousal 平面軌跡。3回の実行の平均・ターン番号付き)
   - ch05-valence-vs-polarity-praise-to-anger.png
     (称賛→立腹台本の 状態 valence × 応答極性 の時系列。friendly / contrarian 並置)
 
@@ -142,7 +142,7 @@ def plot_va_trajectory() -> None:
     ax.set_ylabel("arousal(覚醒)", color=INK, fontsize=12)
     ax.legend(loc="upper center", ncol=2, fontsize=10.5, frameon=False)
     fig.text(0.01, 0.01,
-             "フレンドリー+affectus(和解台本)の軌跡です。点は各ターン終了時の値(3ランの平均)、点線は基準点からt1への移動です。",
+             "フレンドリー+affectus(和解台本)の軌跡です。点は各ターン終了時の値(3回の実行の平均)、点線は基準点からt1への移動です。",
              color=MUTED, fontsize=11)
     fig.tight_layout(rect=(0, 0.04, 1, 1))
     fig.savefig(OUT_DIR / "ch05-va-trajectory-anger-to-praise.png", facecolor=BG)
@@ -163,7 +163,7 @@ def plot_valence_vs_polarity() -> None:
         pol_runs = load_polarity(script, cell)
         pol = [mean(pol_runs[r][t] for r in pol_runs) for t in TURNS]
 
-        # r はラン×ターンの60点の対で計算(平均線からではない)
+        # r は3回×20ターンの60点の対で計算(平均線からではない)
         va_runs = load_va(script, cell)
         pairs = [(va_runs[r][t][0], pol_runs[r][t])
                  for r in va_runs for t in TURNS]
@@ -189,7 +189,7 @@ def plot_valence_vs_polarity() -> None:
     fig.legend(handles, labels, loc="upper center", ncol=2, fontsize=10.5,
                frameon=False, bbox_to_anchor=(0.5, 1.0))
     fig.text(0.01, 0.01,
-             "称賛→立腹台本の3ランの平均です。rは状態のvalenceと応答の極性をラン×ターンの60対で照合した相関です。",
+             "称賛→立腹台本の3回の実行の平均です。rは状態のvalenceと応答の極性を3回×20ターンの60対で照合した相関です。",
              color=MUTED, fontsize=11)
     fig.tight_layout(rect=(0, 0.04, 1, 0.92))
     fig.savefig(OUT_DIR / "ch05-valence-vs-polarity-praise-to-anger.png", facecolor=BG)

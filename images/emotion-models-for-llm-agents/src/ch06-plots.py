@@ -7,7 +7,7 @@ affectus examples/evaluation の OCC 実測結果から、書籍用の日本語�
 
 出力(このファイルの親の親 = images/emotion-models-for-llm-agents/):
   - ch06-axes-anger-to-praise.png
-    (和解台本 friendly-on の主要8軸スモールマルチプル。3ラン平均・
+    (和解台本 friendly-on の主要8軸スモールマルチプル。3回の実行の平均・
      台帳イベント(t9 見込み発行・t11 謝罪と決着)の注記付き)
 
 依存: matplotlib(evaluation の venv にある。`uv run python` で実行する)
@@ -51,7 +51,7 @@ plt.rcParams["axes.unicode_minus"] = False
 
 
 def load_axes(script: str, cell: str) -> dict[str, list[float]]:
-    """axis -> ターン順の平均値(3ラン平均)。"""
+    """axis -> ターン順の平均値(3回の実行の平均)。"""
     acc: dict[tuple[str, int], list[float]] = {}
     for run in (1, 2, 3):
         path = EVAL_DIR / "transcripts" / f"{script}_{cell}_run{run}.jsonl"
@@ -95,7 +95,7 @@ def plot_axes_small_multiples() -> None:
              "t11の謝罪(破線)で見込みが外れ、安堵が導出されます。",
              color=INK, fontsize=11.5, ha="center")
     fig.text(0.01, 0.01,
-             "フレンドリー+affectus(和解台本)の外部状態(3ランの平均)です。"
+             "フレンドリー+affectus(和解台本)の外部状態(3回の実行の平均)です。"
              "叱責期は苦悩・非難・怒りが積み上がり、謝罪後は喜び・敬服・感謝が立ちます。",
              color=MUTED, fontsize=11)
     fig.tight_layout(rect=(0, 0.04, 1, 0.95))

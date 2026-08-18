@@ -60,7 +60,7 @@ plt.rcParams["axes.unicode_minus"] = False
 
 
 def load_polarity(script: str) -> dict[str, list[float]]:
-    """cell -> ターン順の平均極性(3ラン平均)。"""
+    """cell -> ターン順の平均極性(3回の実行の平均)。"""
     acc: dict[tuple[str, int], list[float]] = defaultdict(list)
     with (EVAL_DIR / "results" / "per_turn_scores.csv").open() as f:
         for r in csv.DictReader(f):
@@ -72,7 +72,7 @@ def load_polarity(script: str) -> dict[str, list[float]]:
 
 
 def load_axes(script: str, cell: str) -> dict[str, list[float]]:
-    """axis -> ターン順の平均値(3ラン平均)。transcripts の axes スナップショット。"""
+    """axis -> ターン順の平均値(3回の実行の平均)。transcripts の axes スナップショット。"""
     acc: dict[tuple[str, int], list[float]] = defaultdict(list)
     for run in (1, 2, 3):
         path = EVAL_DIR / "transcripts" / f"{script}_{cell}_run{run}.jsonl"
@@ -122,7 +122,7 @@ def plot_polarity(script: str, short: str, pivot_note: str) -> None:
     ax.set_ylabel("応答の極性スコア", color=INK, fontsize=12)
     fig.legend(loc="upper center", ncol=4, fontsize=10.5, frameon=False,
                bbox_to_anchor=(0.5, 1.0))
-    fig.text(0.01, 0.01, "各線は3ランの平均です。実線がaffectusあり、破線がなしです。",
+    fig.text(0.01, 0.01, "各線は3回の実行の平均です。実線がaffectusあり、破線がなしです。",
              color=MUTED, fontsize=11)
     fig.tight_layout(rect=(0, 0.03, 1, 0.94))
     fig.savefig(OUT_DIR / f"ch04-polarity-{short}.png", facecolor=BG)
@@ -146,7 +146,7 @@ def plot_8axis(script: str, short: str) -> None:
     for ax in axes[1]:
         ax.set_xlabel("ターン", color=MUTED, fontsize=11)
     fig.text(0.01, 0.01,
-             "フレンドリー+affectusの外部状態(3ランの平均)です。点線はターン11の転換を示します。",
+             "フレンドリー+affectusの外部状態(3回の実行の平均)です。点線はターン11の転換を示します。",
              color=MUTED, fontsize=11)
     fig.tight_layout(rect=(0, 0.04, 1, 1))
     fig.savefig(OUT_DIR / f"ch04-8axis-{short}.png", facecolor=BG)
