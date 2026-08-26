@@ -16,12 +16,12 @@
   <text x="640" y="66" font-size="20" fill="#6b6b66">LLM 以後</text>
   <line x1="640" y1="82" x2="1080" y2="82" stroke="#dcdcd6" stroke-width="1"/>
 
-  <!-- 数値の核 -->
+  <!-- 感情の数値状態 -->
   <rect x="80" y="100" width="440" height="90" rx="6" fill="#ffffff" stroke="#b9b9b1" stroke-width="1.5"/>
-  <text x="300" y="138" font-size="20" fill="#24241f" text-anchor="middle">感情の数値の核</text>
+  <text x="300" y="138" font-size="20" fill="#24241f" text-anchor="middle">感情の数値状態</text>
   <text x="300" y="168" font-size="16" fill="#7a7a72" text-anchor="middle">保持・減衰は決定論の処理</text>
   <rect x="640" y="100" width="440" height="90" rx="6" fill="#ffffff" stroke="#b9b9b1" stroke-width="1.5"/>
-  <text x="860" y="138" font-size="20" fill="#24241f" text-anchor="middle">感情の数値の核</text>
+  <text x="860" y="138" font-size="20" fill="#24241f" text-anchor="middle">感情の数値状態</text>
   <text x="860" y="168" font-size="16" fill="#7a7a72" text-anchor="middle">保持・減衰は決定論の処理</text>
 
   <line x1="300" y1="190" x2="300" y2="236" stroke="#8a8a80" stroke-width="1.5" marker-end="url(#a)"/>
