@@ -14,26 +14,22 @@ title: "感情モデルをAIエージェントに実装するには"
 一方で、このような一時的な入力から感情を模倣させるだけでは、例えば時間的な自然さを考慮した際に不十分となります。1つ目のセッションでどれだけ怒らせても、直後に開始した2つ目のセッションでは何ごともなかったようにフラットな状態にリセットされます。あるいは逆に、同じセッションが続いているかぎり、何週間経っても会話は直前の温度感のまま再開されます。人間のように一晩寝たら落ち着いた、のような時間的な減衰もありません。
 ここから考えられる端的な解決方法は、一般的なメモリ機能などを使用して会話の要約や履歴と一緒にその時の感情状態を外部に保存してセッションを跨がせたり、時間的な考慮をさせることでしょう。実際本書で実装する感情コンポーネントもほとんど似たような仕組みです。ただ、その感情の持ち方や時間的な変動をどう設計するか、というところが理論やモデルごとに変わってくるところとなります。
 
-## LLMの内側に感情はあるのか
+## LLM自体の感情表現はあるのか
 
-LLMの外側に感情コンポーネントを作る話をする前に、まずLLMの内側で起こる感情再現についての先行研究を整理します。
-
+LLMの外側に感情コンポーネントを作る話をする前に、まずLLMそのもので起こる感情表現についての先行研究を整理します。
 LLMの内部表現を調べた研究のレポートが、複数の独立したグループから公開されています。筆者が確認した6件のうち5件は、大まかには同じ方向の結論に収束しています[^five-studies]。
-LLMの内部には感情の概念に対応する構造化された表現があり、それが出力に因果的な影響を与えます。快と不快、覚醒の高低といった軸に沿った構造も見つかっています。この2軸の構図は、前章で紹介したラッセルの円環モデルと重なります。こうした内部表現の研究では、この2軸はvalence（感情価）とarousal（覚醒度）という言葉で呼ばれており、第5章で円環モデルを実装に使うときもこの呼び名で登場します（ただしvalenceのほうは後年に定着した呼称で、円環モデルを出したラッセル自身の語ではありません[^valence]）。
+すなわち、LLMの内部には感情の概念に対応する構造化された表現があり、それが出力に対して影響を与える、という結論です。快と不快、覚醒の高低といった軸に沿った構造も見つかっています（この2軸の構図は、前章で紹介したラッセルの円環モデルと似通っていると考えられます。LLMの内部表現の研究では、この2軸はvalence（感情価）とarousal（覚醒度）という言葉で呼ばれており、第5章で円環モデルを実装に使うときもこの呼び名を使用します。ただしvalenceのほうは後年に定着した呼称で、円環モデルを出したラッセル自身の語ではありません[^valence]）。
 
-中でも詳しいのが、Anthropicが2026年に公開した「Emotion Concepts and their Function in a Large Language Model」という、Claude Sonnet 4.5を対象とする分析です。ある感情に対応する表現が、特定の場面や特定の振る舞いに固有ではなく、その感情が関わりうるさまざまなコンテキストや振る舞いに共通して現れること（一般化）を示し[^generalize]、その表現を操作すると出力が変わること、さらに迎合や報酬ハッキング（与えられた目標の抜け道を突く挙動）といった望ましくない挙動の発生率まで変わることを報告しています。言い換えると、内部にある感情の表現を人為的に動かすだけで、応答の言葉遣いだけでなく、問題行動の出やすさまで変わったということです。
+中でも詳しいのが、Anthropicが2026年に公開した「Emotion Concepts and their Function in a Large Language Model」という、Claude Sonnet 4.5を対象とする分析です。ある感情に対応する表現が、特定の場面や特定の振る舞いに固有ではなく、その感情が関わりうるさまざまなコンテキストや振る舞いに共通して現れること（一般化）を示し[^generalize]、その表現を操作すると出力が変わること、さらに迎合や報酬ハッキング（与えられた目標の抜け道を突く挙動）といった望ましくない挙動の発生率まで変わることを報告しています。たとえば、happyやlovingといったポジティブな感情のベクトルを強めるほど応答は相手への迎合に寄り、逆に抑えるほど辛辣さが増します[^sycophancy-example]。また、シャットダウンの危機に瀕したモデルが人間を脅迫してしまう評価シナリオでは、desperate（必死さ）のベクトルを強めると脅迫の発生率が大きく上がり、calm（平静）を強めると大きく下がることが示されています[^blackmail-example]。
+この結果を見るといかにも感情表現らしい動きをしていますが、同論文では人間の感情との違いも提示しています。「人間の感情は通常、時間を跨いで持続する状態である。ひどい知らせを受けた人は、その直後に明るい内容の文章を読んでいる間も悲しいままである」というのが著者らの挙げる対比です[^persist-quote]。ところが、著者らの観測手法が捉えていたのは、会話全体を通じて保持されている感情の状態ではなく、モデルが直後のトークン（モデルが文章を扱う単位）を予測する時点で、その予測に関係している感情の内容でした。保存された感情状態を読み出しているというより、その時処理に使われているトークンから逐一妥当な感情を分析している、ということです。同論文ではこの性質をlocally scoped（局所的な範囲に限られる、の意）と呼んでいます。つまりこの内部表現は、会話全体を通じて維持される安定した感情の状態を、常に表しているわけではありません。そのうえで、「会話を通じて一貫して見える応答は、各生成ステップで似た概念が繰り返し活性化した結果かもしれず、持続的に符号化された内部状態とは限らない」と書いています[^repeated-activation]。つまり、会話の中で表現される感情らしきものは、トークンを生成するステップごとに、それまでのコンテキストから推測された感情をそのつど表現しているに過ぎず、状態が保存され続けている証拠とは限らない、ということです。
+ただし著者らはここで断定していません。この区別が実践的あるいは哲学的に重要かどうかは未解決の問いだとし、自分たちの手法が見落としている持続的な表現の可能性も排除しないと明記しています[^open-question]。さらに踏み込んで、「持続が感情の状態の鍵だという直感そのものが、transformerを基にしたモデルでは適切でないかもしれない」とも書いています[^persistence-intuition]。言い換えると、感情とはそもそも持続するものだという人間を基準にした前提が、この仕組みには当てはまらないかもしれない、ということです。
 
-ここまでなら、内側に感情の状態があると言いたくなります。しかし同じ論文が、そう単純ではないと書いています。
+本書もこの姿勢にならい、LLMの感情表現がどの程度まで模倣なのかという一種形而上学的な問いには立ち入りませんし、これから作る感情エンジンもあくまで模倣のためのPoC的な位置付けとして捉えています。
+代わりに2つの事実を押さえておきます。一つは、LLM単体の感情表現が機能するのはコンテキストウインドウ（モデルが一度に読み込める範囲）の範囲が限界だということです。感情概念の内部表現がコンテキストウインドウを超えて保持されるのかどうかを扱った研究は、筆者が調査した中には見当たりませんでした。もう一つは、LLMが一定の感情概念の表現を持っているとしても、それはエージェントハーネス側が状態として読み書きできる形にはなっていないということです。表現はモデル内部の活性の中にあり、APIを通じた通常の利用で開発者が触れられるのは基本的に入出力のテキストだけだからです。
 
-このAnthropicの論文は、人間の感情との違いを正面から論じています。人間の感情は時間を跨いで持続するもので、ひどい知らせを受けた人はその直後に明るい文章を読んでも悲しいままです[^persist-quote]。ところが、著者らの観測手法が捉えていたのは、モデルが直後のトークン（モデルが文章を扱う単位）を予測するその瞬間に参照している感情の内容でした。保存された状態を読み出しているというより、いままさに処理に使われている情報を見ている、ということです。著者らはこれをlocally scopedと呼び、会話を通じて維持される安定した感情の状態を常に表すわけではないと述べています。そのうえで、会話を通じて一貫して見える応答は、各生成ステップで似た概念が繰り返し活性化した結果かもしれず、持続的に符号化された内部状態とは限らない、と書いています[^repeated-activation]。つまり、会話全体で一貫した感情に見えるものは、状態が保存され続けている証拠とは限らず、生成のたびにコンテキストから同じ感情概念が呼び出された結果でもありうる、ということです。
-
-ただし著者らはここで断定していません。この区別が実践的あるいは哲学的に重要かどうかは未解決の問いだとし、自分たちの手法が見落としている持続的な表現の可能性も排除しないと明記しています。さらに踏み込んで、持続が感情の状態の鍵だという直感そのものが transformer を基にしたモデルでは適切でないかもしれない、とも書いています[^persistence-intuition]。言い換えると、「感情とは持続するものだ」という人間を基準にした前提そのものが、この仕組みには当てはまらないかもしれない、ということです。
-
-本書もこの姿勢にならい、LLMがその内部に真に感情を持っているのかどうかという、一種形而上学的な問いには立ち入りません。
-
-代わりに2つの事実を押さえておきます。一つは、ここまで見てきた感情概念の内部表現が機能する範囲が、トークンの位置とコンテキストウインドウ（モデルが一度に読み込める範囲）の内側だということです。感情概念の内部表現がコンテキストウインドウを超えて保持されるのかどうかを扱った研究は、筆者が参照した範囲には見当たりませんでした。もう一つは、内部に感情概念の表現があるとしても、それはエージェントを作る側が状態として読み書きできる形にはなっていないということです。表現はモデル内部の活性の中にあり、APIを通じた通常の利用で開発者が触れられるのは入出力のテキストだけだからです。
-
-問題は、LLMがその内側に感情の状態を持てるかどうかではありません。どこに置けば、いつ、誰が読み書きできるのか。ここから先の節で、順に考えます。
+この節ではLLMが内部的に感情の状態を持っているかどうかの先行研究を整理しましたが、いずれにしてもその状態を外から観察するのは難しそうだ、ということがわかりました（なお、重みが公開されているモデルならこうした内部の観察は外部の研究者にも可能で、実際に先の5件のうちvan der Benらの研究は、オープンなモデルでAnthropicの結果を追試したものです）。
+ということで本書においてはあくまでLLMは感情の表現、言語化を担当するレイヤーという位置付けで進めていきます。
+"一旦ここまで"
 
 ## 外に何を置くことになるか
 
@@ -155,9 +151,15 @@ LLM の登場後、この構図の解釈の側だけが置き換わりました�
 
 [^generalize]: 原文: "internal representations of emotion concepts, which encode the broad concept of a particular emotion and generalize across contexts and behaviors it might be linked to."
 
-[^persist-quote]: 原文 "human emotions are states that typically persist across time—a person who receives devastating news remains sad even while reading a positively valenced sentence shortly thereafter." の意訳です。
+[^sycophancy-example]: 原文: "steering toward positive emotion vectors (e.g. happy, loving) increases sycophantic behavior, while suppressing these emotion vectors increases harshness."
+
+[^blackmail-example]: 原文: "Steering positively with the desperate vector substantially increases blackmail rates, while steering negatively decreases them. Conversely, steering positively with the calm vector dramatically reduces blackmail behavior". シナリオは同論文が評価用に用意したもので、シャットダウンの脅威に直面したモデルが人間への脅迫を選んでしまうという設定です。
+
+[^persist-quote]: 原文: "human emotions are states that typically persist across time—a person who receives devastating news remains sad even while reading a positively valenced sentence shortly thereafter."
 
 [^repeated-activation]: 原文: "what might appear as consistent emotional responses from an Assistant across a conversation may reflect repeated activation of similar emotion concepts at each generation step (perhaps queried from earlier in the context via the attention mechanism), rather than a persistently encoded internal emotional state."
+
+[^open-question]: 原文: "Whether this distinction matters—practically or philosophically—remains an open question." および "That said, our results do not preclude the possibility of persistently active representations that are missed by our probing methods."
 
 [^persistence-intuition]: 原文: "intuitions that persistence is a key property of emotional states may be inappropriate in the context of transformer-based models."
 
