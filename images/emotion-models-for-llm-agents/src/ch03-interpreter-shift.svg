@@ -11,9 +11,9 @@
   </defs>
 
   <!-- 見出し -->
-  <text x="80" y="66" font-size="20" fill="#6b6b66">LLM 以前（2005年ごろ）</text>
+  <text x="80" y="66" font-size="20" fill="#6b6b66">LLM以前（2005年ごろ）</text>
   <line x1="80" y1="82" x2="520" y2="82" stroke="#dcdcd6" stroke-width="1"/>
-  <text x="640" y="66" font-size="20" fill="#6b6b66">LLM 以後</text>
+  <text x="640" y="66" font-size="20" fill="#6b6b66">LLM以後</text>
   <line x1="640" y1="82" x2="1080" y2="82" stroke="#dcdcd6" stroke-width="1"/>
 
   <!-- 感情の数値状態 -->
@@ -27,12 +27,12 @@
   <line x1="300" y1="190" x2="300" y2="236" stroke="#8a8a80" stroke-width="1.5" marker-end="url(#a)"/>
   <line x1="860" y1="190" x2="860" y2="236" stroke="#8a8a80" stroke-width="1.5" marker-end="url(#a)"/>
 
-  <!-- 解釈と言語化の層 -->
+  <!-- 解釈と言語化のレイヤー -->
   <rect x="80" y="240" width="440" height="110" rx="6" fill="#f7f1e8" stroke="#8a6a3a" stroke-width="2"/>
-  <text x="300" y="270" font-size="15" fill="#8a6a3a" text-anchor="middle">解釈と言語化の層</text>
-  <text x="300" y="308" font-size="19" fill="#24241f" text-anchor="middle">テンプレート・規則・アニメーション</text>
+  <text x="300" y="270" font-size="15" fill="#8a6a3a" text-anchor="middle">解釈と言語化のレイヤー</text>
+  <text x="300" y="308" font-size="19" fill="#24241f" text-anchor="middle">テンプレート・規則</text>
   <rect x="640" y="240" width="440" height="110" rx="6" fill="#f7f1e8" stroke="#8a6a3a" stroke-width="2"/>
-  <text x="860" y="270" font-size="15" fill="#8a6a3a" text-anchor="middle">解釈と言語化の層</text>
+  <text x="860" y="270" font-size="15" fill="#8a6a3a" text-anchor="middle">解釈と言語化のレイヤー</text>
   <text x="860" y="314" font-size="26" fill="#24241f" text-anchor="middle">LLM</text>
 
   <!-- 交代 -->
@@ -49,7 +49,7 @@
   <text x="300" y="464" font-size="18" fill="#24241f" text-anchor="middle">用意された発話や表情から選ぶ</text>
   <rect x="640" y="400" width="440" height="100" rx="6" fill="#ffffff" stroke="#b9b9b1" stroke-width="1.5"/>
   <text x="860" y="428" font-size="15" fill="#7a7a72" text-anchor="middle">表出</text>
-  <text x="860" y="464" font-size="18" fill="#24241f" text-anchor="middle">文脈に応じて言葉を組み立てる</text>
+  <text x="860" y="464" font-size="18" fill="#24241f" text-anchor="middle">コンテキストに応じて言葉を組み立てる</text>
 
-  <text x="80" y="610" font-size="18" fill="#7a7a72">分業の形は同じまま、解釈と言語化の担い手が置き換わりました。</text>
+  <text x="80" y="610" font-size="18" fill="#7a7a72">役割分担の構図は同じまま、解釈と言語化の担い手が置き換わりました。</text>
 </svg>
