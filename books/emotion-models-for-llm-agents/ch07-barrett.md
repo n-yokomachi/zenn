@@ -44,7 +44,7 @@ $ affectus recall '{"valence":-0.5,"arousal":0.6,...}'
 {"axes":{"valence":-0.40,"arousal":0.65},"recalled":[{"id":"c1","label":"もどかしさ","valence":-0.4,"arousal":0.65,"importance":0.44}],"culture_map":"高覚醒・不快: 怒り / 苛立ち / 焦り\n低覚醒・不快: 悲しみ / 侘しさ / 気だるさ\n..."}
 ```
 
-recalledの中身が構成の材料です。以前似た感じ方をしたとき、自分はそれを「もどかしさ」と呼んでいました。その記録といまの2軸とculture_mapの語彙を組み合わせて、LLMがいまの感情を名づけ、応答に滲ませます。ターンの終わりには、feelで2軸の差分を申告したあと、構成した名前と状況の14属性をrememberで保存します。
+recalledの中身が構成の材料です。以前似た感じ方をしたとき、自分はそれを「もどかしさ」と呼んでいました。その記録といまの2軸とculture_mapの語彙を組み合わせて、LLMがいまの感情を名づけ、応答に反映させます。ターンの終わりには、feelで2軸の差分を申告したあと、構成した名前と状況の14属性をrememberで保存します。
 
 ```sh
 $ affectus remember '{"label":"やるせなさ","vector":{"valence":-0.6,"arousal":0.6,...}}'
