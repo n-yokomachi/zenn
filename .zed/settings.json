@@ -1,0 +1,9 @@
+{
+  // 書籍の表は桁揃え空白を入れない方針のため、Markdownの保存時整形を無効化
+  // （Zed同梱のPrettierが表セルをパディングするのを防ぐ）
+  "languages": {
+    "Markdown": {
+      "format_on_save": "off"
+    }
+  }
+}
