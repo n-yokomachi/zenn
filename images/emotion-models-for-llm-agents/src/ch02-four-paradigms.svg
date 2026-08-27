@@ -33,7 +33,7 @@
   <!-- 分岐 -->
   <path d="M950,194 L950,258 L830,258 L830,330" fill="none" stroke="#8a8a80" stroke-width="1.5" marker-end="url(#a)"/>
   <path d="M950,194 L950,258 L1070,258 L1070,330" fill="none" stroke="#8a8a80" stroke-width="1.5" marker-end="url(#a)"/>
-  <text x="950" y="296" font-size="17" fill="#8a6a3a" text-anchor="middle">材料の層を切り出す</text>
+  <text x="950" y="296" font-size="17" fill="#8a6a3a" text-anchor="middle">材料を切り出す</text>
 
   <!-- 下段ラベル -->
   <text x="60" y="392" font-size="20" fill="#6b6b66">本書が使う4つの系統</text>
@@ -50,7 +50,7 @@
   <g>
     <rect x="430" y="432" width="300" height="122" rx="6" fill="#ffffff" stroke="#5a5a52" stroke-width="1.5"/>
     <text x="580" y="481" font-size="21" fill="#24241f" text-anchor="middle">評価導出型</text>
-    <text x="580" y="512" font-size="19" fill="#5a5a52" text-anchor="middle">OCC モデル</text>
+    <text x="580" y="512" font-size="19" fill="#5a5a52" text-anchor="middle">OCCモデル</text>
     <text x="580" y="538" font-size="17" fill="#9a9a92" text-anchor="middle">第6章</text>
   </g>
   <g>

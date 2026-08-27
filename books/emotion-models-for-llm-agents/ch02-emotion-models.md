@@ -49,7 +49,7 @@ Tracy（以降トレイシー）とRandles（以降ランドルズ）は2011年�
 
 さて、では本書における4系統を整理しましょう。
 
-![ジェンドロンとバレットの3系統から本書の4系統への対応。心理構成主義だけが材料の層と構成の層に分かれる](/images/emotion-models-for-llm-agents/ch02-four-paradigms.png)
+![ジェンドロンとバレットの3系統から本書の4系統への対応。心理構成主義だけが材料と構成の2つに分かれる](/images/emotion-models-for-llm-agents/ch02-four-paradigms.png)
 
 本書における各系統の名称もここで決めておきます。日本語の定訳が見当たらないため、本書に限った造語です。
 
