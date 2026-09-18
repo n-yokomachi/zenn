@@ -1,6 +1,6 @@
 ---
 title: "Jevを自作感情エンジンに組み込んでLLMと性能を比べてみた"
-emoji: "🫟"
+emoji: "🌠"
 type: "tech"
 topics: ["jev", "ai", "llm", "個人開発"]
 published: true
