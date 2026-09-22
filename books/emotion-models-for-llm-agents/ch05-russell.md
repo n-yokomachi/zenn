@@ -85,7 +85,7 @@ $ affectus feel '{"valence":0.4,"arousal":0.25}'
 
 これは手抜きではありません。円環は、感情の状態が空間の中でどう分布するかについての理論の主張であって、個々の状態が従うべき制約ではないからです。実装も、状態を円周へ射影したり、中心からの距離に制約を掛けたりはしていません。論文自身に、円という図形よりも円盤や車輪のほうがよい比喩だという一節があります[^disk-origin]。中程度の強度の状態は空間の中心寄りに落ちる、という説明です。円環は外周の絵ではなく、平面全体に状態が分布するときの構造です。だから、中心付近にある、どっちつかずの弱い状態も、平面上の点として外周の強い状態と等しく持てます。
 
-では、円環はどこへ行ったのか。前章では、対極の関係が設定の宣言とLLMへの解釈の指示として使われていました。ラッセルでは、宣言すら残りません。円環が生き残る唯一の場所は、LLMに渡す解釈の指示です。affectusのプロンプトの雛形（examples/system-prompt-snippet-russell.md）は、2つの軸は組み合わさって状態の円環をなすと伝えたうえで、象限ごとの例語を添えます。高い快と高い覚醒ならexcitedやelatedのあたり、という形です。ただし、どの例語も名前を確定しません。雛形の指示は明快です。「名前を付けるのはあなた」。そして「意味は平面上の位置にだけ宿る」[^snippet-russell]。
+では、円環はどこへ行ったのか。前章では、対極の関係が設定の宣言とLLMへの解釈の指示として使われていました。ラッセルでは、宣言すら残りません。円環が生き残る唯一の場所は、LLMに渡す解釈の指示です。affectusに付属する指示文（examples/system-prompt-snippet-russell.md）は、2つの軸は組み合わさって状態の円環をなすと伝えたうえで、象限ごとの例語を添えます。高い快と高い覚醒ならexcitedやelatedのあたり、という形です。ただし、どの例語も名前を確定しません。指示文は明快です。「名前を付けるのはあなた」。そして「意味は平面上の位置にだけ宿る」[^snippet-russell]。
 
 第3章の整理を思い出すと、次元パラメーター型は、命名の仕事を丸ごとLLMに渡す分、LLMに委ねる解釈の仕事がいちばん多い型でした。その言葉の実地がこれです。快で覚醒が高いという位置を高揚と呼ぶか歓喜と呼ぶかは、外部状態のどこにも書かれておらず、毎回、読み取る側がコンテキストの中で決めます。
 
@@ -139,5 +139,5 @@ $ affectus feel '{"valence":0.4,"arousal":0.25}'
 
 [^russell-thesis]: 原文"My thesis is that affective states are, in fact, best represented as a circle in a two-dimensional bipolar space"（Russell, 1980, pp. 1161-1162）の意訳です。
 [^disk-origin]: 原文"although a disk or a wheel would be a better image, since affective states of moderate intensity would fall toward the middle of the space, with the origin presumably corresponding to adaptation level or a neutral feeling"（p. 1170）。原文の言い方では、原点は順応水準（adaptation level）ないし中立の感じに対応します。順応水準は、刺激に慣れたときに落ち着く基準の水準のことです。
-[^snippet-russell]: 雛形の原文は"You name the feeling."と"the meaning lives entirely in the position on the plane."です。
+[^snippet-russell]: 指示文の原文は"You name the feeling."と"the meaning lives entirely in the position on the plane."です。
 [^bipolar]: 原文"Affective space is bipolar, with antonyms falling approximately 180° apart."（p. 1167）。
