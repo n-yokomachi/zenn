@@ -2,7 +2,7 @@
 title: "プルチックの輪を実装する"
 ---
 
-<!-- 執筆進捗: レビュー進行中（冒頭〜対極の節まで改稿済み、以降は未レビュー） -->
+<!-- 執筆進捗: レビュー進行中（冒頭〜エンジンの中身まで改稿済み、以降は未レビュー） -->
 
 本章からは感情モデルを元にした感情エンジンを実際に作って検証します。
 以降第7章まで1つの章で1つの理論を扱い、理論の中身、設計への落とし込み、実装、実測までを通しで進めます。実装には、筆者が作った[affectus](https://github.com/n-yokomachi/affectus)というOSSを使用します。affectusは感情の状態をLLMの外側に置くための小さなコンポーネントで、保持する感情状態の構成の変更には対応しつつLLMから使われるときのインタフェースなどを統一するために開発しています。
@@ -100,23 +100,7 @@ $ affectus show
 
 もう1つは時間のきっかけです。エージェントは会話の有無にかかわらず、cronにより定期的にtickを実行し、感情状態の減衰処理を進めます。tickによる減衰は設定ファイルに定義した半減期（仮で90分）を使用し、基準値+(現在値−基準値)×0.5^(経過分÷半減期)の式で計算した値に感情状態を更新します。
 
-## 対極は宣言するが演算しない <!-- 改稿済み -->
-
-前章の外部状態の議論を読んでから設定ファイルを見ると、不思議に思える点が1つあります。oppositeの宣言です。喜びの対極は悲しみだと、設定には確かに書いてあります。ところがエンジンのコードを追うと、この宣言は減衰にも加算にも表示にも使われていません。実装のコメント（internal/engine/config.go）にも、参照整合性の検証だけに使い、演算にはまだ使わないと明記してあります。喜びに0.6を足しても、悲しみは少しも下がりません。
-
-第2章で、プルチックを選んだ理由の1つを、対極や混合といった感情同士の関係まで理論が定めていることに求めました。その関係が決定論的な規則なら、エンジンが演算で処理すべきものになります。喜びが上がったら悲しみを自動で下げる、という実装です。
-
-しかし理論に戻ると、対極はそうした動きの規則としては定義されていません。理論の公準が述べるのは、基本感情は対極の組として概念化できる、というところまでです[^plutchik-postulates]。原典は対極の意味も説明していますが、それは怒りが攻撃を、恐れが逃走を含意するという意味の上での反対であり、joyとsorrowなら獲得と喪失の反対です[^opposites-sense]。一方が上がれば他方が下がる、という量の連動を理論が定めているわけではありません。
-
-むしろ理論は逆を述べています。原典は、感情が純粋な状態で経験されることはまずなく、たいていの状況は混合した感情を生む、と書いています[^mixed-emotions]。隣り合う感情を混ぜて別の感情を作る一次双対の仕組みも、複数の感情が同時に立つことを前提にしています。喜びが上がったら悲しみを自動で下げる規則は、この前提と衝突します。嬉しさと寂しさが同居するほろ苦さのような両価的な状態を、数値の上で潰してしまうからです。
-
-つまり、連動を演算に入れることは理論の実装ではなく、理論にない解釈をエンジン側で固定することになります。数値を閾値で区切って「強い怒り」のようなラベルを後づけするのと同じ種類の混入です。
-
-では、理論が定めた関係はどこへ行ったのか。捨ててはいません。宣言として設定に残し、解釈の指示としてLLMに渡しています。エージェントに与えるプロンプトの雛形（examples/system-prompt-snippet.md）は、対極の感情が同時に立っているときは矛盾に潰さず両価的な状態として解釈すること、隣接する感情が同時に立っているときは混ざり合った一つの感情として解釈することを指示しています。第2章で述べた、関係まで理論が決めてくれているという利点は、演算の自動化としてではなく、宣言と解釈の材料として生きています。
-
-この選択が選べるようになったのは、前章の言い方を借りれば、解釈の担い手が規則からLLMに代わったからです。テンプレートと規則の時代なら、関係構造は演算に固定する以外に使い道がありませんでした。生の数値と関係の宣言をそのまま渡して、解釈のしかただけを添えられる相手が現れたから、演算に入れないという選択ができるようになりました。
-
-この節で確かめたかったのは、理論が定めた関係構造ひとつをとっても、それが決定論的な規則なのか解釈の材料なのかを見極める作業が必要になる、ということです。理論に書いてあるから演算に入れる、と機械的に進めると、書いていない規則まで作り込んでしまいます。
+設定ファイルに書いた対極と隣接の関係は、エンジンの演算には使わず、LLMに渡す解釈の指示に使います。エージェントに与えるプロンプトの雛形（examples/system-prompt-snippet.md）には、対極の組と円環の並び順を示したうえで、対極の感情が同時に立っているときは矛盾ではなく両価的な状態として解釈すること、隣接する感情が同時に立っているときは混ざり合った1つの感情として解釈することを指示しています。喜びが上がっても悲しみが自動で下がることはなく、両方が立った状態をどう受け取るかはLLMが決めます。
 
 ## 状態は応答に反映されるか <!-- 未レビュー -->
 
@@ -171,8 +155,6 @@ $ affectus show
 - Plutchik, R. (1980). A General Psychoevolutionary Theory of Emotion. In R. Plutchik & H. Kellerman (Eds.), Emotion: Theory, Research, and Experience, Vol. 1: Theories of Emotion (pp. 3-33). Academic Press.
 
 [^plutchik-amsci2001]: Plutchik, R. (2001). The Nature of Emotions. American Scientist, 89(4). https://www.jstor.org/stable/27857503
-[^opposites-sense]: 原文 "Anger and fear are opposites in the sense that one implies attack and the other flight. Joy and sadness are opposites in the sense that one implies possession or gain while the other implies loss." によります。出典はPlutchik (1980)。
-[^mixed-emotions]: 原文 "Emotions are rarely if ever experienced in a pure state. More typically, any given situation creates mixed emotions, which are difficult to describe in any simple or unequivocal way." によります。出典はPlutchik (1980)。
 [^vocab-variants]: 原語の揺れの例。本人の別論文（Evolution and Cognition誌）の円環図はラベルがsadnessとanticipation、American Scientist論文の本文はsorrowとexpectancyです。trustが本人の図のラベルに使われた例は、筆者が参照した範囲では見つかりませんでした。
 [^plutchik-postulates]: Plutchik, R. (1980). A General Psychoevolutionary Theory of Emotion. In R. Plutchik & H. Kellerman (Eds.), Emotion: Theory, Research, and Experience, Vol. 1 (pp. 3-33). Academic Press. 理論の10の公準のうち、公準1「The concept of emotion is applicable to all evolutionary levels and applies to animals as well as to humans」、公準3「Emotions serve an adaptive role in helping organisms deal with key survival issues posed by the environment」、公準5「There is a small number of basic, primary, or prototype emotions」によります。
 [^plutchik-ec2001]: 円環の並びと一次双対8つの図はPlutchik, R. (2001). Integration, Differentiation, and Derivatives of Emotion. Evolution and Cognition, 7(2), 114-125のFigure 2によります。掲載号のPDFがKonrad Lorenz Instituteのサイトで公開されています。ただし嫌悪と怒りの双対の名前は、American Scientist論文の本文の語彙（憎悪あるいは敵意）に合わせています（Figure 2のラベルはcontempt）。
