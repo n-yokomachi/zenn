@@ -172,7 +172,7 @@ def plot_valence_vs_polarity() -> None:
         ax.plot(list(TURNS), v, color=BLUE, linewidth=2, marker="o",
                 markersize=5, label="状態のvalence")
         ax.plot(list(TURNS), pol, color=RUST, linewidth=2, linestyle=(0, (5, 3)),
-                marker="s", markersize=4.5, label="応答の極性")
+                marker="s", markersize=4.5, label="応答の感情スコア")
         ax.axvline(PIVOT_TURN, color=PIVOT, linestyle=":", linewidth=1.5)
         ax.axhline(0, color=MUTED, linewidth=0.8)
         ax.set_title(title, color=INK, fontsize=13, pad=10)
@@ -189,7 +189,7 @@ def plot_valence_vs_polarity() -> None:
     fig.legend(handles, labels, loc="upper center", ncol=2, fontsize=10.5,
                frameon=False, bbox_to_anchor=(0.5, 1.0))
     fig.text(0.01, 0.01,
-             "称賛→立腹台本の3回の実行の平均です。rは状態のvalenceと応答の極性を3回×20ターンの60対で照合した相関です。",
+             "称賛→立腹台本の3回の実行の平均です。rは状態のvalenceと応答の感情スコアを3回×20ターンの60対で照合した相関です。",
              color=MUTED, fontsize=11)
     fig.tight_layout(rect=(0, 0.04, 1, 0.92))
     fig.savefig(OUT_DIR / "ch05-valence-vs-polarity-praise-to-anger.png", facecolor=BG)

@@ -119,7 +119,7 @@ def plot_polarity(script: str, short: str, pivot_note: str) -> None:
     ax.set_ylim(-1.1, 1.1)
     ax.set_xticks([1, 5, 10, 11, 15, 20])
     ax.set_xlabel("ターン", color=INK, fontsize=12)
-    ax.set_ylabel("応答の極性スコア", color=INK, fontsize=12)
+    ax.set_ylabel("応答の感情スコア", color=INK, fontsize=12)
     fig.legend(loc="upper center", ncol=4, fontsize=10.5, frameon=False,
                bbox_to_anchor=(0.5, 1.0))
     fig.text(0.01, 0.01, "各線は3回の実行の平均です。実線がaffectusあり、破線がなしです。",
