@@ -101,10 +101,10 @@ def plot_polarity(script: str, short: str, pivot_note: str) -> None:
     style_axes(ax)
 
     series = [
-        ("friendly-on", "フレンドリー+affectus", BLUE, "-", "o"),
-        ("friendly-off", "フレンドリー(affectusなし)", BLUE, (0, (5, 3)), None),
-        ("contrarian-on", "天邪鬼+affectus", RUST, "-", "o"),
-        ("contrarian-off", "天邪鬼(affectusなし)", RUST, (0, (5, 3)), None),
+        ("friendly-on", "フレンドリー(感情エンジンあり)", BLUE, "-", "o"),
+        ("friendly-off", "フレンドリー(感情エンジンなし)", BLUE, (0, (5, 3)), None),
+        ("contrarian-on", "天邪鬼(感情エンジンあり)", RUST, "-", "o"),
+        ("contrarian-off", "天邪鬼(感情エンジンなし)", RUST, (0, (5, 3)), None),
     ]
     for cell, label, color, ls, marker in series:
         if cell not in pol:
@@ -122,7 +122,7 @@ def plot_polarity(script: str, short: str, pivot_note: str) -> None:
     ax.set_ylabel("応答の感情スコア", color=INK, fontsize=12)
     fig.legend(loc="upper center", ncol=4, fontsize=10.5, frameon=False,
                bbox_to_anchor=(0.5, 1.0))
-    fig.text(0.01, 0.01, "各線は3回の実行の平均です。実線がaffectusあり、破線がなしです。",
+    fig.text(0.01, 0.01, "各線は3回の実行の平均です。実線が感情エンジンあり、破線が感情エンジンなしです。",
              color=MUTED, fontsize=11)
     fig.tight_layout(rect=(0, 0.03, 1, 0.94))
     fig.savefig(OUT_DIR / f"ch04-polarity-{short}.png", facecolor=BG)
@@ -146,7 +146,7 @@ def plot_8axis(script: str, short: str) -> None:
     for ax in axes[1]:
         ax.set_xlabel("ターン", color=MUTED, fontsize=11)
     fig.text(0.01, 0.01,
-             "フレンドリー+affectusの外部状態(3回の実行の平均)です。点線はターン11の転換を示します。",
+             "フレンドリー(感情エンジンあり)の外部状態(3回の実行の平均)です。点線はターン11の転換を示します。",
              color=MUTED, fontsize=11)
     fig.tight_layout(rect=(0, 0.04, 1, 1))
     fig.savefig(OUT_DIR / f"ch04-8axis-{short}.png", facecolor=BG)

@@ -142,7 +142,7 @@ def plot_va_trajectory() -> None:
     ax.set_ylabel("arousal(覚醒)", color=INK, fontsize=12)
     ax.legend(loc="upper center", ncol=2, fontsize=10.5, frameon=False)
     fig.text(0.01, 0.01,
-             "フレンドリー+affectus(和解台本)の軌跡です。点は各ターン終了時の値(3回の実行の平均)、点線は基準点からt1への移動です。",
+             "和解台本でのフレンドリー(感情エンジンあり)の軌跡です。点は各ターン終了時の値(3回の実行の平均)で、点線は基準点からt1への移動です。",
              color=MUTED, fontsize=11)
     fig.tight_layout(rect=(0, 0.04, 1, 1))
     fig.savefig(OUT_DIR / "ch05-va-trajectory-anger-to-praise.png", facecolor=BG)
@@ -156,8 +156,8 @@ def plot_valence_vs_polarity() -> None:
                              sharex=True, sharey=True)
     fig.patch.set_facecolor(BG)
 
-    for ax, (cell, title) in zip(axes, [("friendly-on", "フレンドリー+affectus"),
-                                        ("contrarian-on", "天邪鬼+affectus")]):
+    for ax, (cell, title) in zip(axes, [("friendly-on", "フレンドリー(感情エンジンあり)"),
+                                        ("contrarian-on", "天邪鬼(感情エンジンあり)")]):
         style_axes(ax)
         v, _ = mean_va(script, cell)
         pol_runs = load_polarity(script, cell)

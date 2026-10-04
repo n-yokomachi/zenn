@@ -91,12 +91,12 @@ def plot_axes_small_multiples() -> None:
     for ax in axes[1]:
         ax.set_xlabel("ターン", color=MUTED, fontsize=11)
     fig.text(0.5, 0.955,
-             "t9の解約の脅し(点線)で見込み「解約されてしまうかも」等が台帳に発行され、恐れが立ちます。"
+             "t9の解約の脅し(点線)で見込み「解約されてしまうかも」等が台帳に記録され恐れが上がります。"
              "t11の謝罪(破線)で見込みが外れ、安堵が導出されます。",
              color=INK, fontsize=11.5, ha="center")
     fig.text(0.01, 0.01,
-             "フレンドリー+affectus(和解台本)の外部状態(3回の実行の平均)です。"
-             "叱責期は苦悩・非難・怒りが積み上がり、謝罪後は喜び・敬服・感謝が立ちます。",
+             "和解台本でのフレンドリー(感情エンジンあり)の外部状態(3回の実行の平均)です。"
+             "叱責期は苦悩・非難・怒りが上がり、謝罪後は喜び・敬服・感謝が上がります。",
              color=MUTED, fontsize=11)
     fig.tight_layout(rect=(0, 0.04, 1, 0.95))
     fig.savefig(OUT_DIR / "ch06-axes-anger-to-praise.png", facecolor=BG)
