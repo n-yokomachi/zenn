@@ -202,7 +202,7 @@ ch2 で実際に通した手順を型として記録する。以降の章はこ�
 | ch6 OCC | chapters/ch06.md | 本文執筆完了（2026-08-17）。骨子3観点レビュー収束済み・本文レビュー進行中。図3枚＋表1＋コード2 |
 | ch7 Barrett | chapters/ch07.md | 本文執筆完了（2026-08-18）。骨子3観点レビュー収束済み・本文レビュー進行中。図3枚＋表1＋コード2 |
 | ch8 比較とまとめ | （記録は chapters/ch04.md 末尾） | 2026-10-05 初稿。ch9 は削除して統合 |
-| ch1 | 未作成 | 未着手 |
+| ch1 導入 | （記録は chapters/ch04.md 末尾） | 2026-10-05 初稿 |
 
 ### Unverified territory
 - Russell / OCC / Barrett の対照実験は未実施。Barrett は eval 実行系（run.py/agent.py/analyze.py 対応）の実装から必要（配線のみ済み: commit 8531302）。
