@@ -30,7 +30,7 @@ Russell（以降ラッセル）は1980年の論文で、感情の状態は2次�
 
 状態は2つの軸の値だけで、たとえばvalenceが0.4でarousalが0.55という形です。快-不快と覚醒は感情の名前ではないので、外部状態から感情の名前がなくなります。
 
-ニュートラルな状態の基準値はvalenceが0でarousalが0.3です。何も起きていない落ち着いた状態にも少し覚醒が残る設計です。理論にあるのは平面の原点がおそらく中立の感じに対応するという一文だけなので[^disk-origin]、0.3は実装上の判断で決めた値です。
+ニュートラルな状態の基準値はvalenceが0でarousalが0.3です。何も起きていない落ち着いた状態にも少し覚醒が残る設計です。理論にあるのは、平面の原点がおそらく順応水準か中立的な感情に対応するという一文だけなので[^disk-origin]、0.3は実装上の判断で決めた値です。
 
 ## 感情エンジンの中身 <!-- 未レビュー -->
 
@@ -134,6 +134,6 @@ $ affectus feel '{"valence":0.4,"arousal":0.25}'
 - Russell, J. A. (1980). A Circumplex Model of Affect. Journal of Personality and Social Psychology, 39(6), 1161-1178. https://doi.org/10.1037/h0077714
 
 [^russell-thesis]: 原文"My thesis is that affective states are, in fact, best represented as a circle in a two-dimensional bipolar space"（Russell, 1980, pp. 1161-1162）の意訳です。
-[^disk-origin]: 原文"although a disk or a wheel would be a better image, since affective states of moderate intensity would fall toward the middle of the space, with the origin presumably corresponding to adaptation level or a neutral feeling"（p. 1170）。原文の言い方では、原点は順応水準（adaptation level）ないし中立の感じに対応します。順応水準は、刺激に慣れたときに落ち着く基準の水準のことです。
+[^disk-origin]: 原文"although a disk or a wheel would be a better image, since affective states of moderate intensity would fall toward the middle of the space, with the origin presumably corresponding to adaptation level or a neutral feeling"（p. 1170）。原文の言い方では、原点は順応水準（adaptation level）ないし中立的な感情に対応します。順応水準は、刺激に慣れたときに落ち着く基準の水準のことです。
 [^snippet-russell]: 指示文の原文は"You name the feeling."と"the meaning lives entirely in the position on the plane."です。
 [^bipolar]: 原文"Affective space is bipolar, with antonyms falling approximately 180° apart."（p. 1167）。
