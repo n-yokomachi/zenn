@@ -8,7 +8,7 @@ title: "ラッセルの円環を実装する"
 
 ## ラッセルの円環モデル <!-- 未レビュー -->
 
-Russell（以降ラッセル）は1980年の論文で、感情の状態は2次元の双極空間の上の円として表すことを主張しました[^russell-thesis]。双極とは1本の軸の両端に反対の意味が来ることです。2つの軸は快-不快（pleasure-displeasure）と覚醒の程度（degree of arousal）で、現在一般にはvalenceとarousalと呼ばれています。valenceは後年に定着した呼び名で、1980年の原文には出てきません。
+Russell（以降ラッセル）は1980年の論文で「感情の状態は2次元の双極空間の上の円として最もよく表される」と主張しました[^russell-thesis]。双極とは1本の軸の両端に反対の意味が来ることです。2つの軸は快-不快（pleasure-displeasure）と覚醒の程度（degree of arousal）で、現在一般にはvalenceとarousalと呼ばれています。valenceは後年に定着した呼び名で、1980年の原文には出てきません。
 
 平面の上には8つの概念が45度おきに円環状に並びます。0度の快から反時計回りに、興奮、覚醒、苦悩、みじめさ、抑うつ（臨床の診断名ではありません）、眠気、満足です。
 この8つの概念は基本感情ではなく、あくまで円環上の位置を示す目印です。ラッセルはこの円環を仮説として示したうえで、28個の感情語を被験者に判断させ、実際に語がこの順番で円に並ぶことを確かめています。
@@ -30,7 +30,7 @@ Russell（以降ラッセル）は1980年の論文で、感情の状態は2次�
 
 状態は2つの軸の値だけで、たとえばvalenceが0.4でarousalが0.55という形です。快-不快と覚醒は感情の名前ではないので、外部状態から感情の名前がなくなります。
 
-ニュートラルな状態の基準値はvalenceが0でarousalが0.3です。何も起きていない落ち着いた状態にも少し覚醒が残る設計です。理論にあるのは、平面の原点がおそらく順応水準か中立的な感情に対応するという一文だけなので[^disk-origin]、0.3は実装上の判断で決めた値です。
+ニュートラルな状態の基準値はvalenceが0でarousalが0.3です。何も起きていない落ち着いた状態にも少し覚醒が残る設計です。理論にあるのは「原点はおそらく順応水準ないし中立的な感情に対応する」という一文だけなので[^disk-origin]、0.3は実装上の判断で決めた値です。
 
 ## 感情エンジンの中身 <!-- 未レビュー -->
 
@@ -62,9 +62,9 @@ $ affectus feel '{"valence":0.4,"arousal":0.25}'
 
 何も起きていない状態でもarousalは基準値の0.30で、feelで差分0.25を足すと0.55になります。
 
-設定には円環の情報がありません。円環は状態が平面上にどう分布するかについての理論の主張で、個々の状態が守るべき制約ではないからです。論文自身も円より円盤や車輪のほうがよい比喩だと書いています[^disk-origin]。円環の情報はLLMへの指示文にだけ含まれます。指示文は象限ごとの例語を示したうえで「名前を付けるのはあなた」「意味は平面上の位置にだけ宿る」と伝えています[^snippet-russell]。快が高く覚醒も高い状態を高揚と呼ぶか歓喜と呼ぶかは、毎回LLMがコンテキストから判断します。
+設定には円環の情報がありません。円環は状態が平面上にどう分布するかについての理論の主張で、個々の状態が守るべき制約ではないからです。論文自身も円について「円盤や車輪のほうがよいイメージだろう」と書いています[^disk-origin]。円環の情報はLLMへの指示文にだけ含まれます。指示文は象限ごとの例語を示したうえで「名前を付けるのはあなた」「意味は平面上の位置にだけ宿る」と伝えています[^snippet-russell]。快が高く覚醒も高い状態を高揚と呼ぶか歓喜と呼ぶかは、毎回LLMがコンテキストから判断します。
 
-2軸にしたことで表せなくなったものもあります。嬉しさと寂しさが同居するほろ苦さのような対極の感情の両立は、1本の双極軸の上では打ち消し合って0付近の値になります。強い嬉しさと強い寂しさの同居と、どちらも感じていない状態を区別できません。これは反対の意味の語がおよそ180度離れて位置するという理論どおりの結果です[^bipolar]。前章で受容と悲しみの2つの軸に分かれて記録された状態も、2軸では1つの点にまとめられます。
+2軸にしたことで表せなくなったものもあります。嬉しさと寂しさが同居するほろ苦さのような対極の感情の両立は、1本の双極軸の上では打ち消し合って0付近の値になります。強い嬉しさと強い寂しさの同居と、どちらも感じていない状態を区別できません。これは「感情の空間は双極であり、反意語はおよそ180度離れて位置する」という理論どおりの結果です[^bipolar]。前章で受容と悲しみの2つの軸に分かれて記録された状態も、2軸では1つの点にまとめられます。
 
 ## 検証の目的と方法 <!-- 未レビュー -->
 
@@ -133,7 +133,7 @@ $ affectus feel '{"valence":0.4,"arousal":0.25}'
 
 - Russell, J. A. (1980). A Circumplex Model of Affect. Journal of Personality and Social Psychology, 39(6), 1161-1178. https://doi.org/10.1037/h0077714
 
-[^russell-thesis]: 原文"My thesis is that affective states are, in fact, best represented as a circle in a two-dimensional bipolar space"（Russell, 1980, pp. 1161-1162）の意訳です。
-[^disk-origin]: 原文"although a disk or a wheel would be a better image, since affective states of moderate intensity would fall toward the middle of the space, with the origin presumably corresponding to adaptation level or a neutral feeling"（p. 1170）。原文の言い方では、原点は順応水準（adaptation level）ないし中立的な感情に対応します。順応水準は、刺激に慣れたときに落ち着く基準の水準のことです。
+[^russell-thesis]: Russell (1980)の原文は"My thesis is that affective states are, in fact, best represented as a circle in a two-dimensional bipolar space"（pp. 1161-1162）です。
+[^disk-origin]: Russell (1980)の原文は"although a disk or a wheel would be a better image, since affective states of moderate intensity would fall toward the middle of the space, with the origin presumably corresponding to adaptation level or a neutral feeling"（p. 1170）です。順応水準（adaptation level）は、刺激に慣れたときに落ち着く基準の水準のことです。
 [^snippet-russell]: 指示文の原文は"You name the feeling."と"the meaning lives entirely in the position on the plane."です。
-[^bipolar]: 原文"Affective space is bipolar, with antonyms falling approximately 180° apart."（p. 1167）。
+[^bipolar]: Russell (1980)の原文は"Affective space is bipolar, with antonyms falling approximately 180° apart."（p. 1167）です。
