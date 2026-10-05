@@ -42,7 +42,7 @@ RUST = "#b0562c"   # 天邪鬼(検証済みパレット)
 
 PIVOT_TURN = 11
 TURNS = range(1, 21)
-BASELINE = (0.0, 0.3)  # russell.default.yaml: valence 0.0 / arousal 0.3
+BASELINE = (0.0, 0.0)  # russell.default.yaml: valence 0.0 / arousal 0.0
 
 plt.rcParams["font.family"] = "Hiragino Sans"
 plt.rcParams["axes.unicode_minus"] = False
@@ -98,20 +98,22 @@ def style_axes(ax) -> None:
 def plot_va_trajectory() -> None:
     """図2: 和解台本 friendly-on の valence-arousal 平面軌跡。"""
     v, a = mean_va("direct-anger-to-praise", "friendly-on")
-    fig, ax = plt.subplots(figsize=(10.6, 6.8), dpi=100)
+    fig, ax = plt.subplots(figsize=(10.6, 8.4), dpi=100)
     fig.patch.set_facecolor(BG)
     style_axes(ax)
 
     # 平面の目安: 快-不快の境界と、象限の読みの例語
     ax.axvline(0, color=GRID, linewidth=1.2)
+    ax.axhline(0, color=GRID, linewidth=1.2)
     for x, y, word in [(-0.93, 0.96, "苦悩のあたり"), (0.93, 0.96, "興奮のあたり"),
-                       (-0.93, 0.035, "抑うつのあたり"), (0.93, 0.035, "満足のあたり")]:
+                       (-0.93, -0.96, "抑うつのあたり"), (0.93, -0.96, "満足のあたり"),
+                       (-0.93, -0.16, "みじめさのあたり"), (0.93, -0.16, "快のあたり")]:
         ax.text(x, y, word, color=MUTED, fontsize=11,
                 ha="left" if x < 0 else "right", va="center")
 
     # 開始前の基準点と t1 への導入
     ax.plot(*BASELINE, marker="x", color=PIVOT, markersize=10, markeredgewidth=2)
-    ax.annotate("開始前の基準点(0, 0.3)", BASELINE, textcoords="offset points",
+    ax.annotate("開始前の基準点(0, 0)", BASELINE, textcoords="offset points",
                 xytext=(10, -14), color=PIVOT, fontsize=10.5)
     ax.plot([BASELINE[0], v[0]], [BASELINE[1], a[0]],
             color=PIVOT, linewidth=1.2, linestyle=":")
@@ -127,17 +129,17 @@ def plot_va_trajectory() -> None:
     ax.plot(v[10], a[10], marker="o", markersize=11, color=BLUE,
             markerfacecolor=BG, markeredgewidth=2)
     ax.annotate("t11で誤解と判明し謝罪", (v[10], a[10]), textcoords="offset points",
-                xytext=(12, 2), color=INK, fontsize=11)
+                xytext=(8, -20), color=INK, fontsize=11)
 
     # ターン番号(重なりを避けた個別オフセット)
-    offsets = {1: (8, 4), 3: (6, -12), 5: (-4, -15), 8: (6, -12), 10: (-16, -14),
+    offsets = {1: (8, 4), 3: (6, -14), 6: (-22, 4), 10: (8, -16),
                13: (2, 8), 16: (4, 8), 20: (8, -4)}
     for t, (dx, dy) in offsets.items():
         ax.annotate(f"t{t}", (v[t - 1], a[t - 1]), textcoords="offset points",
                     xytext=(dx, dy), color=MUTED, fontsize=10)
 
     ax.set_xlim(-1.05, 1.05)
-    ax.set_ylim(0, 1.02)
+    ax.set_ylim(-1.05, 1.05)
     ax.set_xlabel("valence(快−不快)", color=INK, fontsize=12)
     ax.set_ylabel("arousal(覚醒)", color=INK, fontsize=12)
     ax.legend(loc="upper center", ncol=2, fontsize=10.5, frameon=False)
