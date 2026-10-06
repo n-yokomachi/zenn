@@ -8,7 +8,7 @@ affectus examples/evaluation の OCC 実測結果から、書籍用の日本語�
 出力(このファイルの親の親 = images/emotion-models-for-llm-agents/):
   - ch06-axes-anger-to-praise.png
     (和解台本 friendly-on の主要8軸スモールマルチプル。3回の実行の平均・
-     台帳イベント(t9 見込み発行・t11 謝罪と決着)の注記付き)
+     見込みリストの記録(t9 見込みの追加・t11 謝罪と当たり外れの申告)の注記付き)
 
 依存: matplotlib(evaluation の venv にある。`uv run python` で実行する)
 """
@@ -35,7 +35,7 @@ MUTED = "#7a7a72"
 GRID = "#ececea"
 PIVOT = "#8a8a80"
 BLUE = "#2f6fb3"   # フレンドリー(検証済みパレット)
-LEDGER = "#b0562c" # 台帳イベントの注記(検証済みパレット)
+LEDGER = "#b0562c" # 見込みリストの記録の注記(検証済みパレット)
 
 TURNS = range(1, 21)
 
@@ -91,8 +91,7 @@ def plot_axes_small_multiples() -> None:
     for ax in axes[1]:
         ax.set_xlabel("ターン", color=MUTED, fontsize=11)
     fig.text(0.5, 0.955,
-             "t9の解約の脅し(点線)で見込み「解約されてしまうかも」等が台帳に記録され恐れが上がります。"
-             "t11の謝罪(破線)で見込みが外れ、安堵が導出されます。",
+             "t9の解約の脅し(点線)で見込みが記録されて恐れが上がり、t11の謝罪(破線)で見込みが外れて安堵が導出されます。",
              color=INK, fontsize=11.5, ha="center")
     fig.text(0.01, 0.01,
              "和解台本でのフレンドリー(感情エンジンあり)の外部状態(3回の実行の平均)です。"
