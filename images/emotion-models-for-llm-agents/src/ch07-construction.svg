@@ -33,7 +33,7 @@
 <!-- 実例 -->
 <rect x="410" y="408" width="340" height="76" rx="8" fill="#ffffff" stroke="#8a8a80" stroke-width="1.5"/>
 <text x="580" y="440" font-size="18" fill="#24241f" text-anchor="middle">いまの感情</text>
-<text x="580" y="466" font-size="13" fill="#7a7a72" text-anchor="middle">名前はこのとき生まれる</text>
+<text x="580" y="466" font-size="13" fill="#7a7a72" text-anchor="middle">感情と名前はこのとき決まる</text>
 
 <!-- 経験への書き戻し -->
 <path d="M750,446 L880,446 L880,200 L744,150" fill="none" stroke="#8a8a80" stroke-width="1.2" stroke-dasharray="5,5" marker-end="url(#arr)"/>
