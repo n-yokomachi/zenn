@@ -11,7 +11,7 @@
 
 <!-- 中央の流れ -->
 <rect x="150" y="100" width="380" height="76" rx="8" fill="#ffffff" stroke="#8a8a80" stroke-width="1.5"/>
-<text x="340" y="131" font-size="18" fill="#24241f" text-anchor="middle">想起（recall）</text>
+<text x="340" y="131" font-size="18" fill="#24241f" text-anchor="middle">想起（recallコマンド）</text>
 <text x="340" y="158" font-size="13" fill="#7a7a72" text-anchor="middle">似た経験（既定で5件）と、2軸の値・語彙マップ</text>
 
 <line x1="340" y1="176" x2="340" y2="218" stroke="#8a8a80" stroke-width="1.5" marker-end="url(#arw)"/>
@@ -23,12 +23,12 @@
 <line x1="340" y1="298" x2="340" y2="340" stroke="#8a8a80" stroke-width="1.5" marker-end="url(#arw)"/>
 
 <rect x="150" y="344" width="380" height="58" rx="8" fill="#ffffff" stroke="#8a8a80" stroke-width="1.5"/>
-<text x="340" y="379" font-size="17" fill="#24241f" text-anchor="middle">feelが2軸の差分を適用</text>
+<text x="340" y="379" font-size="17" fill="#24241f" text-anchor="middle">feelコマンドが2軸の差分を適用</text>
 
 <line x1="340" y1="402" x2="340" y2="444" stroke="#8a8a80" stroke-width="1.5" marker-end="url(#arw)"/>
 
 <rect x="150" y="448" width="380" height="76" rx="8" fill="#ffffff" stroke="#24241f" stroke-width="2"/>
-<text x="340" y="479" font-size="18" fill="#24241f" text-anchor="middle">remember</text>
+<text x="340" y="479" font-size="18" fill="#24241f" text-anchor="middle">保存（rememberコマンド）</text>
 <text x="340" y="506" font-size="13" fill="#7a7a72" text-anchor="middle">構成した名前（label）と14属性を保存</text>
 
 <!-- 自己参照の戻り -->
@@ -52,5 +52,5 @@
 <text x="586" y="470" font-size="13" fill="#8a6a3a">経験を追記</text>
 
 <!-- 注記 -->
-<text x="80" y="640" font-size="15" fill="#7a7a72">新しいストアでは想起は空で、材料は2軸と語彙だけから始まります。時間の経過のループ（tick）はプルチックの感情の輪と同じです。</text>
+<text x="80" y="640" font-size="15" fill="#7a7a72">新しいストアでは想起は空で、材料は2軸と語彙だけから始まります。時間の経過のループ（tickコマンド）はプルチックの感情の輪と同じです。</text>
 </svg>
