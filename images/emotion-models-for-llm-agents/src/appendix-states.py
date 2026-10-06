@@ -6,7 +6,7 @@
 3回の平均と応答の感情スコアを Markdown の表で標準出力に書く。
 """
 from __future__ import annotations
-import csv, json, sys
+import csv, json, re, sys
 from collections import defaultdict
 from pathlib import Path
 from statistics import mean
@@ -48,7 +48,12 @@ def tables(model, d, order=None, labels=False):
             for t in TURNS:
                 row=[str(t)]+[fmt(m[a][t-1]) for a in axes]
                 if labels:
-                    row.append("／".join(((recs[r][t-1].get("remember") or {}).get("label") or "—") for r in RUNS))
+                    labs=[]
+                    for r in RUNS:
+                        lab=(recs[r][t-1].get("remember") or {}).get("label") or "—"
+                        if re.search(r"[\uac00-\ud7a3]", lab): lab="（韓国語の名前）"  # ハングルは表に載せない
+                        labs.append(lab)
+                    row.append("／".join(labs))
                 row.append(fmt(mean(pol[(s,c,r)][t] for r in RUNS)))
                 out.append("| "+" | ".join(row)+" |")
             out.append("")
