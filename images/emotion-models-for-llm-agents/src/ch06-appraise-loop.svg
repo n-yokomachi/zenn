@@ -25,29 +25,29 @@
 <text x="352" y="332" font-size="15" fill="#8a6a3a">appraiseが評価を渡す</text>
 
 <rect x="170" y="354" width="330" height="76" rx="8" fill="#ffffff" stroke="#2f6fb3" stroke-width="2"/>
-<text x="335" y="385" font-size="19" fill="#24241f" text-anchor="middle">決定論の導出</text>
-<text x="335" y="411" font-size="14" fill="#7a7a72" text-anchor="middle">理論の規則が評価から感情の差分を導く</text>
+<text x="335" y="385" font-size="19" fill="#24241f" text-anchor="middle">決定論的に感情を導出</text>
+<text x="335" y="411" font-size="14" fill="#7a7a72" text-anchor="middle">規則表が評価から感情の差分を導く</text>
 
 <line x1="335" y1="430" x2="335" y2="476" stroke="#8a8a80" stroke-width="1.5" marker-end="url(#arrow)"/>
 <text x="352" y="456" font-size="15" fill="#8a6a3a">導出された差分を加算</text>
 
 <rect x="170" y="478" width="330" height="76" rx="8" fill="#ffffff" stroke="#24241f" stroke-width="2"/>
 <text x="335" y="509" font-size="19" fill="#24241f" text-anchor="middle">状態ファイル</text>
-<text x="335" y="535" font-size="14" fill="#7a7a72" text-anchor="middle">22軸の数値と、見込みリスト</text>
+<text x="335" y="535" font-size="14" fill="#7a7a72" text-anchor="middle">22タイプの値と見込みリスト</text>
 
 <!-- 戻りの点線 -->
 <path d="M500,516 L610,516 L610,159 L500,159" fill="none" stroke="#8a8a80" stroke-width="1.2" stroke-dasharray="5,5" marker-end="url(#arrow)"/>
-<text x="628" y="168" font-size="15" fill="#7a7a72">showが数値と見込みリストを渡し、</text>
+<text x="628" y="168" font-size="15" fill="#7a7a72">showが値と見込みリストを渡し、</text>
 <text x="628" y="190" font-size="15" fill="#7a7a72">次のターンへ</text>
 
 <!-- 右の補足 -->
 <rect x="760" y="230" width="330" height="200" rx="8" fill="none" stroke="#dcdcd6" stroke-width="1.5"/>
 <text x="780" y="264" font-size="16" fill="#24241f">導出と同時に起きること</text>
-<text x="780" y="298" font-size="14" fill="#7a7a72">・まだ確定していない見込みは、</text>
-<text x="794" y="320" font-size="14" fill="#7a7a72">希望や恐れが上がり、見込みリストに記録される</text>
+<text x="780" y="298" font-size="14" fill="#7a7a72">・まだ確定していない結果を申告すると、</text>
+<text x="794" y="320" font-size="14" fill="#7a7a72">希望か恐れが上がり、見込みリストに記録される</text>
 <text x="780" y="352" font-size="14" fill="#7a7a72">・見込みの当たり外れが申告されると、</text>
 <text x="794" y="374" font-size="14" fill="#7a7a72">安堵や失望などが導出され、リストから消える</text>
-<text x="780" y="406" font-size="14" fill="#7a7a72">・導出された差分は足すだけ。下げるのは減衰</text>
+<text x="780" y="406" font-size="14" fill="#7a7a72">・値を下げるのは時間による減衰だけ</text>
 
 <!-- 注記 -->
 <text x="80" y="612" font-size="15" fill="#7a7a72">プルチックとラッセルの会話のループに、評価から感情を導く1段が入ります。時間の経過のループ（tick）は同じです。</text>
