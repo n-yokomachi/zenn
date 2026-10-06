@@ -38,7 +38,12 @@ Plutchik（以降プルチック）の理論は8つの基本感情を4組の対�
 
 感情エンジンのプルチックモデルでは、1つの設定ファイルに軸の名前と基準値と半減期と対極の感情を定義する。
 
-```yaml:internal/engine/plutchik.default.yaml(抜粋)
+```yaml:internal/engine/plutchik.default.yaml
+version: 1
+model: plutchik
+clamp:       { min: 0.0, max: 1.0 }
+delta_clamp: { min: -1.0, max: 1.0 }
+
 axes:
   - { name: joy,        baseline: 0.0, halflife_minutes: 90, opposite: sorrow }
   - { name: acceptance, baseline: 0.0, halflife_minutes: 90, opposite: disgust }
@@ -48,8 +53,11 @@ axes:
   - { name: disgust,    baseline: 0.0, halflife_minutes: 90, opposite: acceptance }
   - { name: anger,      baseline: 0.0, halflife_minutes: 90, opposite: fear }
   - { name: expectancy, baseline: 0.0, halflife_minutes: 90, opposite: surprise }
+
+fragment_file: ""
 ```
 
+clampは感情の値の範囲で、delta_clampは1回の差分を加算する前に切り詰める範囲である。fragment_fileは状態を書き換えるたびに現在の値を書き出すファイルで、空なら書き出さない。
 隣接関係は書かれていないが、軸の並び順が隣接を表している。たとえばsurprise（驚き）の対極はexpectancy（予期）で、隣接するのは上下のfear（恐れ）とsorrow（悲しみ）である。なお軸の名前は2001年の総説の本文に従っていて、一般に流布している感情の輪の図のtrust、sadness、anticipationとは3語が異なる[^vocab-variants]。
 
 状態は8軸の値と更新時刻を持つJSONファイルとして保存される。joy（喜び）に0.6、surprise（驚き）に0.2を足した直後の中身は次のとおりである。
@@ -154,7 +162,7 @@ $ affectus show
 プルチックの感情の輪を使って得られた利点は設計の判断が少なくて済むことだった。軸の数や名前や軸同士の関係といった外部状態の設計項目の多くが理論の時点で決まっていたし、検証結果として実際に8つの軸は出来事に応じて変化することも確認できた。
 しかしこれは逆に感情の粒度と名前が8つに固定されていることでもある。例えば「懐かしさ」のような8つの軸に含まれてはおらず、かつ単純な組み合わせでは表しにくい感情はどう表現・保存すればよいのだろうか。
 
-次章では感情の名前を外部状態に持たせずにより少ない軸だけで感情を表す次元パラメーター型を扱う。
+次章では感情の名前を外部状態に持たせずにより少ない軸だけで感情を表す次元パラメーター型を扱おう。
 
 ## 参考文献
 
