@@ -39,11 +39,14 @@ Plutchik（以降プルチック）の理論は8つの基本感情を4組の対�
 感情エンジンのプルチックモデルでは、1つの設定ファイルに軸の名前と基準値と半減期と対極の感情を定義する。
 
 ```yaml:internal/engine/plutchik.default.yaml
-version: 1
-model: plutchik
-clamp:       { min: 0.0, max: 1.0 }
-delta_clamp: { min: -1.0, max: 1.0 }
+version: 1         # 設定ファイルの形式の版
+model: plutchik    # 使う感情モデル
+clamp:       { min: 0.0, max: 1.0 }   # 感情の値の範囲。プルチックの感情は0から1
+delta_clamp: { min: -1.0, max: 1.0 }  # 1回の差分を加算する前に切り詰める範囲
 
+# 8つの軸。baselineは何も起きていないときの値（基準値）で、
+# halflife_minutesは基準値へ戻る減衰の半減期（分）。oppositeは対極の軸で、
+# 並び順が円環の隣接を表す
 axes:
   - { name: joy,        baseline: 0.0, halflife_minutes: 90, opposite: sorrow }
   - { name: acceptance, baseline: 0.0, halflife_minutes: 90, opposite: disgust }
@@ -54,10 +57,9 @@ axes:
   - { name: anger,      baseline: 0.0, halflife_minutes: 90, opposite: fear }
   - { name: expectancy, baseline: 0.0, halflife_minutes: 90, opposite: surprise }
 
-fragment_file: ""
+fragment_file: ""  # 状態を書き換えるたびに現在の値を書き出すファイル。空なら書き出さない
 ```
 
-clampは感情の値の範囲で、delta_clampは1回の差分を加算する前に切り詰める範囲である。fragment_fileは状態を書き換えるたびに現在の値を書き出すファイルで、空なら書き出さない。
 隣接関係は書かれていないが、軸の並び順が隣接を表している。たとえばsurprise（驚き）の対極はexpectancy（予期）で、隣接するのは上下のfear（恐れ）とsorrow（悲しみ）である。なお軸の名前は2001年の総説の本文に従っていて、一般に流布している感情の輪の図のtrust、sadness、anticipationとは3語が異なる[^vocab-variants]。
 
 状態は8軸の値と更新時刻を持つJSONファイルとして保存される。joy（喜び）に0.6、surprise（驚き）に0.2を足した直後の中身は次のとおりである。
