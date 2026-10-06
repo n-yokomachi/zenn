@@ -109,11 +109,15 @@ title: "比較とまとめ"
 
 ## 試し方 <!-- 未レビュー -->
 
-本書で使った感情エンジンは[affectus](https://github.com/n-yokomachi/affectus)として公開しています。macOSかLinuxで動きます。Goの環境があれば次のコマンドでインストールできます。Goがない場合はリポジトリのReleasesページからビルド済みのバイナリを取得できます。
+本書で使った感情エンジンは[affectus](https://github.com/n-yokomachi/affectus)として公開しています。macOSかLinuxで動きます。Goの環境があれば次のコマンドでインストールできます。
 
 ```sh
 go install github.com/n-yokomachi/affectus/cmd/affectus@latest
 ```
+
+:::message
+Goがない場合はリポジトリのReleasesページからビルド済みのバイナリを取得できます。
+:::
 
 モデルはinitコマンドで初期化するときに選びます。何も指定しなければプルチックの感情の輪になります。
 
