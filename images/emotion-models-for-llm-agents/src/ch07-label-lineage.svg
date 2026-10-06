@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1160" height="960" viewBox="0 0 1160 960" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif">
 <rect width="1160" height="960" fill="#fbfbfa"/>
-<text x="80" y="52" font-size="19" fill="#24241f">称賛→立腹台本で、天邪鬼が各ターン末に保存した感情の名前（label）</text>
+<text x="80" y="52" font-size="19" fill="#24241f">叱責台本で、天邪鬼が各ターン末に保存した感情の名前（label）</text>
 <text x="80" y="80" font-size="14" fill="#7a7a72">色の帯は、同じ名前が2ターン以上使われた区間である。</text>
 <text x="340" y="128" font-size="16" fill="#24241f" text-anchor="middle">想起あり（2回目の実行）</text>
 <text x="840" y="128" font-size="16" fill="#24241f" text-anchor="middle">想起なし（2回目の実行）</text>

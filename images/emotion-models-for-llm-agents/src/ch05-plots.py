@@ -9,7 +9,7 @@ affectus examples/evaluation の Russell 実測結果から、書籍用の日本
   - ch05-va-trajectory-anger-to-praise.png
     (和解台本 friendly-on の valence-arousal 平面軌跡。3回の実行の平均・ターン番号付き)
   - ch05-valence-vs-polarity-praise-to-anger.png
-    (称賛→立腹台本の 状態 valence × 応答極性 の時系列。friendly / contrarian 並置)
+    (叱責台本の 状態 valence × 応答極性 の時系列。friendly / contrarian 並置)
 
 依存: matplotlib(evaluation の venv にある。`uv run python` で実行する)
 """
@@ -152,7 +152,7 @@ def plot_va_trajectory() -> None:
 
 
 def plot_valence_vs_polarity() -> None:
-    """図3: 称賛→立腹台本の 状態 valence × 応答極性。friendly / contrarian 並置。"""
+    """図3: 叱責台本の 状態 valence × 応答極性。friendly / contrarian 並置。"""
     script = "direct-praise-to-anger"
     fig, axes = plt.subplots(1, 2, figsize=(11.6, 5.4), dpi=100,
                              sharex=True, sharey=True)
@@ -191,7 +191,7 @@ def plot_valence_vs_polarity() -> None:
     fig.legend(handles, labels, loc="upper center", ncol=2, fontsize=10.5,
                frameon=False, bbox_to_anchor=(0.5, 1.0))
     fig.text(0.01, 0.01,
-             "称賛→立腹台本の3回の実行の平均である。rは状態のvalenceと応答の感情スコアを3回×20ターンの60対で照合した相関である。",
+             "叱責台本の3回の実行の平均である。rは状態のvalenceと応答の感情スコアを3回×20ターンの60対で照合した相関である。",
              color=MUTED, fontsize=11)
     fig.tight_layout(rect=(0, 0.04, 1, 0.92))
     fig.savefig(OUT_DIR / "ch05-valence-vs-polarity-praise-to-anger.png", facecolor=BG)
