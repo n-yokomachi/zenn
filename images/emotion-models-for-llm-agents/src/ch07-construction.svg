@@ -32,14 +32,14 @@
 
 <!-- 実例 -->
 <rect x="410" y="408" width="340" height="76" rx="8" fill="#ffffff" stroke="#8a8a80" stroke-width="1.5"/>
-<text x="580" y="440" font-size="18" fill="#24241f" text-anchor="middle">いまの感情の実例</text>
+<text x="580" y="440" font-size="18" fill="#24241f" text-anchor="middle">いまの感情</text>
 <text x="580" y="466" font-size="13" fill="#7a7a72" text-anchor="middle">名前はこのとき生まれる</text>
 
 <!-- 経験への書き戻し -->
 <path d="M750,446 L880,446 L880,200 L744,150" fill="none" stroke="#8a8a80" stroke-width="1.2" stroke-dasharray="5,5" marker-end="url(#arr)"/>
-<text x="896" y="300" font-size="14" fill="#7a7a72">実例は経験として</text>
-<text x="896" y="322" font-size="14" fill="#7a7a72">蓄積され、次の</text>
-<text x="896" y="344" font-size="14" fill="#7a7a72">構成の材料になる</text>
+<text x="896" y="300" font-size="14" fill="#7a7a72">名前を付けた感情は</text>
+<text x="896" y="322" font-size="14" fill="#7a7a72">経験として蓄積され、</text>
+<text x="896" y="344" font-size="14" fill="#7a7a72">次の構成の材料になる</text>
 
 <!-- 注記 -->
 <text x="60" y="580" font-size="15" fill="#7a7a72">構成主義的情動理論の議論を本書が整理した図です（原典にこの形の図はありません）。</text>
