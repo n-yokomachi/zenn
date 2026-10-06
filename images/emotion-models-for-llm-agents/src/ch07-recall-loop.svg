@@ -33,7 +33,7 @@
 
 <!-- 自己参照の戻り -->
 <path d="M150,486 L86,486 L86,138 L146,138" fill="none" stroke="#b0562c" stroke-width="1.6" stroke-dasharray="6,5" marker-end="url(#arw)"/>
-<text x="60" y="560" font-size="15" fill="#b0562c">申告した14属性が、次のターンの想起の検索条件になります。</text>
+<text x="60" y="560" font-size="15" fill="#b0562c">申告した14属性が、次のターンの想起の検索条件になる。</text>
 
 <!-- 概念ストア -->
 <rect x="700" y="180" width="380" height="270" rx="10" fill="none" stroke="#8a8a80" stroke-width="1.8"/>
@@ -52,5 +52,5 @@
 <text x="586" y="470" font-size="13" fill="#8a6a3a">経験を追記</text>
 
 <!-- 注記 -->
-<text x="80" y="640" font-size="15" fill="#7a7a72">新しいストアでは想起は空で、材料は2軸と語彙だけから始まります。時間の経過のループ（tickコマンド）はプルチックの感情の輪と同じです。</text>
+<text x="80" y="640" font-size="15" fill="#7a7a72">新しいストアでは想起は空で、材料は2軸と語彙だけから始まる。時間の経過のループ（tickコマンド）はプルチックの感情の輪と同じである。</text>
 </svg>

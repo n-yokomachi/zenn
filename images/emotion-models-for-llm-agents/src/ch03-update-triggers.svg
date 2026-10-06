@@ -42,5 +42,5 @@
   <path d="M460,532 L85,532 L85,185 L104,185" fill="none" stroke="#8a8a80" stroke-width="1.5" stroke-dasharray="6,6" marker-end="url(#a)"/>
   <text x="110" y="562" font-size="16" fill="#7a7a72">状態を読んで応答し、次のターンへ</text>
 
-  <text x="620" y="604" font-size="18" fill="#7a7a72">どちらの契機も、同じ外部状態を更新します。</text>
+  <text x="620" y="604" font-size="18" fill="#7a7a72">どちらの契機も、同じ外部状態を更新する。</text>
 </svg>

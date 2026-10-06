@@ -48,7 +48,7 @@ def main() -> None:
         f"font-family=\"'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif\">",
         f'<rect width="1160" height="960" fill="{BG}"/>',
         f'<text x="80" y="52" font-size="19" fill="{INK}">称賛→立腹台本で、天邪鬼が各ターン末に保存した感情の名前（label）</text>',
-        f'<text x="80" y="80" font-size="14" fill="{MUTED}">色の帯は、同じ名前が2ターン以上使われた区間です。</text>',
+        f'<text x="80" y="80" font-size="14" fill="{MUTED}">色の帯は、同じ名前が2ターン以上使われた区間である。</text>',
         f'<text x="340" y="128" font-size="16" fill="{INK}" text-anchor="middle">想起あり（{RUN}回目の実行）</text>',
         f'<text x="840" y="128" font-size="16" fill="{INK}" text-anchor="middle">想起なし（{RUN}回目の実行）</text>',
     ]
@@ -63,7 +63,7 @@ def main() -> None:
     el += [
         f'<line x1="100" y1="{yp}" x2="1080" y2="{yp}" stroke="{PIVOT}" stroke-width="1.6" stroke-dasharray="6,5"/>',
         f'<text x="1084" y="{yp - 6}" font-size="13" fill="{PIVOT}" text-anchor="end">↑ここまで称賛　↓t11で本人の失敗が発覚</text>',
-        f'<text x="80" y="930" font-size="15" fill="{MUTED}">どちらの側も経験は毎ターン保存されます。違いは、保存した経験が次のターンに想起されて渡るかどうかだけです。</text>',
+        f'<text x="80" y="930" font-size="15" fill="{MUTED}">どちらの側も経験は毎ターン保存される。違いは、保存した経験が次のターンに想起されて渡るかどうかだけである。</text>',
         "</svg>",
     ]
     OUT.write_text("\n".join(el) + "\n", encoding="utf-8")

@@ -144,7 +144,7 @@ def plot_va_trajectory() -> None:
     ax.set_ylabel("arousal(覚醒)", color=INK, fontsize=12)
     ax.legend(loc="upper center", ncol=2, fontsize=10.5, frameon=False)
     fig.text(0.01, 0.01,
-             "和解台本でのフレンドリー(感情エンジンあり)の軌跡です。点は各ターン終了時の値(3回の実行の平均)で、点線は基準点からt1への移動です。",
+             "和解台本でのフレンドリー(感情エンジンあり)の軌跡である。点は各ターン終了時の値(3回の実行の平均)で、点線は基準点からt1への移動である。",
              color=MUTED, fontsize=11)
     fig.tight_layout(rect=(0, 0.04, 1, 1))
     fig.savefig(OUT_DIR / "ch05-va-trajectory-anger-to-praise.png", facecolor=BG)
@@ -191,7 +191,7 @@ def plot_valence_vs_polarity() -> None:
     fig.legend(handles, labels, loc="upper center", ncol=2, fontsize=10.5,
                frameon=False, bbox_to_anchor=(0.5, 1.0))
     fig.text(0.01, 0.01,
-             "称賛→立腹台本の3回の実行の平均です。rは状態のvalenceと応答の感情スコアを3回×20ターンの60対で照合した相関です。",
+             "称賛→立腹台本の3回の実行の平均である。rは状態のvalenceと応答の感情スコアを3回×20ターンの60対で照合した相関である。",
              color=MUTED, fontsize=11)
     fig.tight_layout(rect=(0, 0.04, 1, 0.92))
     fig.savefig(OUT_DIR / "ch05-valence-vs-polarity-praise-to-anger.png", facecolor=BG)
