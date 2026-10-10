@@ -74,29 +74,6 @@ Tracy（以降トレイシー）とRandles（以降ランドルズ）は2011年�
 本章では既存の分類を紹介したうえで、本書で扱う4つの系統と代表モデルを整理した。
 次章では4つに共通する課題として、感情を模倣するコンポーネントをどう設計するかを扱う。
 
-## 参考文献
-
-本章で言及した文献を登場順に挙げる。所在はDOIを優先し、無料で読めるものはそのURLを添える。
-
-- Tracy, J. L., & Randles, D. (2011). Four Models of Basic Emotions: A Review of Ekman and Cordaro, Izard, Levenson, and Panksepp and Watt. Emotion Review, 3(4), 397-405. https://doi.org/10.1177/1754073911410747
-- Plutchik, R. (2001). The Nature of Emotions. American Scientist, 89(4), 344-350. https://www.jstor.org/stable/27857503
-- Russell, J. A. (1980). A Circumplex Model of Affect. Journal of Personality and Social Psychology, 39(6), 1161-1178. https://doi.org/10.1037/h0077714
-- James, W. (1884). What is an Emotion? Mind, os-9(34), 188-205. 全文がhttps://psychclassics.yorku.ca/James/emotion.htm で公開されている
-- Levenson, R. W. (1992). Autonomic Nervous System Differences among Emotions. Psychological Science, 3(1), 23-27. https://doi.org/10.1111/j.1467-9280.1992.tb00251.x
-- Gendron, M., & Barrett, L. F. (2009). Reconstructing the Past: A Century of Ideas About Emotion in Psychology. Emotion Review, 1(4), 316-339. https://doi.org/10.1177/1754073909338877
-- Cornelius, R. R. (1996). The Science of Emotion: Research and Tradition in the Psychology of Emotion. Prentice Hall. ISBN 0133001539. 絶版である。著者自身が同じ四分法を要約したCornelius, R. R. (2000). Theoretical Approaches to Emotion. Proceedings of the ISCA Workshop on Speech and EmotionがISCAアーカイブで無料公開されている
-- Wundt, W. (1896). Grundriss der Psychologie. Wilhelm Engelmann. 英訳Outlines of Psychology（1897）の全文がhttps://psychclassics.yorku.ca/Wundt/Outlines/ で公開されている
-- Russell, J. A., & Barrett, L. F. (1999). Core Affect, Prototypical Emotional Episodes, and Other Things Called Emotion: Dissecting the Elephant. Journal of Personality and Social Psychology, 76(5), 805-819. https://doi.org/10.1037/0022-3514.76.5.805
-- Russell, J. A. (2003). Core Affect and the Psychological Construction of Emotion. Psychological Review, 110(1), 145-172. https://doi.org/10.1037/0033-295X.110.1.145
-- Mehrabian, A., & Russell, J. A. (1974). An Approach to Environmental Psychology. MIT Press. ISBN 978-0-262-13090-5
-- Scherer, K. R. (2005). What are emotions? And how can they be measured? Social Science Information, 44(4), 695-729. https://doi.org/10.1177/0539018405058216
-- Schachter, S., & Singer, J. E. (1962). Cognitive, Social, and Physiological Determinants of Emotional State. Psychological Review, 69(5), 379-399. https://doi.org/10.1037/h0046234
-- Ortony, A., Clore, G. L., & Collins, A. (1988). The Cognitive Structure of Emotions. Cambridge University Press. https://doi.org/10.1017/CBO9780511571299 （2022年に第2版が出ている。ISBN 9781108928755）
-- Barrett, L. F. (2017). The Theory of Constructed Emotion: An Active Inference Account of Interoception and Categorization. Social Cognitive and Affective Neuroscience, 12(1), 1-23. https://doi.org/10.1093/scan/nsw154
-- Smith, R., Parr, T., & Friston, K. J. (2019). Simulating Emotions: An Active Inference Model of Emotional State Inference and Emotion Concept Learning. Frontiers in Psychology, 10, 2844. https://doi.org/10.3389/fpsyg.2019.02844
-- Panksepp, J. (1998). Affective Neuroscience: The Foundations of Human and Animal Emotions. Oxford University Press.
-- Damasio, A. R. (1996). The Somatic Marker Hypothesis and the Possible Functions of the Prefrontal Cortex. Philosophical Transactions of the Royal Society B, 351(1346), 1413-1420. https://doi.org/10.1098/rstb.1996.0125 （一般書としてはDamasio, A. R. (1994). Descartes' Error: Emotion, Reason, and the Human Brain. Putnam.）
-
 [^tracy2011]: Tracy & Randles (2011). https://doi.org/10.1177/1754073911410747
 
 [^tr-converge]: Tracy & Randles (2011)のアブストラクトの原文は"largely converge with the current state of affective science research"である。
@@ -107,7 +84,7 @@ Tracy（以降トレイシー）とRandles（以降ランドルズ）は2011年�
 
 [^james1884]: James (1884). 全文がhttps://psychclassics.yorku.ca/James/emotion.htm で公開されている。
 
-[^gb-james-misread]: Gendron & Barrett (2009)の原文は"In modern works on emotion, James is often referred to as a basic emotion theorist (e.g., Levenson, 1992)."である。同論文はこの引用のされ方を"James is mistakenly thought of as a basic emotion theorist"と誤りだと述べている。Levenson (1992)の書誌は参考文献を参照。
+[^gb-james-misread]: Gendron & Barrett (2009)の原文は"In modern works on emotion, James is often referred to as a basic emotion theorist (e.g., Levenson, 1992)."である。同論文はこの引用のされ方を"James is mistakenly thought of as a basic emotion theorist"と誤りだと述べている。Levenson (1992)の書誌は付録「参考文献」を参照。
 
 [^gendron-barrett2009]: Gendron & Barrett (2009). https://doi.org/10.1177/1754073909338877
 

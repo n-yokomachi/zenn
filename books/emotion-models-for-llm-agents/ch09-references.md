@@ -1,0 +1,41 @@
+---
+title: "付録：参考文献"
+---
+
+本書で言及した文献を著者名のアルファベット順に挙げる。所在はDOIを優先し、無料で読めるものはそのURLを添える。
+
+- Barrett, L. F. (2017). How Emotions Are Made: The Secret Life of the Brain. Houghton Mifflin Harcourt. 邦訳『情動はこうしてつくられる——脳の隠れた働きと構成主義的情動理論』高橋洋訳、紀伊國屋書店、2019年
+- Barrett, L. F. (2017). The Theory of Constructed Emotion: An Active Inference Account of Interoception and Categorization. Social Cognitive and Affective Neuroscience, 12(1), 1-23. https://doi.org/10.1093/scan/nsw154
+- Becker-Asano, C., & Wachsmuth, I. (2010). Affective Computing with Primary and Secondary Emotions in a Virtual Human. Autonomous Agents and Multi-Agent Systems. https://doi.org/10.1007/s10458-009-9094-9
+- Bhattacharyya, S., Kuriabov, E., Craig, L., Dilliraj, T., Adams, R. B., Jr., Li, J., & Wang, J. Z. (2026). Large Language Models Show Fragile Cognitive Reasoning About Human Emotions. arXiv:2508.05880. 査読前のプレプリントである
+- Choi, B. J., & Weber, M. (2026). Latent Structure of Affective Representations in Large Language Models. arXiv:2604.07382. 査読前のプレプリントである
+- Cornelius, R. R. (1996). The Science of Emotion: Research and Tradition in the Psychology of Emotion. Prentice Hall. ISBN 0133001539. 絶版である。著者自身が同じ四分法を要約したCornelius, R. R. (2000). Theoretical Approaches to Emotion. Proceedings of the ISCA Workshop on Speech and EmotionがISCAアーカイブで無料公開されている
+- Croissant, M., Frister, M., Schofield, G., & McCall, C. (2024). An Appraisal-Based Chain-of-Emotion Architecture for Affective Language Model Game Agents. PLOS ONE. https://doi.org/10.1371/journal.pone.0301033
+- Damasio, A. R. (1996). The Somatic Marker Hypothesis and the Possible Functions of the Prefrontal Cortex. Philosophical Transactions of the Royal Society B, 351(1346), 1413-1420. https://doi.org/10.1098/rstb.1996.0125 （一般書としてはDamasio, A. R. (1994). Descartes' Error: Emotion, Reason, and the Human Brain. Putnam.）
+- Gebhard, P. (2005). ALMA - A Layered Model of Affect. AAMAS'05. https://doi.org/10.1145/1082473.1082478. 著者の所属機関のサイト https://alma.dfki.de/papers/aamas05.pdf で無料公開されている
+- Gendron, M., & Barrett, L. F. (2009). Reconstructing the Past: A Century of Ideas About Emotion in Psychology. Emotion Review, 1(4), 316-339. https://doi.org/10.1177/1754073909338877
+- James, W. (1884). What is an Emotion? Mind, os-9(34), 188-205. 全文がhttps://psychclassics.yorku.ca/James/emotion.htm で公開されている
+- Levenson, R. W. (1992). Autonomic Nervous System Differences among Emotions. Psychological Science, 3(1), 23-27. https://doi.org/10.1111/j.1467-9280.1992.tb00251.x
+- Li, M., Su, Y., Huang, H., Cheng, J., Hu, X., Zhang, X., Wang, H., Qin, Y., Wang, X., Lindquist, K. A., Liu, Z., & Zhang, D. (2024). Language-specific representation of emotion-concept knowledge causally supports emotion inference. iScience, 27(12), 111401. https://doi.org/10.1016/j.isci.2024.111401
+- Lu, J., & Li, Y. (2025). Dynamic Affective Memory Management for Personalized LLM Agents. arXiv:2510.27418. 査読前のプレプリントである
+- Marsella, S. C., & Gratch, J. (2009). EMA: A Process Model of Appraisal Dynamics. Cognitive Systems Research. https://doi.org/10.1016/j.cogsys.2008.03.005
+- Mehrabian, A., & Russell, J. A. (1974). An Approach to Environmental Psychology. MIT Press. ISBN 978-0-262-13090-5
+- Ortony, A., Clore, G. L., & Collins, A. (1988). The Cognitive Structure of Emotions. Cambridge University Press. https://doi.org/10.1017/CBO9780511571299 （2022年に第2版が出ている。ISBN 9781108928755）
+- Panksepp, J. (1998). Affective Neuroscience: The Foundations of Human and Animal Emotions. Oxford University Press.
+- Park, J. S., O'Brien, J. C., Cai, C. J., Morris, M. R., Liang, P., & Bernstein, M. S. (2023). Generative Agents: Interactive Simulacra of Human Behavior. UIST '23. https://doi.org/10.1145/3586183.3606763
+- Plutchik, R. (1980). A General Psychoevolutionary Theory of Emotion. In R. Plutchik & H. Kellerman (Eds.), Emotion: Theory, Research, and Experience, Vol. 1: Theories of Emotion (pp. 3-33). Academic Press.
+- Plutchik, R. (2001). Integration, Differentiation, and Derivatives of Emotion. Evolution and Cognition, 7(2), 114-125. 掲載号のPDFがKonrad Lorenz Instituteのサイトで公開されている（https://kli.ac.at/webroot/files/file/Evolution%20&%20Cognition/2001%207-2.pdf）
+- Plutchik, R. (2001). The Nature of Emotions. American Scientist, 89(4), 344-350. https://www.jstor.org/stable/27857503
+- Russell, J. A. (1980). A Circumplex Model of Affect. Journal of Personality and Social Psychology, 39(6), 1161-1178. https://doi.org/10.1037/h0077714
+- Russell, J. A. (2003). Core Affect and the Psychological Construction of Emotion. Psychological Review, 110(1), 145-172. https://doi.org/10.1037/0033-295X.110.1.145
+- Russell, J. A., & Barrett, L. F. (1999). Core Affect, Prototypical Emotional Episodes, and Other Things Called Emotion: Dissecting the Elephant. Journal of Personality and Social Psychology, 76(5), 805-819. https://doi.org/10.1037/0022-3514.76.5.805
+- Schachter, S., & Singer, J. E. (1962). Cognitive, Social, and Physiological Determinants of Emotional State. Psychological Review, 69(5), 379-399. https://doi.org/10.1037/h0046234
+- Scherer, K. R. (2005). What are emotions? And how can they be measured? Social Science Information, 44(4), 695-729. https://doi.org/10.1177/0539018405058216
+- Smith, R., Parr, T., & Friston, K. J. (2019). Simulating Emotions: An Active Inference Model of Emotional State Inference and Emotion Concept Learning. Frontiers in Psychology, 10, 2844. https://doi.org/10.3389/fpsyg.2019.02844
+- Sofroniew, N., Kauvar, I., Saunders, W., Chen, R., Henighan, T., Hydrie, S., Citro, C., Pearce, A., Tarng, J., Gurnee, W., Batson, J., Zimmerman, S., Rivoire, K., Fish, K., Olah, C., & Lindsey, J. (2026). Emotion Concepts and their Function in a Large Language Model. arXiv:2604.07729. 公開版が https://transformer-circuits.pub/2026/emotions/ で読める
+- Steunebrink, B. R., Dastani, M. M., & Meyer, J.-J. Ch. (2009). The OCC Model Revisited. Proceedings of the 4th Workshop on Emotion and Computing. 査読誌ではなくワークショップ論文集である。https://people.idsia.ch/~steunebrink/Publications/KI09_OCC_revisited.pdf で無料公開されている
+- Tak, A. N., Banayeeanzade, A., Bolourani, A., Kian, M., Jia, R., & Gratch, J. (2025). Mechanistic Interpretability of Emotion Inference in Large Language Models. Findings of ACL 2025. arXiv:2502.05489
+- Tosato, T., Helbling, S., Mantilla-Ramos, Y.-J., Hegazy, M., Tosato, A., Lemay, D. J., Rish, I., & Dumas, G. (2026). Persistent Instability in LLM's Personality Measurements: Effects of Scale, Reasoning, and Conversation History. arXiv:2508.04826
+- Tracy, J. L., & Randles, D. (2011). Four Models of Basic Emotions: A Review of Ekman and Cordaro, Izard, Levenson, and Panksepp and Watt. Emotion Review, 3(4), 397-405. https://doi.org/10.1177/1754073911410747
+- van der Ben, S., Baur, R., Metz, Y., & El-Assady, M. (2026). Where Do Models Find Happiness? Emotion Vectors in Open-Source LLMs. arXiv:2606.26987. 査読前のプレプリントである
+- Wundt, W. (1896). Grundriss der Psychologie. Wilhelm Engelmann. 英訳Outlines of Psychology（1897）の全文がhttps://psychclassics.yorku.ca/Wundt/Outlines/ で公開されている

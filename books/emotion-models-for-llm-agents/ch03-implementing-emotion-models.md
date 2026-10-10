@@ -94,27 +94,6 @@ OCCモデルには将来の出来事の見込みから生じる感情が定義�
 
 本章ではLLM単体の感情表現の限界を先行研究から確認し、感情の状態をLLMの外側に置く基本設計を整理した。外部状態の4つの設計軸を定め、保持と演算は感情エンジンが、解釈と言語化はLLMが担う役割分担を決めて、先行研究との関係も確認した。次章からはこの設計をもとに4つの感情モデルを1つずつ実装し、それぞれの外部状態がどんなデータを持ちエージェントの応答にどう影響するかを確かめる。
 
-## 参考文献
-
-本章で言及した文献を、登場順に挙げる。所在はDOIを優先し、無料で読めるものはそのURLを添える。
-
-- Sofroniew, N., Kauvar, I., Saunders, W., Chen, R., Henighan, T., Hydrie, S., Citro, C., Pearce, A., Tarng, J., Gurnee, W., Batson, J., Zimmerman, S., Rivoire, K., Fish, K., Olah, C., & Lindsey, J. (2026). Emotion Concepts and their Function in a Large Language Model. arXiv:2604.07729. 公開版が https://transformer-circuits.pub/2026/emotions/ で読める
-- Li, M., Su, Y., Huang, H., Cheng, J., Hu, X., Zhang, X., Wang, H., Qin, Y., Wang, X., Lindquist, K. A., Liu, Z., & Zhang, D. (2024). Language-specific representation of emotion-concept knowledge causally supports emotion inference. iScience, 27(12), 111401. https://doi.org/10.1016/j.isci.2024.111401
-- Tak, A. N., Banayeeanzade, A., Bolourani, A., Kian, M., Jia, R., & Gratch, J. (2025). Mechanistic Interpretability of Emotion Inference in Large Language Models. Findings of ACL 2025. arXiv:2502.05489
-- Choi, B. J., & Weber, M. (2026). Latent Structure of Affective Representations in Large Language Models. arXiv:2604.07382. 査読前のプレプリントである
-- van der Ben, S., Baur, R., Metz, Y., & El-Assady, M. (2026). Where Do Models Find Happiness? Emotion Vectors in Open-Source LLMs. arXiv:2606.26987. 査読前のプレプリントである
-- Tosato, T., Helbling, S., Mantilla-Ramos, Y.-J., Hegazy, M., Tosato, A., Lemay, D. J., Rish, I., & Dumas, G. (2026). Persistent Instability in LLM's Personality Measurements: Effects of Scale, Reasoning, and Conversation History. arXiv:2508.04826
-- Russell, J. A. (1980). A Circumplex Model of Affect. Journal of Personality and Social Psychology. https://doi.org/10.1037/h0077714
-- Bhattacharyya, S., Kuriabov, E., Craig, L., Dilliraj, T., Adams, R. B., Jr., Li, J., & Wang, J. Z. (2026). Large Language Models Show Fragile Cognitive Reasoning About Human Emotions. arXiv:2508.05880. 査読前のプレプリントである
-- Gebhard, P. (2005). ALMA - A Layered Model of Affect. AAMAS'05. https://doi.org/10.1145/1082473.1082478. 著者の所属機関のサイト https://alma.dfki.de/papers/aamas05.pdf で無料公開されている
-- Becker-Asano, C., & Wachsmuth, I. (2010). Affective Computing with Primary and Secondary Emotions in a Virtual Human. Autonomous Agents and Multi-Agent Systems. https://doi.org/10.1007/s10458-009-9094-9
-- Marsella, S. C., & Gratch, J. (2009). EMA: A Process Model of Appraisal Dynamics. Cognitive Systems Research. https://doi.org/10.1016/j.cogsys.2008.03.005
-- Park, J. S., O'Brien, J. C., Cai, C. J., Morris, M. R., Liang, P., & Bernstein, M. S. (2023). Generative Agents: Interactive Simulacra of Human Behavior. UIST '23. https://doi.org/10.1145/3586183.3606763
-- Croissant, M., Frister, M., Schofield, G., & McCall, C. (2024). An Appraisal-Based Chain-of-Emotion Architecture for Affective Language Model Game Agents. PLOS ONE. https://doi.org/10.1371/journal.pone.0301033
-- Lu, J., & Li, Y. (2025). Dynamic Affective Memory Management for Personalized LLM Agents. arXiv:2510.27418. 査読前のプレプリントである
-- Ortony, A., Clore, G. L., & Collins, A. (1988). The Cognitive Structure of Emotions. Cambridge University Press. 2022年に新版が出ている（ISBN 9781108928755）
-- Steunebrink, B. R., Dastani, M. M., & Meyer, J.-J. Ch. (2009). The OCC Model Revisited. Proceedings of the 4th Workshop on Emotion and Computing. 査読誌ではなくワークショップ論文集である。https://people.idsia.ch/~steunebrink/Publications/KI09_OCC_revisited.pdf で無料公開されている
-
 [^five-studies]: 収束している5件は、次の段落で詳しく見る Sofroniew et al. (2026) arXiv:2604.07729 のほか、Li et al. (2024) doi:10.1016/j.isci.2024.111401、Tak et al. (2025) arXiv:2502.05489、Choi & Weber (2026) arXiv:2604.07382、van der Ben et al. (2026) arXiv:2606.26987。残る1件（Tosato et al. 2026, arXiv:2508.04826）は感情ではなく人格特性の測定を扱うもので、結論が対立しているというより主題が別である。
 
 [^valence]: Russell (1980) の原文が使うのは "pleasure-displeasure" と "degree of arousal" で、valence という語は登場しない。

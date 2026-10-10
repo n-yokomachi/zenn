@@ -132,10 +132,6 @@ $ affectus feel '{"valence":0.4,"arousal":0.25}'
 一方で課題が2つある。1つは対極の感情の両立を区別できないことで、たとえば懐かしさに含まれる快さと苦さの同居は表しづらい。もう1つは感情が生じた理由が記録されないことである。覚醒が高く不快な位置にあっても、侵害への怒りなのか脅威への恐れなのかは2つの数値からは分からない。
 そこで次章では、感情が生じた理由を外部状態に記録する評価導出型を扱うこととしよう。
 
-## 参考文献
-
-- Russell, J. A. (1980). A Circumplex Model of Affect. Journal of Personality and Social Psychology, 39(6), 1161-1178. https://doi.org/10.1037/h0077714
-
 [^russell-thesis]: Russell (1980)の原文は"My thesis is that affective states are, in fact, best represented as a circle in a two-dimensional bipolar space"（pp. 1161-1162）である。
 [^disk-origin]: Russell (1980)の原文は"although a disk or a wheel would be a better image, since affective states of moderate intensity would fall toward the middle of the space, with the origin presumably corresponding to adaptation level or a neutral feeling"（p. 1170）である。順応水準（adaptation level）は、刺激に慣れたときに落ち着く基準の水準のことである。
 [^snippet-russell]: 指示文の原文は"You name the feeling."と"the meaning lives entirely in the position on the plane."である。

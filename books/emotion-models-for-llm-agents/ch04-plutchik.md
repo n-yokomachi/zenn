@@ -174,14 +174,6 @@ $ affectus show
 
 次章では感情の名前を外部状態に持たせずにより少ない軸だけで感情を表す次元パラメーター型を扱おう。
 
-## 参考文献
-
-本章で言及した文献を、登場順に挙げる。所在はDOIを優先し、無料で読めるものはそのURLを添える。
-
-- Plutchik, R. (2001). The Nature of Emotions. American Scientist. https://www.jstor.org/stable/27857503
-- Plutchik, R. (2001). Integration, Differentiation, and Derivatives of Emotion. Evolution and Cognition, 7(2), 114-125. 掲載号のPDFがKonrad Lorenz Instituteのサイトで公開されている（https://kli.ac.at/webroot/files/file/Evolution%20&%20Cognition/2001%207-2.pdf）
-- Plutchik, R. (1980). A General Psychoevolutionary Theory of Emotion. In R. Plutchik & H. Kellerman (Eds.), Emotion: Theory, Research, and Experience, Vol. 1: Theories of Emotion (pp. 3-33). Academic Press.
-
 [^plutchik-amsci2001]: Plutchik, R. (2001). The Nature of Emotions. American Scientist, 89(4). https://www.jstor.org/stable/27857503
 [^vocab-variants]: 原語の揺れの例。本人の別論文（Evolution and Cognition誌）の円環図はラベルがsadnessとanticipation、American Scientist論文の本文はsorrowとexpectancyである。trustが本人の図のラベルに使われた例は、筆者が参照した範囲では見つからなかった。
 [^plutchik-postulates]: Plutchik, R. (1980). A General Psychoevolutionary Theory of Emotion. In R. Plutchik & H. Kellerman (Eds.), Emotion: Theory, Research, and Experience, Vol. 1 (pp. 3-33). Academic Press. 理論の10の公準のうち、公準1「The concept of emotion is applicable to all evolutionary levels and applies to animals as well as to humans」、公準3「Emotions serve an adaptive role in helping organisms deal with key survival issues posed by the environment」、公準5「There is a small number of basic, primary, or prototype emotions」による。

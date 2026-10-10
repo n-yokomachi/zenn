@@ -207,13 +207,6 @@ rememberコマンドへの申告のうち2回は、閉じタグの前に余計�
 
 次章では4つのモデルの結果を並べて比較する。
 
-## 参考文献
-
-- Barrett, L. F. (2017). The theory of constructed emotion: an active inference account of interoception and categorization. Social Cognitive and Affective Neuroscience, 12(1), 1-23. https://doi.org/10.1093/scan/nsw154
-- Barrett, L. F. (2017). How Emotions Are Made: The Secret Life of the Brain. Houghton Mifflin Harcourt. 邦訳『情動はこうしてつくられる——脳の隠れた働きと構成主義的情動理論』高橋洋訳、紀伊國屋書店、2019年
-- Li, M., Su, Y., Huang, H.-Y., et al. (2024). Language-specific representation of emotion-concept knowledge causally supports emotion inference. iScience, 27(12), 111401. https://doi.org/10.1016/j.isci.2024.111401
-- Park, J. S., O'Brien, J. C., Cai, C. J., Morris, M. R., Liang, P., & Bernstein, M. S. (2023). Generative Agents: Interactive Simulacra of Human Behavior. UIST '23. https://doi.org/10.1145/3586183.3606763
-
 [^tce2017]: Barrett, L. F. (2017). https://doi.org/10.1093/scan/nsw154。構成の定式はpp. 9, 13、「感情は、世界への反応ではなく、世界の構成である」は原文"Emotions are constructions of the world, not reactions to it."（p. 16）の意訳である。概念と過去経験の一文は原文"An internal model runs on past experiences, implemented as concepts."（p. 12）である。実例の多様さの議論はp. 3による。「共通の核となる特徴を持つ見込みは薄い」の原文は"it is unlikely that all instances of an emotion category share a set of core features (i.e. a single facial expression, autonomic pattern or set of neurons)"である。
 [^affect-terms]: 用語の注。2017年の論文の本文が使う語はaffectである（p. 6）。コア・アフェクトの術語は「感情モデルの整理」の章で触れた1999年の共著論文とRussell（2003）に由来し、本書はカタカナ表記で通す。なお2017年の論文がvalenceとarousalの典拠に挙げるBarrett and Russell（1999）は、「感情モデルの整理」の章で使ったRussell & Barrett（1999、JPSP誌）とは別の論文（Current Directions in Psychological Science誌）である。
 [^li2024]: Li, M., et al. (2024). https://doi.org/10.1016/j.isci.2024.111401。人間の評定で感情概念の内容を14属性として測定し（コア・アフェクト2、典型表情への類似6、先行評価6。評価の6属性はSkerry & Saxe（2015）の38項目を主成分分析で縮約したもの）、言語モデルの内部表現と照合した研究である。表情の6属性は幸福・怒り・悲しみ・恐れ・驚き・嫌悪の典型表情への類似、評価の6属性はcontrol・fairness・self-relativity・other-relativity・expectedness・noveltyである。14属性の表現を提案した論文ではなく、本実装が測定のスキーマを検索の規約として借用している。
