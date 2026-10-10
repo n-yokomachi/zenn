@@ -11,12 +11,12 @@ title: "プルチックの輪を実装する"
 
 ## プルチックの感情の輪 <!-- レビュー済み -->
 
-Plutchik（以降プルチック）の理論は8つの基本感情を4組の対極として定義している。2001年の総説では、喜び（joy）と悲しみ（sorrow）、怒り（anger）と恐れ（fear）、受容（acceptance）と嫌悪（disgust）、驚き（surprise）と予期（expectancy）がそれぞれ対極の組である[^plutchik-amsci2001]。8つの感情は対極同士が正反対に来るように円環状に並び、隣り合う感情が混ざると別の感情になる。これを一次双対（primary dyads）と呼ぶ[^plutchik-ec2001]。たとえば喜びと受容の混合は愛で、嫌悪と怒りの混合は憎悪あるいは敵意である。
+Plutchik（以降プルチック）の理論は8つの基本感情を4組の対極として定義している。2001年の総説では、喜び（joy）と悲しみ（sorrow）、怒り（anger）と恐れ（fear）、受容（acceptance）と嫌悪（disgust）、驚き（surprise）と予期（expectancy）がそれぞれ対極の組である（Plutchik 2001b）。8つの感情は対極同士が正反対に来るように円環状に並び、隣り合う感情が混ざると別の感情になる。これを一次双対（primary dyads）と呼ぶ（Plutchik 2001a）。たとえば喜びと受容の混合は愛で、嫌悪と怒りの混合は憎悪あるいは敵意である。
 
 ![プルチックの感情の輪。8つの基本感情の円環と隣接同士の混合である一次双対](/images/emotion-models-for-llm-agents/ch04-wheel.png)
 
 円環には強度の次元もある。同じ軸の感情でも強度によって呼び方が変わり、弱い怒りは苛立ち、強い怒りは激怒になる。そのため円環の中心から強度の軸を伸ばした円錐としても表される。
-なおプルチックは感情を生物の進化の産物と捉えていた。感情は生存のための適応の基本過程であり、そのため基本となる感情は種を越えて共通する少数に絞られるという考えである[^plutchik-postulates]。
+なおプルチックは感情を生物の進化の産物と捉えていた。感情は生存のための適応の基本過程であり、そのため基本となる感情は種を越えて共通する少数に絞られるという考えである（Plutchik 1980）。
 
 ## プルチックの感情の輪を元にした4つの設計軸 <!-- レビュー済み -->
 
@@ -60,7 +60,7 @@ axes:
 fragment_file: ""  # 状態を書き換えるたびに現在の値を書き出すファイル。空なら書き出さない
 ```
 
-設定ファイルに隣接関係は書かれていないが、軸の並び順が隣接を表している。たとえばsurprise（驚き）の対極はexpectancy（予期）で、隣接するのは上下のfear（恐れ）とsorrow（悲しみ）である。なお軸の名前は2001年の総説の本文に従っていて、一般に流布している感情の輪の図のtrust、sadness、anticipationとは3語が異なる[^vocab-variants]。
+設定ファイルに隣接関係は書かれていないが、軸の並び順が隣接を表している。たとえばsurprise（驚き）の対極はexpectancy（予期）で、隣接するのは上下のfear（恐れ）とsorrow（悲しみ）である。なお軸の名前は2001年の総説の本文に従っていて、一般に流布している感情の輪の図のtrust、sadness、anticipationとは3語が異なる。
 
 状態は8軸の値と更新時刻を持つJSONファイルとして保存される。joy（喜び）に0.6、surprise（驚き）に0.2を足した直後の中身は次のとおりである。
 
@@ -173,8 +173,3 @@ $ affectus show
 しかしこれは逆に感情の粒度と名前が8つに固定されていることでもある。たとえば「懐かしさ」のような8つの軸に含まれてはおらず、かつ単純な組み合わせでは表しにくい感情はどう表現・保存すればよいのだろうか。
 
 次章では感情の名前を外部状態に持たせずにより少ない軸だけで感情を表す次元パラメーター型を扱おう。
-
-[^plutchik-amsci2001]: Plutchik, R. (2001). The Nature of Emotions. American Scientist, 89(4). https://www.jstor.org/stable/27857503
-[^vocab-variants]: 原語の揺れの例。本人の別論文（Evolution and Cognition誌）の円環図はラベルがsadnessとanticipation、American Scientist論文の本文はsorrowとexpectancyである。trustが本人の図のラベルに使われた例は、筆者が参照した範囲では見つからなかった。
-[^plutchik-postulates]: Plutchik, R. (1980). A General Psychoevolutionary Theory of Emotion. In R. Plutchik & H. Kellerman (Eds.), Emotion: Theory, Research, and Experience, Vol. 1 (pp. 3-33). Academic Press. 理論の10の公準のうち、公準1「The concept of emotion is applicable to all evolutionary levels and applies to animals as well as to humans」、公準3「Emotions serve an adaptive role in helping organisms deal with key survival issues posed by the environment」、公準5「There is a small number of basic, primary, or prototype emotions」による。
-[^plutchik-ec2001]: 円環の並びと一次双対8つの図はPlutchik, R. (2001). Integration, Differentiation, and Derivatives of Emotion. Evolution and Cognition, 7(2), 114-125のFigure 2による。掲載号のPDFがKonrad Lorenz Instituteのサイトで公開されている。ただし嫌悪と怒りの双対の名前は、American Scientist論文の本文の語彙（憎悪あるいは敵意）に合わせている（Figure 2のラベルはcontempt）。
