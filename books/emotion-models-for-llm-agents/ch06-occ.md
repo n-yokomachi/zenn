@@ -147,7 +147,7 @@ fragment_file: ""      # 状態を書き換えるたびに現在の値を書き�
 
 ## 検証結果 <!-- レビュー済み -->
 
-台本の全文は付録「検証に使った台本」に、状態の1ターンごとの値は付録「各モデルの状態の推移」の「OCCモデル」の節に載せている。
+台本の全文はaffectusのリポジトリの[検証に使った台本](https://github.com/n-yokomachi/affectus/blob/main/examples/evaluation/docs/scripts.md)に、状態の1ターンごとの値は同じリポジトリの[各モデルの状態の推移](https://github.com/n-yokomachi/affectus/blob/main/examples/evaluation/docs/states.md#occモデル)の「OCCモデル」の節に載せている。
 
 ### 全パターンの比較
 

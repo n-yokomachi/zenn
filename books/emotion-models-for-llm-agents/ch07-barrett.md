@@ -155,7 +155,7 @@ fragment_file: ""  # 状態を書き換えるたびに現在の値を書き出�
 
 ## 検証結果 <!-- レビュー済み -->
 
-台本の全文は付録「検証に使った台本」に、状態の1ターンごとの値は付録「各モデルの状態の推移」の「バレットの構成主義的情動理論」の節に載せている。
+台本の全文はaffectusのリポジトリの[検証に使った台本](https://github.com/n-yokomachi/affectus/blob/main/examples/evaluation/docs/scripts.md)に、状態の1ターンごとの値は同じリポジトリの[各モデルの状態の推移](https://github.com/n-yokomachi/affectus/blob/main/examples/evaluation/docs/states.md#バレットの構成主義的情動理論)の「バレットの構成主義的情動理論」の節に載せている。
 
 :::message
 rememberコマンドへの申告のうち2回は、閉じタグの前に余計な文字列が入っていたため受け付けられなかった。その2ターンの経験は保存されていない。また1回、感情の名前が日本語ではなく韓国語で申告された。名前の言語は指示していないので、申告された文字列のまま保存している。
