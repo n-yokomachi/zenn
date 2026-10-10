@@ -95,7 +95,7 @@ def plot_axes_small_multiples() -> None:
              color=INK, fontsize=11.5, ha="center")
     fig.text(0.01, 0.01,
              "和解台本でのフレンドリー(感情エンジンあり)の外部状態(3回の実行の平均)である。"
-             "叱責期は苦悩・非難・怒りが上がり、謝罪後は喜び・敬服・感謝が上がる。",
+             "叱責期は苦悩・非難・怒りが上がり、謝罪後はそれらが下がって喜び・敬服・感謝が上がる。",
              color=MUTED, fontsize=11)
     fig.tight_layout(rect=(0, 0.04, 1, 0.95))
     fig.savefig(OUT_DIR / "ch06-axes-anger-to-praise.png", facecolor=BG)
