@@ -15,7 +15,7 @@ title: "付録：注釈"
 - 「Core Affect and the Psychological Construction of Emotion」: Russell (2003)のアブストラクトに"an approach based on the concepts of core affect and psychological construction"とある。
 - 「心理構成主義の展開として扱われている」: Gendron & Barrett (2009)の原文は"In some models, these ingredients combine in stages (e.g., Russell, 2003; Schachter & Singer, 1962; Wundt, 1897/1998)."である。
 - 「対極の組や混ぜると別の感情になる組」: Plutchik (2001)の原文は、対極が"I suggested eight basic bipolar emotions: joy versus sorrow, anger versus fear, acceptance versus disgust and surprise versus expectancy."、混合（一次双対）が"mixing joy and acceptance produces the mixed emotion of love; disgust plus anger produces hatred or hostility. Such mixtures have been called primary dyads in the theory."である。
-- 「計算モデルとしての先行研究」: バレット自身が能動的推論（active inference）の枠組みで理論を定式化したBarrett (2017b)と、感情状態の推定と感情概念の学習を能動的推論の計算モデルとして実装したSmith, Parr & Friston (2019)がある。
+- 「計算モデルとしての先行研究」: バレット自身が能動的推論（active inference）の枠組みで理論を定式化したBarrett (2017b)と、感情状態の推定と感情概念の学習を能動的推論の計算モデルとして実装したSmith et al. (2019)がある。
 - 「7つ」の情動システム: Panksepp (1998)。7つのシステムはSEEKING（探索）、RAGE（怒り）、FEAR（恐れ）、LUST（性欲）、CARE（養育）、PANIC/GRIEF（悲嘆）、PLAY（遊び）である。原著の表記はPANICで、PANIC/GRIEFは後年に精緻化された表記である。
 
 ## 感情エンジンの設計
@@ -29,7 +29,7 @@ title: "付録：注釈"
 - 「会話を通じて一貫して見える応答は…」: 原文: "what might appear as consistent emotional responses from an Assistant across a conversation may reflect repeated activation of similar emotion concepts at each generation step (perhaps queried from earlier in the context via the attention mechanism), rather than a persistently encoded internal emotional state."
 - 「実践的あるいは哲学的に重要かどうかは…」: 原文: "Whether this distinction matters—practically or philosophically—remains an open question." および "That said, our results do not preclude the possibility of persistently active representations that are missed by our probing methods."
 - 「持続が感情の状態の鍵だという直感そのものが…」: 原文: "intuitions that persistence is a key property of emotional states may be inappropriate in the context of transformer-based models."
-- 「将来の出来事の見込みから生じる感情」: 見込みに基づく感情の構造は、原著の該当表を転載したSteunebrink, Dastani & Meyer (2009)で確認している。
+- 「将来の出来事の見込みから生じる感情」: 見込みに基づく感情の構造は、原著の該当表を転載したSteunebrink et al. (2009)で確認している。
 
 ## プルチックの輪を実装する
 
