@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="628" viewBox="0 0 1160 628" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif">
-  <rect width="1160" height="628" fill="#fbfbfa"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1220" height="628" viewBox="0 0 1220 628" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif">
+  <rect width="1220" height="628" fill="#fbfbfa"/>
 
   <!-- 上段ラベル -->
   <text x="60" y="66" font-size="20" fill="#6b6b66">ジェンドロンとバレット（2009）が示した3つの系統</text>
-  <line x1="60" y1="82" x2="1100" y2="82" stroke="#dcdcd6" stroke-width="1"/>
+  <line x1="60" y1="82" x2="1160" y2="82" stroke="#dcdcd6" stroke-width="1"/>
 
   <!-- 上段: 3系統 -->
   <g>
@@ -37,7 +37,7 @@
 
   <!-- 下段ラベル -->
   <text x="60" y="392" font-size="20" fill="#6b6b66">本書が使う4つの系統</text>
-  <line x1="60" y1="408" x2="1100" y2="408" stroke="#dcdcd6" stroke-width="1"/>
+  <line x1="60" y1="408" x2="1160" y2="408" stroke="#dcdcd6" stroke-width="1"/>
 
   <!-- 下段: 4系統 -->
   <g>
