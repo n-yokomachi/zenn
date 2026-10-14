@@ -54,9 +54,9 @@ title: "付録：参考文献と注釈"
 
 - 「現在の感情科学の研究とおおむね収束している」: Tracy & Randles (2011)のアブストラクトの原文は"largely converge with the current state of affective science research"である。
 - 円環モデルの主張: Russell (1980)の原文は"My thesis is that affective states are, in fact, best represented as a circle in a two-dimensional bipolar space."である。
-- 「現代の感情研究の文献では、ジェームズはしばしば基本感情説の論者として言及される」: Gendron & Barrett (2009)の原文は"In modern works on emotion, James is often referred to as a basic emotion theorist (e.g., Levenson, 1992)."である。
-- 「ジェームズは誤って基本感情説の論者と見なされている」: Gendron & Barrett (2009)の原文は"Second, James is mistakenly thought of as a basic emotion theorist because people associate his ideas with those of Carl Lange."で、誤解が生じた理由の2つ目としてLangeの考えとの混同を挙げている。
-- 「伝統、tradition」: Cornelius (1996)。traditionの語は書名の副題Research and Tradition in the Psychology of Emotionsにも現れる。著者自身による要約論文（Cornelius 2000）では"four of the most influential theoretical perspectives and research traditions in the study of emotion"と紹介されている。
+- 「現代の感情研究の文献において」: Gendron & Barrett (2009)の原文は"In modern works on emotion, James is often referred to as a basic emotion theorist (e.g., Levenson, 1992)."である。
+- 「ジェームズは誤って基本感情説の立場と見なされている」: Gendron & Barrett (2009)の原文は"Second, James is mistakenly thought of as a basic emotion theorist because people associate his ideas with those of Carl Lange."で、誤解が生じた理由の2つ目としてLangeの考えとの混同を挙げている。
+- コーネリアスの4つの系統: Cornelius (1996)は各系統を研究の伝統（tradition）としても扱っている。traditionの語は書名の副題Research and Tradition in the Psychology of Emotionsにも現れる。著者自身による要約論文（Cornelius 2000）では"four of the most influential theoretical perspectives and research traditions in the study of emotion"と紹介されている。
 - 3つの系統の定義: Gendron & Barrett (2009)の原文は、基本感情が"certain biologically privileged kinds of emotion are automatically triggered by objects and events in the world"、評価が"emotions are not merely triggered by objects in a reflexive or habitual way, but arise from a meaningful interpretation of an object by an individual"、心理構成主義が"emotions are psychical compounds that are constructed out of more basic psychological ingredients that are not themselves specific to emotion"である。
 - ヴントを心理構成主義の始まりに置く記述: Gendron & Barrett (2009)の原文は"Along with William James, Wilhelm Wundt is the other major figure of the Golden Years who crafted a psychological constructionist approach to emotion."である。
 - 「Core Affect and the Psychological Construction of Emotion」: Russell (2003)のアブストラクトは、恐れや怒りのような典型的な感情のエピソードを"core affect attributed to something plus various nonemotional processes"として説明している。
