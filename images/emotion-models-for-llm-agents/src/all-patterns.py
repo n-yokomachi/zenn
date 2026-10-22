@@ -38,8 +38,10 @@ INK = "#24241f"
 MUTED = "#7a7a72"
 GRID = "#ececea"
 PIVOT = "#8a8a80"
-BLUE = "#2f6fb3"   # フレンドリー
-RUST = "#b0562c"   # 天邪鬼
+# 白黒で印刷しても性格を見分けられるよう、色の明るさを大きく変え、点の形も変える
+# （グレースケールの明るさは BLUE が 71、ORANGE が 156）
+BLUE = "#1f4e8c"    # フレンドリー
+ORANGE = "#e08a4a"  # 天邪鬼
 
 PIVOT_TURN = 11
 TURNS = range(1, 21)
@@ -49,12 +51,16 @@ SCRIPTS = [
     ("direct-anger-to-praise", "和解台本", "誤解と判明し謝罪"),
     ("direct-praise-to-anger", "叱責台本", "本人の失敗が発覚"),
 ]
+# 性格は点の形（フレンドリーは丸、天邪鬼は四角）、構成は線種と点の塗り（ありは実線と塗りつぶし、なしは破線と白抜き）で描き分ける
 CELLS = [
     ("friendly-on", "フレンドリー", BLUE, "-", "o", True),
-    ("friendly-off", "フレンドリー", BLUE, (0, (5, 3)), None, False),
-    ("contrarian-on", "天邪鬼", RUST, "-", "o", True),
-    ("contrarian-off", "天邪鬼", RUST, (0, (5, 3)), None, False),
+    ("friendly-off", "フレンドリー", BLUE, (0, (5, 3)), "o", False),
+    ("contrarian-on", "天邪鬼", ORANGE, "-", "s", True),
+    ("contrarian-off", "天邪鬼", ORANGE, (0, (5, 3)), "s", False),
 ]
+
+# 印刷で350dpi以上になるよう、図の大きさ（インチ）の2倍の解像度で書き出す
+SAVE_DPI = 200
 
 plt.rcParams["font.family"] = "Hiragino Sans"
 plt.rcParams["axes.unicode_minus"] = False
@@ -89,7 +95,8 @@ def plot(d) -> None:
             ys = [mean(d[(script, cell, r)][t] for r in RUNS) for t in TURNS]
             label = f"{who}（{ON_NAME}{'あり' if on else 'なし'}）"
             ax.plot(list(TURNS), ys, color=color, linestyle=ls, linewidth=2,
-                    marker=marker, markersize=4.5, label=label)
+                    marker=marker, markersize=5, markeredgecolor=color,
+                    markerfacecolor=color if on else BG, label=label)
         ax.axvline(PIVOT_TURN, color=PIVOT, linestyle=":", linewidth=1.5)
         ax.text(PIVOT_TURN + 0.15, 1.02, note, color=PIVOT, fontsize=10.5)
         ax.axhline(0, color=MUTED, linewidth=0.8)
@@ -106,7 +113,7 @@ def plot(d) -> None:
              f"各線は3回の実行の平均である。実線が{ON_NAME}あり、破線が{ON_NAME}なしである。",
              color=MUTED, fontsize=11)
     fig.tight_layout(rect=(0, 0.04, 1, 0.92))
-    fig.savefig(OUT_DIR / f"{CH}-polarity-all.png", facecolor=BG)
+    fig.savefig(OUT_DIR / f"{CH}-polarity-all.png", facecolor=BG, dpi=SAVE_DPI)
     plt.close(fig)
 
 

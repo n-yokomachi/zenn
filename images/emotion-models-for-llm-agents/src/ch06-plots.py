@@ -46,6 +46,9 @@ AXES_JA = [
     ("admiration", "敬服"), ("gratitude", "感謝"),
 ]
 
+# 印刷で350dpi以上になるよう、図の大きさ（インチ）の2倍の解像度で書き出す
+SAVE_DPI = 200
+
 plt.rcParams["font.family"] = "Hiragino Sans"
 plt.rcParams["axes.unicode_minus"] = False
 
@@ -94,11 +97,11 @@ def plot_axes_small_multiples() -> None:
              "t9の解約の脅し(点線)で見込みが記録されて恐れが上がり、t11の謝罪(破線)で見込みが外れて安堵が導出される。",
              color=INK, fontsize=11.5, ha="center")
     fig.text(0.01, 0.01,
-             "和解台本でのフレンドリー(感情エンジンあり)の外部状態(3回の実行の平均)である。"
+             "和解台本でのフレンドリー(感情エンジンあり)の外部状態(3回の実行の平均)である。\n"
              "叱責期は苦悩・非難・怒りが上がり、謝罪後はそれらが下がって喜び・敬服・感謝が上がる。",
              color=MUTED, fontsize=11)
-    fig.tight_layout(rect=(0, 0.04, 1, 0.95))
-    fig.savefig(OUT_DIR / "ch06-axes-anger-to-praise.png", facecolor=BG)
+    fig.tight_layout(rect=(0, 0.08, 1, 0.95))
+    fig.savefig(OUT_DIR / "ch06-axes-anger-to-praise.png", facecolor=BG, dpi=SAVE_DPI)
     plt.close(fig)
 
 

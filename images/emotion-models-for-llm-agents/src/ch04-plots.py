@@ -55,6 +55,9 @@ AXES_JA = [
     ("anger", "怒り"), ("expectancy", "予期"),
 ]
 
+# 印刷で350dpi以上になるよう、図の大きさ（インチ）の2倍の解像度で書き出す
+SAVE_DPI = 200
+
 plt.rcParams["font.family"] = "Hiragino Sans"
 plt.rcParams["axes.unicode_minus"] = False
 
@@ -125,7 +128,7 @@ def plot_polarity(script: str, short: str, pivot_note: str) -> None:
     fig.text(0.01, 0.01, "各線は3回の実行の平均である。実線が感情エンジンあり、破線が感情エンジンなしである。",
              color=MUTED, fontsize=11)
     fig.tight_layout(rect=(0, 0.03, 1, 0.94))
-    fig.savefig(OUT_DIR / f"ch04-polarity-{short}.png", facecolor=BG)
+    fig.savefig(OUT_DIR / f"ch04-polarity-{short}.png", facecolor=BG, dpi=SAVE_DPI)
     plt.close(fig)
 
 
@@ -149,7 +152,7 @@ def plot_8axis(script: str, short: str) -> None:
              "フレンドリー(感情エンジンあり)の外部状態(3回の実行の平均)である。点線はターン11の転換を示す。",
              color=MUTED, fontsize=11)
     fig.tight_layout(rect=(0, 0.04, 1, 1))
-    fig.savefig(OUT_DIR / f"ch04-8axis-{short}.png", facecolor=BG)
+    fig.savefig(OUT_DIR / f"ch04-8axis-{short}.png", facecolor=BG, dpi=SAVE_DPI)
     plt.close(fig)
 
 
